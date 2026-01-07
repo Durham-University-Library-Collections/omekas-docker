@@ -114,13 +114,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Add Omeka-S cli tool from GhentCDH
 ARG ENV_OMEKAS_CLI_VERSION
-RUN curl -L https://github.com/GhentCDH/Omeka-S-Cli/archive/refs/tags/${ENV_OMEKAS_CLI_VERSION}.zip --output /tmp/omeka-s-cli.zip && \
-    unzip -q /tmp/omeka-s-cli.zip -d /opt/ && \
-    # Archives downloaded from commit hash or version tag contain a long and versioned module name so we rename it.
-    mv /opt/Omeka-S-Cli-${ENV_OMEKAS_CLI_VERSION} /opt/omeka-s-cli && \
-    composer install --working-dir=/opt/omeka-s-cli && \
-    ln -s /opt/omeka-s-cli/bin/omeka-s-cli.phar /usr/local/bin/omeka-s-cli && \
-    rm /tmp/omeka-s-cli.zip
+RUN curl -L https://github.com/GhentCDH/Omeka-S-Cli/releases/download/v${ENV_OMEKAS_CLI_VERSION}/omeka-s-cli.phar --output /usr/local/bin/omeka-s-cli && \
+    chmod +x /usr/local/bin/omeka-s-cli
 
 # Switching to www-data to avoid running composer as root (see https://getcomposer.org/root)
 USER www-data

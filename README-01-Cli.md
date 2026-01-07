@@ -1,6 +1,6 @@
 ## Using the Omeka S Command Line interface
 The Omeka S CLI is developed by the Ghent Center for Digital Humanities [see GitHub](https://github.com/GhentCDH/Omeka-S-Cli/)
-and allows you list, install/uninstall, enable/disable and upgrade Omeka S modules.
+and allows you to list, install/uninstall, enable/disable and upgrade Omeka S modules, resource templates, themes and vocabularies.
 
 ### Usage
 1. Exec into the docker container
@@ -10,32 +10,18 @@ docker exec -it omekas bash
 
 2. Run the CLI with the following example commands
 ```bash
-omeka-s-cli list
+omeka-s-cli module:list
 
-omeka-s-cli disable BulkEdit
+omeka-s-cli module:disable BulkEdit
 
-omeka-s-cli uninstall BulkEdit
+omeka-s-cli module:uninstall BulkEdit
 ```
 
 ### Full list of commands
-```
-module
-    module:available    List available modules
-    module:delete       Delete module
-    module:disable      Disable module
-    module:download     Download modules
-    module:enable       Enable module
-    module:install      Install module
-    module:list         List downloaded modules
-    module:status       Get module status
-    module:uninstall    Uninstall module
-    module:upgrade      Upgrade module
-theme
-    theme:available     List available themes
-    theme:delete        Delete theme
-    theme:download      Download theme
-    theme:list          List downloaded themes
-    theme:status        Get theme status
+The latest list of commands can be found in the CLI's [readme on GitHub](https://github.com/GhentCDH/Omeka-S-Cli/blob/main/README.md)
+or by calling the help via:
+```bash
+omeka-s-cli -h
 ```
 
 
@@ -44,7 +30,8 @@ The script tries to find the Omeka S base dir. If you get the following error:
 ```
 Could not find a valid Omeka S context.
 ```
-it could mean that you need to provide the base path. In those cases, try running the CLI with:
+it could mean that you need to switch to the correct working directory. Example:
 ```bash
-omeka-s-cli -b /var/www/html list
+cd /var/www/html
+omeka-s-cli module:list
 ```
