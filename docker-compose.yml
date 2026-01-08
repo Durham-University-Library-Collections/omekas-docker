@@ -7,6 +7,7 @@ services:
       context: omeka-s/
       args:
         - ENV_PHP_VERSION
+        - ENV_OMEKAS_BASE_PATH
         - ENV_OMEKAS_CLI_VERSION
         - ENV_OMEKAS_VERSION
         - ENV_MODULE_AdvancedSearch_VERSION
@@ -47,6 +48,13 @@ services:
       MYSQL_USER: ${ENV_MYSQL_USER}
       MYSQL_PASSWORD: ${ENV_MYSQL_PASSWORD}
       MYSQL_HOST: ${ENV_MYSQL_HOST}
+      OMEKAS_BASE_PATH: ${ENV_OMEKAS_BASE_PATH}
+      OMEKAS_ADMIN_NAME: ${ENV_OMEKAS_ADMIN_NAME}
+      OMEKAS_ADMIN_EMAIL: ${ENV_OMEKAS_ADMIN_EMAIL}
+      OMEKAS_ADMIN_PASSWORD: ${ENV_OMEKAS_ADMIN_PASSWORD}
+      OMEKAS_TITLE: ${ENV_OMEKAS_TITLE}
+      OMEKAS_TIME_ZONE: ${ENV_OMEKAS_TIME_ZONE}
+      OMEKAS_LOCALE: ${ENV_OMEKAS_LOCALE}
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - omeka:/var/www/html/volume
@@ -72,7 +80,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - db:/var/lib/mysql
       # Load the initial Omeka database contents when the data volume above is empty (e.g. at first start after removal of the data volume)
-      - ./db/init-omekas-db.sql:/docker-entrypoint-initdb.d/init-omekas-db.sql
+      # - ./db/init-omekas-db.sql:/docker-entrypoint-initdb.d/init-omekas-db.sql
 
 
   phpmyadmin:

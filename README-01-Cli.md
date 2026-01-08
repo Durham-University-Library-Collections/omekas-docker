@@ -30,8 +30,12 @@ The script tries to find the Omeka S base dir. If you get the following error:
 ```
 Could not find a valid Omeka S context.
 ```
-it could mean that you need to switch to the correct working directory. Example:
+it could mean that you need to switch to the correct working directory, or provide the base path. Example:
 ```bash
+# By switching directory
 cd /var/www/html
 omeka-s-cli module:list
+
+# Or using the base path
+omeka-s-cli module:list --base-path /var/www/html
 ```
