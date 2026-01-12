@@ -1,4 +1,4 @@
-ARG ENV_PHP_VERSION=8.1
+ARG ENV_PHP_VERSION=8.2
 FROM php:${ENV_PHP_VERSION}-fpm-bookworm
 
 RUN apt-get update && \
@@ -188,10 +188,7 @@ ARG ENV_MODULE_Mirador_VERSION
 RUN omeka-s-cli module:download https://github.com/Daniel-KM/Omeka-S-module-Mirador/releases/download/${ENV_MODULE_Mirador_VERSION}/Mirador-${ENV_MODULE_Mirador_VERSION}.zip
 
 ARG ENV_MODULE_ModelViewer_VERSION
-RUN omeka-s-cli module:download https://gitlab.com/mcoonen/Omeka-S-module-ModelViewer/-/archive/${ENV_MODULE_ModelViewer_VERSION}/Omeka-S-module-ModelViewer-${ENV_MODULE_ModelViewer_VERSION}.zip && \
-    # TODO: remove this workaround when https://github.com/GhentCDH/Omeka-S-Cli/issues/84 is resolved
-    # Workaround to install composer dependencies
-    cd modules/ModelViewer && composer update && composer install --no-dev
+RUN omeka-s-cli module:download https://gitlab.com/mcoonen/Omeka-S-module-ModelViewer/-/archive/${ENV_MODULE_ModelViewer_VERSION}/Omeka-S-module-ModelViewer-${ENV_MODULE_ModelViewer_VERSION}.zip
 
 ARG ENV_MODULE_NdeTermennetwerk_VERSION
 RUN omeka-s-cli module:download NdeTermennetwerk:${ENV_MODULE_NdeTermennetwerk_VERSION}
@@ -200,10 +197,7 @@ ARG ENV_MODULE_NumericDataTypes_VERSION
 RUN omeka-s-cli module:download NumericDataTypes:${ENV_MODULE_NumericDataTypes_VERSION}
 
 ARG ENV_MODULE_PdfViewer_VERSION
-RUN omeka-s-cli module:download https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/archive/refs/tags/${ENV_MODULE_PdfViewer_VERSION}.zip && \
-    # TODO: remove this workaround when https://github.com/GhentCDH/Omeka-S-Cli/issues/84 is resolved
-    # Workaround to install composer dependencies
-    cd modules/PdfViewer && composer update && composer install --no-dev
+RUN omeka-s-cli module:download https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/archive/refs/tags/${ENV_MODULE_PdfViewer_VERSION}.zip
 
 ARG ENV_MODULE_Sitemaps_VERSION
 RUN omeka-s-cli module:download Sitemaps:${ENV_MODULE_Sitemaps_VERSION}
