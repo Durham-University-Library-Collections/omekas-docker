@@ -119,7 +119,12 @@ USER www-data
 ARG ENV_MODULE_AdvancedSearch_VERSION
 RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-AdvancedSearch/releases/download/${ENV_MODULE_AdvancedSearch_VERSION}/AdvancedSearch-${ENV_MODULE_AdvancedSearch_VERSION}.zip --output /tmp/AdvancedSearch.zip && \
     unzip -q /tmp/AdvancedSearch.zip -d modules/ && \
-    rm /tmp/AdvancedSearch.zip
+    rm /tmp/AdvancedSearch.zip \
+
+ARG ENV_MODULE_SearchSolr_VERSION
+RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/releases/download/${ENV_MODULE_SearchSolr_VERSION}/SearchSolr-${ENV_MODULE_SearchSolr_VERSION}.zip --output /tmp/SearchSolr.zip && \
+    unzip -q /tmp/SearchSolr.zip -d modules/ && \
+    rm /tmp/SearchSolr.zip
 
 ARG ENV_MODULE_ArchiveRepertory_VERSION
 RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-ArchiveRepertory/releases/download/${ENV_MODULE_ArchiveRepertory_VERSION}/ArchiveRepertory-${ENV_MODULE_ArchiveRepertory_VERSION}.zip --output /tmp/ArchiveRepertory.zip && \
@@ -128,7 +133,6 @@ RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-ArchiveRepertory/release
 
 ARG ENV_MODULE_Ark_VERSION
 RUN curl -L https://gitlab.com/Daniel-KM/Omeka-S-module-Ark/-/archive/${ENV_MODULE_Ark_VERSION}/Omeka-S-module-Ark-${ENV_MODULE_Ark_VERSION}.zip --output /tmp/Ark.zip && \
-#RUN curl -L https://gitlab.com/mcoonen/Omeka-S-module-Ark/-/archive/${ENV_MODULE_Ark_VERSION}/Omeka-S-module-Ark-${ENV_MODULE_Ark_VERSION}.zip --output /tmp/Ark.zip && \
     unzip -q /tmp/Ark.zip -d modules/ && \
     # Archives downloaded from gitlab contain a long and versioned module name so we rename it.
     mv modules/Omeka-S-module-Ark-${ENV_MODULE_Ark_VERSION} modules/Ark && \
@@ -278,11 +282,6 @@ RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/archive/refs/t
     composer update && \
     composer install --no-dev && \
     rm /tmp/PdfViewer.zip
-    
-ARG ENV_MODULE_SearchSolr_VERSION
-RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/releases/download/${ENV_MODULE_SearchSolr_VERSION}/SearchSolr-${ENV_MODULE_SearchSolr_VERSION}.zip --output /tmp/SearchSolr.zip && \
-    unzip -q /tmp/SearchSolr.zip -d modules/ && \
-    rm /tmp/SearchSolr.zip
 
 ARG ENV_MODULE_Sitemaps_VERSION
 RUN curl -L https://github.com/ManOnDaMoon/omeka-s-module-Sitemaps/releases/download/v${ENV_MODULE_Sitemaps_VERSION}/Sitemaps-${ENV_MODULE_Sitemaps_VERSION}.zip --output /tmp/Sitemaps.zip && \
