@@ -119,7 +119,7 @@ USER www-data
 ARG ENV_MODULE_AdvancedSearch_VERSION
 RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-AdvancedSearch/releases/download/${ENV_MODULE_AdvancedSearch_VERSION}/AdvancedSearch-${ENV_MODULE_AdvancedSearch_VERSION}.zip --output /tmp/AdvancedSearch.zip && \
     unzip -q /tmp/AdvancedSearch.zip -d modules/ && \
-    rm /tmp/AdvancedSearch.zip \
+    rm /tmp/AdvancedSearch.zip
 
 ARG ENV_MODULE_SearchSolr_VERSION
 RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/releases/download/${ENV_MODULE_SearchSolr_VERSION}/SearchSolr-${ENV_MODULE_SearchSolr_VERSION}.zip --output /tmp/SearchSolr.zip && \
