@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Nov 19, 2025 at 01:46 PM
+-- Generation Time: Feb 19, 2026 at 01:54 PM
 -- Server version: 8.0.40
 -- PHP Version: 8.0.27
 
@@ -42,7 +42,7 @@ CREATE TABLE `api_key` (
 --
 
 INSERT INTO `api_key` (`id`, `owner_id`, `label`, `credential_hash`, `last_ip`, `last_accessed`, `created`) VALUES
-('Ssjbd3C7n77nmnjrMRwgnW545W75s01Y', 1, 'admin-key', '$2y$10$Oi.wfhFJC/tJ9YFC5GhEgu2IJcvad0Ytf/DtVjhgCHqOSxr1Ouj92', NULL, NULL, '2025-08-11 09:53:02');
+('0XhKkvsEtxdoJpbrBd3wj6baaxZ31giS', 1, 'admin-key-411', '$2y$10$ALWAd22X1u.1PhhaI33oIeV04vrXcwO6QdE34hBbd5tY/bFLMDxxG', NULL, NULL, '2025-08-11 10:49:40');
 
 -- --------------------------------------------------------
 
@@ -193,6 +193,7 @@ CREATE TABLE `hit` (
   `site_id` int NOT NULL DEFAULT '0',
   `user_id` int NOT NULL DEFAULT '0',
   `ip` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` varchar(2) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT '',
   `query` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:json)',
   `referrer` varchar(1024) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL DEFAULT '',
   `user_agent` varchar(1024) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT '',
@@ -204,36 +205,51 @@ CREATE TABLE `hit` (
 -- Dumping data for table `hit`
 --
 
-INSERT INTO `hit` (`id`, `url`, `entity_id`, `entity_name`, `site_id`, `user_id`, `ip`, `query`, `referrer`, `user_agent`, `accept_language`, `created`) VALUES
-(1, '/', 0, '', 0, 0, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0', 'en-US,en;q=0.5', '2024-03-26 13:43:37'),
-(2, '/', 0, '', 0, 0, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0', 'en-US,en;q=0.5', '2024-04-15 09:39:14'),
-(3, '/s/default/item', 0, '', 1, 1, '::', NULL, 'http://omeka.local/s/default/item', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-15 12:33:56'),
-(4, '/s/default/item', 0, '', 1, 1, '::', NULL, 'http://omeka.local/s/default/item', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-15 12:34:16'),
-(5, '/s/default/item/1', 1, 'items', 1, 1, '::', NULL, 'http://omeka.local/s/default/item', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-15 12:34:18'),
-(6, '/s/default/item', 0, '', 1, 1, '::', NULL, 'http://omeka.local/s/default/item', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-15 12:34:19'),
-(7, '/', 0, '', 0, 0, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-16 12:07:36'),
-(8, '/', 0, '', 0, 0, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:35:21'),
-(9, '/', 0, '', 0, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:36:02'),
-(10, '/s/default', 0, '', 1, 1, '::', NULL, 'http://omeka.local/', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:36:04'),
-(11, '/s/default/page/welcome', 1, 'site_pages', 1, 1, '::', NULL, 'http://omeka.local/', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:36:04'),
-(12, '/s/default/sitemap.xml', 0, '', 1, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:36:11'),
-(13, '/', 0, '', 0, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:37:24'),
-(14, '/', 0, '', 0, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:45'),
-(15, '/s/default', 0, '', 1, 1, '::', NULL, 'http://omeka.local/', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:46'),
-(16, '/s/default/page/welcome', 1, 'site_pages', 1, 1, '::', NULL, 'http://omeka.local/', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:46'),
-(17, '/s/default/sitemap.xml', 0, '', 1, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:53'),
-(18, '/s/default/sitemapindex.xml', 0, '', 1, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:53'),
-(19, '/s/default/sitemap.xml', 0, '', 1, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:39:28'),
-(20, '/s/default/sitemapindex.xml', 0, '', 1, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:39:29'),
-(21, '/s/default/sitemapindex.xml', 0, '', 1, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:41:32'),
-(22, '/s/default/sitemap.xml', 0, '', 1, 1, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:41:32'),
-(23, '/', 0, '', 0, 0, '::', NULL, '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-04-30 07:57:12'),
-(24, '/s/index', 0, '', 1, 1, '::', NULL, 'http://omeka.local/admin/site/s/index', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 15:00:00'),
-(25, '/s/index/page/welcome', 1, 'site_pages', 1, 1, '::', NULL, 'http://omeka.local/admin/site/s/index', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 15:00:00'),
-(26, '/s/index/find', 0, '', 1, 1, '::', NULL, 'http://omeka.local/s/index/page/welcome', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 15:00:02'),
-(27, '/s/index/find', 0, '', 1, 1, '::', NULL, 'http://omeka.local/s/index/page/welcome', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 15:00:09'),
-(28, '/s/index/item/1', 1, 'items', 1, 1, '::', NULL, 'http://omeka.local/s/index/find', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 15:00:10'),
-(29, '/', 0, '', 0, 0, '::', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:141.0) Gecko/20100101 Firefox/141.0', 'nl,en-US;q=0.7,en;q=0.3', '2025-08-11 09:52:49');
+INSERT INTO `hit` (`id`, `url`, `entity_id`, `entity_name`, `site_id`, `user_id`, `ip`, `language`, `query`, `referrer`, `user_agent`, `accept_language`, `created`) VALUES
+(1, '/', 0, '', 0, 0, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0', 'en-US,en;q=0.5', '2024-03-26 13:43:37'),
+(2, '/', 0, '', 0, 0, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0', 'en-US,en;q=0.5', '2024-04-15 09:39:14'),
+(3, '/s/default/item', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/default/item', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-15 12:33:56'),
+(4, '/s/default/item', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/default/item', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-15 12:34:16'),
+(5, '/s/default/item/1', 1, 'items', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/default/item', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-15 12:34:18'),
+(6, '/s/default/item', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/default/item', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-15 12:34:19'),
+(7, '/', 0, '', 0, 0, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0', 'en-US,en;q=0.5', '2024-04-16 12:07:36'),
+(8, '/', 0, '', 0, 0, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:35:21'),
+(9, '/', 0, '', 0, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:36:02'),
+(10, '/s/default', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:36:04'),
+(11, '/s/default/page/welcome', 1, 'site_pages', 1, 1, '::', 'en', NULL, 'http://omeka.local/', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:36:04'),
+(12, '/s/default/sitemap.xml', 0, '', 1, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:36:11'),
+(13, '/', 0, '', 0, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:37:24'),
+(14, '/', 0, '', 0, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:45'),
+(15, '/s/default', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:46'),
+(16, '/s/default/page/welcome', 1, 'site_pages', 1, 1, '::', 'en', NULL, 'http://omeka.local/', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:46'),
+(17, '/s/default/sitemap.xml', 0, '', 1, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:53'),
+(18, '/s/default/sitemapindex.xml', 0, '', 1, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:38:53'),
+(19, '/s/default/sitemap.xml', 0, '', 1, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:39:28'),
+(20, '/s/default/sitemapindex.xml', 0, '', 1, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:39:29'),
+(21, '/s/default/sitemapindex.xml', 0, '', 1, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:41:32'),
+(22, '/s/default/sitemap.xml', 0, '', 1, 1, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0', 'en-US,en;q=0.5', '2024-10-08 13:41:32'),
+(23, '/', 0, '', 0, 0, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-04-30 07:57:12'),
+(24, '/s/default', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/admin/site', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:52:21'),
+(25, '/s/default/page/welcome', 1, 'site_pages', 1, 1, '::', 'en', NULL, 'http://omeka.local/admin/site', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:52:21'),
+(26, '/s/default/page/welcome', 1, 'site_pages', 1, 1, '::', 'en', NULL, 'http://omeka.local/admin/site', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:52:39'),
+(27, '/s/default/find', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/default/page/welcome', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:52:40'),
+(28, '/s/default/find', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/default/page/welcome', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:52:48'),
+(29, '/s/index', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/admin/site/s/index', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:56:35'),
+(30, '/s/index/page/welcome', 1, 'site_pages', 1, 1, '::', 'en', NULL, 'http://omeka.local/admin/site/s/index', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:56:35'),
+(31, '/s/index/page/welcome', 1, 'site_pages', 1, 1, '::', 'en', NULL, 'http://omeka.local/admin/site/s/index', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:56:38'),
+(32, '/s/index/find', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/page/welcome', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:56:39'),
+(33, '/s/index/item/1', 1, 'items', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/find', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-07-10 14:56:41'),
+(34, '/s/index', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/find', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-09-29 13:38:56'),
+(35, '/s/index/page/welcome', 1, 'site_pages', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/find', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-09-29 13:38:56'),
+(36, '/s/index/find', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/page/welcome', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-09-29 13:38:58'),
+(37, '/s/index/item', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/find', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-09-29 13:38:59'),
+(38, '/s/index/item/1', 1, 'items', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/item', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-09-29 13:39:01'),
+(39, '/s/index/item', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/item/1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-09-29 13:39:03'),
+(40, '/s/index/find', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/item', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-09-29 13:49:10'),
+(41, '/s/index/find', 0, '', 1, 1, '::', 'en', NULL, 'http://omeka.local/s/index/item', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-09-29 13:49:32'),
+(42, '/', 0, '', 0, 0, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2025-11-12 13:24:49'),
+(43, '/s/index/find', 0, '', 1, 1, '::', 'nl', NULL, 'http://omeka.local/s/index/page/welcome', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0', 'nl,en-US;q=0.7,en;q=0.3', '2025-12-09 10:50:44'),
+(44, '/', 0, '', 0, 0, '::', 'en', NULL, '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'en-US,en;q=0.9', '2026-02-19 13:51:26');
 
 -- --------------------------------------------------------
 
@@ -335,8 +351,12 @@ CREATE TABLE `job` (
 INSERT INTO `job` (`id`, `owner_id`, `pid`, `status`, `class`, `args`, `log`, `started`, `ended`) VALUES
 (1, 1, '49', 'completed', 'Ark\\Job\\CreateArks', NULL, NULL, '2023-02-16 07:52:23', '2023-02-16 07:52:23'),
 (2, 1, '41', 'completed', 'AdvancedSearch\\Job\\IndexSearch', '{\"search_engine_id\":2,\"start_resource_id\":1,\"resource_names\":[\"items\"],\"force\":false}', '2023-02-28T14:44:24+00:00 NOTICE (5): Search index #2 (\"Solr\"): start of indexing\n2023-02-28T14:44:24+00:00 INFO (6): Search index is not cleared: reindexing starts at resource #1.\n2023-02-28T14:44:24+00:00 INFO (6): Indexing in Solr core \"Default\": item #1\n2023-02-28T14:44:24+00:00 INFO (6): Search index #2 (\"Solr\"): end of indexing. items: 1 indexed. Execution time: 0 seconds. Failed indexed resources should be checked manually.\n', '2023-02-28 14:44:23', '2023-02-28 14:44:24'),
-(3, 1, '161', 'completed', 'AdvancedSearch\\Job\\IndexSearch', '{\"search_engine_id\":2,\"start_resource_id\":1,\"resource_names\":[\"items\"],\"force\":false}', NULL, '2025-07-10 15:00:07', '2025-07-10 15:00:08'),
-(4, 1, '164', 'completed', 'Omeka\\Job\\BatchDelete', '{\"resource\":\"logs\",\"query\":{\"message\":[]}}', NULL, '2025-07-10 15:00:18', '2025-07-10 15:00:18');
+(3, 1, '165', 'completed', 'AdvancedSearch\\Job\\IndexSearch', '{\"search_engine_ids\":[2],\"clear_index\":false,\"start_resource_id\":1,\"resources_by_batch\":500,\"sleep_after_loop\":0,\"resource_types\":[\"items\"],\"resources_limit\":0,\"resources_offset\":0,\"visibility\":null,\"force\":false}', NULL, '2025-07-10 14:52:46', '2025-07-10 14:52:47'),
+(4, 1, '181', 'completed', 'Omeka\\Job\\BatchDelete', '{\"resource\":\"logs\",\"query\":{\"sort_by_default\":\"\",\"sort_order_default\":\"\",\"message\":[]}}', NULL, '2025-07-10 14:57:58', '2025-07-10 14:57:58'),
+(5, 1, '163', 'completed', 'AdvancedSearch\\Job\\IndexSearch', '{\"search_engine_ids\":[2],\"clear_index\":false,\"start_resource_id\":1,\"resources_by_batch\":500,\"sleep_after_loop\":0,\"resource_types\":[\"items\"],\"resources_limit\":0,\"resources_offset\":0,\"visibility\":null,\"force\":false}', NULL, '2025-09-29 13:43:46', '2025-09-29 13:43:46'),
+(6, 1, '163', 'completed', 'Log\\Job\\ArchiveLogsJob', '{\"seconds\":7776000,\"severity\":0,\"references\":[],\"store\":false,\"format\":\"tsv\",\"compress\":true,\"include_id\":false,\"translate\":true,\"delete\":true}', NULL, '2025-12-09 10:50:33', '2025-12-09 10:50:33'),
+(7, NULL, '162', 'completed', 'Log\\Job\\ArchiveLogsJob', '{\"seconds\":7776000,\"severity\":0,\"references\":[],\"store\":false,\"format\":\"tsv\",\"compress\":true,\"include_id\":false,\"translate\":true,\"delete\":true}', NULL, '2026-01-06 11:50:35', '2026-01-06 11:50:35'),
+(8, NULL, '162', 'completed', 'Log\\Job\\ArchiveLogsJob', '{\"seconds\":7776000,\"severity\":0,\"references\":[],\"store\":false,\"format\":\"tsv\",\"compress\":true,\"include_id\":false,\"translate\":true,\"delete\":true}', NULL, '2026-02-19 13:51:26', '2026-02-19 13:51:26');
 
 -- --------------------------------------------------------
 
@@ -354,6 +374,20 @@ CREATE TABLE `log` (
   `context` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
   `created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `log`
+--
+
+INSERT INTO `log` (`id`, `owner_id`, `job_id`, `reference`, `severity`, `message`, `context`, `created`) VALUES
+(23, 1, 6, 'easy-admin/check/job_6', 5, 'Delete specified logs older than {date_time} with params: severity = {severity}; reference = {references}.', '{\"date_time\":\"2025-09-10 10:50:33\",\"severity\":\"-\",\"references\":\"-\"}', '2025-12-09 10:50:33'),
+(24, 1, 6, 'easy-admin/check/job_6', 5, 'No logs found matching criteria.', '[]', '2025-12-09 10:50:33'),
+(25, NULL, 7, 'easy-admin/check/job_7', 5, 'Delete specified logs older than {date_time} with params: severity = {severity}; reference = {references}.', '{\"date_time\":\"2025-10-08 11:50:35\",\"severity\":\"-\",\"references\":\"-\"}', '2026-01-06 11:50:35'),
+(26, NULL, 7, 'easy-admin/check/job_7', 5, 'Found {count} logs to process.', '{\"count\":5}', '2026-01-06 11:50:35'),
+(27, NULL, 7, 'easy-admin/check/job_7', 5, 'Deleted {count} logs from database.', '{\"count\":5}', '2026-01-06 11:50:35'),
+(28, NULL, 8, 'easy-admin/check/job_8', 5, 'Delete specified logs older than {date_time} with params: severity = {severity}; reference = {references}.', '{\"date_time\":\"2025-11-21 13:51:26\",\"severity\":\"-\",\"references\":\"-\"}', '2026-02-19 13:51:26'),
+(29, NULL, 8, 'easy-admin/check/job_8', 5, 'Found {count} logs to process.', '{\"count\":1}', '2026-02-19 13:51:26'),
+(30, NULL, 8, 'easy-admin/check/job_8', 5, 'Deleted {count} logs from database.', '{\"count\":1}', '2026-02-19 13:51:26');
 
 -- --------------------------------------------------------
 
@@ -423,8 +457,13 @@ INSERT INTO `migration` (`version`) VALUES
 ('20210810083804'),
 ('20220718090449'),
 ('20220824103916'),
+('20230124033031'),
+('20230410074846'),
+('20230523085358'),
 ('20230601060113'),
-('20230713101012');
+('20230713101012'),
+('20231016000000'),
+('20240103030617');
 
 -- --------------------------------------------------------
 
@@ -443,37 +482,37 @@ CREATE TABLE `module` (
 --
 
 INSERT INTO `module` (`id`, `is_active`, `version`) VALUES
-('AdvancedSearch', 1, '3.4.21'),
-('ArchiveRepertory', 1, '3.15.16'),
-('Ark', 1, '3.5.13.5'),
-('BlockPlus', 1, '3.4.21'),
-('BlocksDisposition', 1, '3.4.2.3-beta'),
-('BulkEdit', 1, '3.4.27'),
-('BulkExport', 1, '3.4.30'),
-('Common', 1, '3.4.73'),
+('AdvancedSearch', 1, '3.4.53'),
+('ArchiveRepertory', 1, '3.15.17'),
+('Ark', 1, '3.5.15'),
+('BlockPlus', 1, '3.4.42'),
+('BlocksDisposition', 1, '3.4.5'),
+('BulkEdit', 1, '3.4.37'),
+('BulkExport', 1, '3.4.37'),
+('Common', 1, '3.4.74'),
 ('CreateMissingThumbnails', 1, '0.3.0'),
-('CSVImport', 1, '2.6.1'),
+('CSVImport', 1, '2.6.2'),
 ('CustomVocab', 1, '2.0.2'),
-('EasyAdmin', 1, '3.4.36'),
-('EUCookieBar', 1, '3.4.4'),
-('ExtractText', 1, '2.0.0'),
+('EasyAdmin', 1, '3.4.37'),
+('EUCookieBar', 1, '3.4.5'),
+('ExtractText', 1, '2.1.0'),
 ('FileSideload', 1, '1.7.1'),
-('Generic', 1, '3.4.46'),
 ('HideProperties', 1, '1.3.1'),
-('IiifSearch', 1, '3.4.7'),
-('IiifServer', 1, '3.6.16'),
-('ImageServer', 1, '3.6.17'),
-('Log', 1, '3.4.22'),
-('Mirador', 1, '3.4.7.16'),
+('IiifSearch', 1, '3.4.8'),
+('IiifServer', 1, '3.6.26'),
+('ImageServer', 1, '3.6.20'),
+('Log', 1, '3.4.33'),
+('Mirador', 1, '3.4.10'),
 ('ModelViewer', 1, '3.3.0.7-132'),
-('NdeTermennetwerk', 1, '1.2.0'),
-('NumericDataTypes', 1, '1.11.3'),
+('NdeTermennetwerk', 1, '1.4.0'),
+('NumericDataTypes', 1, '1.13.0'),
 ('PdfViewer', 1, '3.4.4'),
-('SearchSolr', 1, '3.5.45'),
+('ResourceMeta', 1, '1.1.0'),
+('SearchSolr', 1, '3.5.60'),
 ('Sitemaps', 1, '1.1'),
-('Statistics', 1, '3.4.7'),
-('UniversalViewer', 1, '3.6.9'),
-('ValueSuggest', 1, '1.17.2');
+('Statistics', 1, '3.4.11'),
+('UniversalViewer', 1, '3.6.11-4.2.1'),
+('ValueSuggest', 1, '1.19.0');
 
 -- --------------------------------------------------------
 
@@ -4053,6 +4092,19 @@ INSERT INTO `resource_class` (`id`, `owner_id`, `vocabulary_id`, `local_name`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `resource_meta_resource_template_meta_names`
+--
+
+CREATE TABLE `resource_meta_resource_template_meta_names` (
+  `id` int UNSIGNED NOT NULL,
+  `resource_template_id` int NOT NULL,
+  `resource_template_property_id` int NOT NULL,
+  `meta_names` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `resource_template`
 --
 
@@ -4307,7 +4359,7 @@ CREATE TABLE `search_config` (
   `id` int NOT NULL,
   `engine_id` int NOT NULL,
   `name` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `path` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `form_adapter` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `settings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:json)',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -4318,8 +4370,8 @@ CREATE TABLE `search_config` (
 -- Dumping data for table `search_config`
 --
 
-INSERT INTO `search_config` (`id`, `engine_id`, `name`, `path`, `form_adapter`, `settings`, `created`, `modified`) VALUES
-(1, 2, 'Default', 'find', 'main', '{\"search\":{\"default_results\":\"default\",\"default_query\":\"\",\"default_query_post\":\"\",\"hidden_query_filters\":[]},\"autosuggest\":{\"suggester\":\"1\",\"url\":\"\",\"url_param_name\":\"\",\"limit\":null},\"form\":{\"filters\":[{\"field\":\"dcterms_title_txt\",\"label\":\"Title\",\"type\":\"\",\"options\":[]},{\"field\":\"dcterms_creator_s\",\"label\":\"Creator\",\"type\":\"\",\"options\":[]},{\"field\":\"advanced\",\"label\":\"Filters\",\"type\":\"Advanced\",\"options\":[],\"fields\":{\"title\":{\"value\":\"title\",\"label\":\"Title\"},\"author\":{\"value\":\"author\",\"label\":\"Author\"},\"dcterms:creator\":{\"value\":\"dcterms:creator\",\"label\":\"Creator\"},\"dcterms:subject\":{\"value\":\"dcterms:subject\",\"label\":\"Subject\"},\"date\":{\"value\":\"date\",\"label\":\"Date\"},\"description\":{\"value\":\"description\",\"label\":\"Description\"},\"resource_class_id\":{\"value\":\"resource_class_id\",\"label\":\"Class\"}},\"max_number\":\"5\",\"field_joiner\":\"1\",\"field_joiner_not\":\"1\",\"field_operator\":\"1\",\"field_operators\":{\"eq\":\"is exactly\",\"in\":\"contains\",\"sw\":\"starts with\",\"ew\":\"ends with\",\"ex\":\"has any value\",\"res\":\"is resource with ID\"}}],\"attribute_form\":\"0\",\"button_reset\":\"0\",\"button_submit\":\"1\"},\"display\":{\"search_filters\":\"header\",\"active_facets\":\"none\",\"total_results\":\"header\",\"paginator\":\"header\",\"per_pages\":\"header\",\"sort\":\"header\",\"grid_list\":\"header\",\"grid_list_mode\":\"auto\"},\"pagination\":{\"per_pages\":{\"10\":\"Results by 10\",\"25\":\"Results by 25\",\"50\":\"Results by 50\",\"100\":\"Results by 100\"}},\"sort\":{\"fields\":{\"dcterms:title asc\":{\"name\":\"dcterms:title asc\",\"label\":\"Title\"},\"dcterms:title desc\":{\"name\":\"dcterms:title desc\",\"label\":\"Title (from z to a)\"},\"dcterms:date asc\":{\"name\":\"dcterms:date asc\",\"label\":\"Date\"},\"dcterms:date desc\":{\"name\":\"dcterms:date desc\",\"label\":\"Date (most recent first)\"}}},\"facet\":{\"label\":\"Facets\",\"facets\":{\"resource_class_s\":{\"name\":\"resource_class_s\",\"label\":\"Resource class\",\"type\":\"\",\"options\":[]},\"dcterms_creator_s\":{\"name\":\"dcterms_creator_s\",\"label\":\"Creator\",\"type\":\"\",\"options\":[]}},\"limit\":\"10\",\"order\":\"\",\"languages\":[],\"display_list\":\"available\",\"mode\":\"button\",\"display_submit\":\"above\",\"display_reset\":\"above\",\"label_submit\":\"Apply facets\",\"label_reset\":\"Reset facets\",\"display_active\":\"1\",\"display_count\":\"1\"}}', '2023-02-15 16:01:30', '2023-02-28 14:50:30');
+INSERT INTO `search_config` (`id`, `engine_id`, `name`, `slug`, `form_adapter`, `settings`, `created`, `modified`) VALUES
+(1, 2, 'Default', 'find', 'main', '{\"request\":{\"default_results\":\"default\",\"default_query_post\":\"&resource_name_s=items\",\"validate_form\":\"0\"},\"index\":{\"aliases\":{\"full_text\":{\"name\":\"full_text\",\"label\":\"Full text\",\"fields\":[\"bibo:content\",\"extracttext:extracted_text\"]}}},\"q\":{\"label\":\"Search\",\"suggester\":\"1\",\"suggest_fill_input\":\"0\",\"remove_diacritics\":\"0\"},\"form\":{\"button_submit\":\"1\",\"label_submit\":\"Search\",\"button_reset\":\"0\",\"label_reset\":\"Reset fields\",\"attribute_form\":\"0\",\"advanced\":{\"default_number\":0,\"max_number\":10,\"field_joiner\":true,\"field_joiner_not\":true,\"field_operator\":true,\"field_operators\":{\"eq\":\"is exactly\",\"neq\":\"is not exactly\",\"in\":\"contains\",\"nin\":\"does not contain\",\"sw\":\"starts with\",\"nsw\":\"does not start with\",\"ew\":\"ends with\",\"new\":\"does not end with\",\"ex\":\"has any value\",\"nex\":\"has no values\",\"res\":\"is resource with ID\",\"nres\":\"is not resource with ID\",\"lex\":\"is a linked resource\",\"nlex\":\"is not a linked resource\",\"lres\":\"is linked with resource with ID\",\"nlres\":\"is not linked with resource with ID\"},\"fields\":[]},\"filters\":[]},\"results\":{\"label_default\":\"Search\",\"label_results\":\"Search results\",\"label_no_results\":\"No results\",\"by_resource_type\":\"1\",\"breadcrumbs\":\"0\",\"search_filters\":\"header\",\"active_facets\":\"none\",\"total_results\":\"header\",\"search_form_simple\":\"none\",\"search_form_quick\":\"none\",\"paginator\":\"both\",\"per_page\":\"header\",\"sort\":\"header\",\"grid_list\":\"header\",\"grid_list_mode\":\"auto\",\"thumbnail_mode\":\"default\",\"thumbnail_type\":\"medium\",\"allow_html\":\"0\",\"facets\":\"after\",\"pagination_per_page\":\"0\",\"per_page_list\":{\"10\":\"Results by 10\",\"25\":\"Results by 25\",\"50\":\"Results by 50\",\"100\":\"Results by 100\"},\"label_sort\":\"Sort by\",\"sort_list\":{\"dcterms_date_s asc\":{\"name\":\"dcterms_date_s asc\",\"label\":\"Date (asc)\"},\"dcterms_date_s desc\":{\"name\":\"dcterms_date_s desc\",\"label\":\"Date (desc)\"},\"name_s asc\":{\"name\":\"name_s asc\",\"label\":\"Name (asc)\"},\"name_s desc\":{\"name\":\"name_s desc\",\"label\":\"Name (desc)\"}}},\"facet\":{\"label\":\"Facets\",\"label_no_facets\":\"No facets\",\"mode\":\"button\",\"list\":\"all\",\"display_active\":\"1\",\"label_active_facets\":\"Active facets\",\"display_submit\":\"below\",\"label_submit\":\"Apply facets\",\"display_reset\":\"none\",\"label_reset\":\"Reset facets\",\"display_refine\":\"1\",\"label_refine\":\"Refine results\",\"facets\":{\"resource_template_s\":{\"field\":\"resource_template_s\",\"order\":\"total desc\",\"limit\":100,\"label\":\"Resource Type\",\"type\":\"Checkbox\",\"state\":\"collapse\",\"more\":10,\"display_count\":true,\"mode\":\"button\"},\"dcterms_creator_s\":{\"field\":\"dcterms_creator_s\",\"order\":\"total desc\",\"limit\":100,\"label\":\"Creator\",\"type\":\"Checkbox\",\"state\":\"collapse\",\"more\":100,\"display_count\":true,\"mode\":\"button\"}}}}', '2023-02-15 16:01:30', '2023-02-28 14:50:30');
 
 -- --------------------------------------------------------
 
@@ -4341,8 +4393,8 @@ CREATE TABLE `search_engine` (
 --
 
 INSERT INTO `search_engine` (`id`, `name`, `adapter`, `settings`, `created`, `modified`) VALUES
-(1, 'Internal (sql)', 'internal', '{\"resources\":[\"items\",\"item_sets\"],\"adapter\":{\"default_search_partial_word\":false,\"multifields\":{\"title\":{\"name\":\"title\",\"label\":\"Title\",\"fields\":[\"dcterms:title\",\"dcterms:alternative\",\"bibo:shortTitle\"]},\"author\":{\"name\":\"author\",\"label\":\"Author\",\"fields\":[\"dcterms:creator\",\"dcterms:contributor\",\"bibo:authorList\",\"bibo:contributorList\",\"bibo:director\",\"bibo:editor\",\"bibo:editorList\",\"bibo:interviewee\",\"bibo:interviewer\",\"bibo:organizer\",\"bibo:performer\",\"bibo:producer\",\"bibo:recipient\",\"bibo:translator\"]},\"creator\":{\"name\":\"creator\",\"label\":\"Creator\",\"fields\":[\"dcterms:creator\"]},\"contributor\":{\"name\":\"contributor\",\"label\":\"Contributor\",\"fields\":[\"dcterms:contributor\",\"bibo:authorList\",\"bibo:contributorList\",\"bibo:director\",\"bibo:editor\",\"bibo:editorList\",\"bibo:interviewee\",\"bibo:interviewer\",\"bibo:organizer\",\"bibo:performer\",\"bibo:producer\",\"bibo:recipient\",\"bibo:translator\"]},\"subject\":{\"name\":\"subject\",\"label\":\"Subject\",\"fields\":[\"dcterms:subject\"]},\"description\":{\"name\":\"description\",\"label\":\"Description\",\"fields\":[\"dcterms:description\",\"dcterms:abstract\",\"dcterms:tableOfContents\",\"bibo:abstract\",\"bibo:shortDescription\"]},\"publisher\":{\"name\":\"publisher\",\"label\":\"Publisher\",\"fields\":[\"dcterms:publisher\",\"bibo:distributor\",\"bibo:issuer\"]},\"date\":{\"name\":\"date\",\"label\":\"Date\",\"fields\":[\"dcterms:date\",\"dcterms:available\",\"dcterms:created\",\"dcterms:issued\",\"dcterms:modified\",\"dcterms:valid\",\"dcterms:dateAccepted\",\"dcterms:dateCopyrighted\",\"dcterms:dateSubmitted\",\"bibo:argued\"]},\"type\":{\"name\":\"type\",\"label\":\"Type\",\"fields\":[\"dcterms:type\"]},\"format\":{\"name\":\"format\",\"label\":\"Format\",\"fields\":[\"dcterms:format\",\"dcterms:extent\",\"dcterms:medium\"]},\"identifier\":{\"name\":\"identifier\",\"label\":\"Identifier\",\"fields\":[\"dcterms:identifier\",\"dcterms:bibliographicCitation\",\"bibo:asin\",\"bibo:coden\",\"bibo:doi\",\"bibo:eanucc13\",\"bibo:eissn\",\"bibo:gtin14\",\"bibo:handle\",\"bibo:identifier\",\"bibo:isbn\",\"bibo:isbn10\",\"bibo:isbn13\",\"bibo:issn\",\"bibo:oclcnum\",\"bibo:pmid\",\"bibo:sici\",\"bibo:upc\",\"bibo:uri\"]},\"source\":{\"name\":\"source\",\"label\":\"Source\",\"fields\":[\"dcterms:source\"]},\"provenance\":{\"name\":\"provenance\",\"label\":\"Provenance\",\"fields\":[\"dcterms:provenance\"]},\"language\":{\"name\":\"language\",\"label\":\"Language\",\"fields\":[\"dcterms:language\"]},\"relation\":{\"name\":\"relation\",\"label\":\"Relation\",\"fields\":[\"dcterms:relation\",\"dcterms:isVersionOf\",\"dcterms:hasVersion\",\"dcterms:isReplacedBy\",\"dcterms:replaces\",\"dcterms:isRequiredBy\",\"dcterms:requires\",\"dcterms:isPartOf\",\"dcterms:hasPart\",\"dcterms:isReferencedBy\",\"dcterms:references\",\"dcterms:isFormatOf\",\"dcterms:hasFormat\",\"dcterms:conformsTo\",\"bibo:annotates\",\"bibo:citedBy\",\"bibo:cites\",\"bibo:reproducedIn\",\"bibo:reviewOf\",\"bibo:transcriptOf\",\"bibo:translationOf\"]},\"coverage\":{\"name\":\"coverage\",\"label\":\"Coverage\",\"fields\":[\"dcterms:coverage\",\"dcterms:spatial\",\"dcterms:temporal\"]},\"rights\":{\"name\":\"rights\",\"label\":\"Rights\",\"fields\":[\"dcterms:rights\",\"dcterms:accessRights\",\"dcterms:license\"]},\"audience\":{\"name\":\"audience\",\"label\":\"Audience\",\"fields\":[\"dcterms:audience\",\"dcterms:mediator\",\"dcterms:educationLevel\"]},\"rightsHolder\":{\"name\":\"rightsHolder\",\"label\":\"Rights holder\",\"fields\":[\"dcterms:rightsHolder\",\"bibo:owner\"]},\"accrualAndInstructional\":{\"name\":\"accrualAndInstructional\",\"label\":\"Accrual and instructional metadata\",\"fields\":[\"dcterms:accrualMethod\",\"dcterms:accrualPeriodicity\",\"dcterms:accrualPolicy\",\"dcterms:instructionalMethod\"]},\"bibliographicData\":{\"name\":\"bibliographicData\",\"label\":\"Bibliographic data\",\"fields\":[\"bibo:chapter\",\"bibo:edition\",\"bibo:issue\",\"bibo:locator\",\"bibo:numPages\",\"bibo:numVolumes\",\"bibo:number\",\"bibo:pageEnd\",\"bibo:pageStart\",\"bibo:pages\",\"bibo:section\",\"bibo:volume\"]}}}}', '2023-02-15 16:01:30', NULL),
-(2, 'Solr', 'solarium', '{\"resources\":[\"items\"],\"adapter\":{\"solr_core_id\":\"1\",\"index_name\":\"\"}}', '2023-02-28 14:42:10', '2023-02-28 14:42:12');
+(1, 'Internal (sql)', 'internal', '{\"resource_types\":[\"item_sets\",\"items\"],\"engine_adapter\":{\"default_search_partial_word\":false,\"multifields\":{\"title\":{\"name\":\"title\",\"label\":\"Title\",\"fields\":[\"dcterms:title\",\"dcterms:alternative\",\"bibo:shortTitle\"]},\"author\":{\"name\":\"author\",\"label\":\"Author\",\"fields\":[\"dcterms:creator\",\"dcterms:contributor\",\"bibo:authorList\",\"bibo:contributorList\",\"bibo:director\",\"bibo:editor\",\"bibo:editorList\",\"bibo:interviewee\",\"bibo:interviewer\",\"bibo:organizer\",\"bibo:performer\",\"bibo:producer\",\"bibo:recipient\",\"bibo:translator\"]},\"creator\":{\"name\":\"creator\",\"label\":\"Creator\",\"fields\":[\"dcterms:creator\"]},\"contributor\":{\"name\":\"contributor\",\"label\":\"Contributor\",\"fields\":[\"dcterms:contributor\",\"bibo:authorList\",\"bibo:contributorList\",\"bibo:director\",\"bibo:editor\",\"bibo:editorList\",\"bibo:interviewee\",\"bibo:interviewer\",\"bibo:organizer\",\"bibo:performer\",\"bibo:producer\",\"bibo:recipient\",\"bibo:translator\"]},\"subject\":{\"name\":\"subject\",\"label\":\"Subject\",\"fields\":[\"dcterms:subject\"]},\"description\":{\"name\":\"description\",\"label\":\"Description\",\"fields\":[\"dcterms:description\",\"dcterms:abstract\",\"dcterms:tableOfContents\",\"bibo:abstract\",\"bibo:shortDescription\"]},\"publisher\":{\"name\":\"publisher\",\"label\":\"Publisher\",\"fields\":[\"dcterms:publisher\",\"bibo:distributor\",\"bibo:issuer\"]},\"date\":{\"name\":\"date\",\"label\":\"Date\",\"fields\":[\"dcterms:date\",\"dcterms:available\",\"dcterms:created\",\"dcterms:issued\",\"dcterms:modified\",\"dcterms:valid\",\"dcterms:dateAccepted\",\"dcterms:dateCopyrighted\",\"dcterms:dateSubmitted\",\"bibo:argued\"]},\"type\":{\"name\":\"type\",\"label\":\"Type\",\"fields\":[\"dcterms:type\"]},\"format\":{\"name\":\"format\",\"label\":\"Format\",\"fields\":[\"dcterms:format\",\"dcterms:extent\",\"dcterms:medium\"]},\"identifier\":{\"name\":\"identifier\",\"label\":\"Identifier\",\"fields\":[\"dcterms:identifier\",\"dcterms:bibliographicCitation\",\"bibo:asin\",\"bibo:coden\",\"bibo:doi\",\"bibo:eanucc13\",\"bibo:eissn\",\"bibo:gtin14\",\"bibo:handle\",\"bibo:identifier\",\"bibo:isbn\",\"bibo:isbn10\",\"bibo:isbn13\",\"bibo:issn\",\"bibo:oclcnum\",\"bibo:pmid\",\"bibo:sici\",\"bibo:upc\",\"bibo:uri\"]},\"source\":{\"name\":\"source\",\"label\":\"Source\",\"fields\":[\"dcterms:source\"]},\"provenance\":{\"name\":\"provenance\",\"label\":\"Provenance\",\"fields\":[\"dcterms:provenance\"]},\"language\":{\"name\":\"language\",\"label\":\"Language\",\"fields\":[\"dcterms:language\"]},\"relation\":{\"name\":\"relation\",\"label\":\"Relation\",\"fields\":[\"dcterms:relation\",\"dcterms:isVersionOf\",\"dcterms:hasVersion\",\"dcterms:isReplacedBy\",\"dcterms:replaces\",\"dcterms:isRequiredBy\",\"dcterms:requires\",\"dcterms:isPartOf\",\"dcterms:hasPart\",\"dcterms:isReferencedBy\",\"dcterms:references\",\"dcterms:isFormatOf\",\"dcterms:hasFormat\",\"dcterms:conformsTo\",\"bibo:annotates\",\"bibo:citedBy\",\"bibo:cites\",\"bibo:reproducedIn\",\"bibo:reviewOf\",\"bibo:transcriptOf\",\"bibo:translationOf\"]},\"coverage\":{\"name\":\"coverage\",\"label\":\"Coverage\",\"fields\":[\"dcterms:coverage\",\"dcterms:spatial\",\"dcterms:temporal\"]},\"rights\":{\"name\":\"rights\",\"label\":\"Rights\",\"fields\":[\"dcterms:rights\",\"dcterms:accessRights\",\"dcterms:license\"]},\"audience\":{\"name\":\"audience\",\"label\":\"Audience\",\"fields\":[\"dcterms:audience\",\"dcterms:mediator\",\"dcterms:educationLevel\"]},\"rightsHolder\":{\"name\":\"rightsHolder\",\"label\":\"Rights holder\",\"fields\":[\"dcterms:rightsHolder\",\"bibo:owner\"]},\"accrualAndInstructional\":{\"name\":\"accrualAndInstructional\",\"label\":\"Accrual and instructional metadata\",\"fields\":[\"dcterms:accrualMethod\",\"dcterms:accrualPeriodicity\",\"dcterms:accrualPolicy\",\"dcterms:instructionalMethod\"]},\"bibliographicData\":{\"name\":\"bibliographicData\",\"label\":\"Bibliographic data\",\"fields\":[\"bibo:chapter\",\"bibo:edition\",\"bibo:issue\",\"bibo:locator\",\"bibo:numPages\",\"bibo:numVolumes\",\"bibo:number\",\"bibo:pageEnd\",\"bibo:pageStart\",\"bibo:pages\",\"bibo:section\",\"bibo:volume\"]}}}}', '2023-02-15 16:01:30', NULL),
+(2, 'Solr', 'solarium', '{\"resource_types\":[\"items\"],\"engine_adapter\":{\"solr_core_id\":\"1\",\"index_name\":\"\"}}', '2023-02-28 14:42:10', '2023-02-28 14:42:12');
 
 -- --------------------------------------------------------
 
@@ -4364,7 +4416,7 @@ CREATE TABLE `search_suggester` (
 --
 
 INSERT INTO `search_suggester` (`id`, `engine_id`, `name`, `settings`, `created`, `modified`) VALUES
-(1, 1, 'Internal suggester (sql)', '{\"direct\":false,\"mode_index\":\"start\",\"mode_search\":\"start\",\"limit\":25,\"length\":50,\"fields\":[],\"excluded_fields\":[]}', '2023-02-15 16:01:30', NULL);
+(1, 1, 'Main index', '{\"direct\":false,\"mode_index\":\"start\",\"mode_search\":\"start\",\"limit\":25,\"length\":50,\"fields\":[],\"excluded_fields\":[]}', '2023-02-15 16:01:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -4397,7 +4449,7 @@ CREATE TABLE `session` (
 --
 
 INSERT INTO `session` (`id`, `data`, `modified`) VALUES
-('ce1e441eb5e1042a581b7d1cfa8dc37b', 0x5f5f4c616d696e61737c613a363a7b733a32303a225f524551554553545f4143434553535f54494d45223b643a313736333535393933392e3030323837323b733a363a225f56414c4944223b613a313a7b733a32383a224c616d696e61735c53657373696f6e5c56616c696461746f725c4964223b733a33323a223938666565646635303135346661643830643532643131313361623134336533223b7d733a34323a224c616d696e61735f56616c696461746f725f437372665f73616c745f6c6f67696e666f726d5f63737266223b613a313a7b733a363a22455850495245223b693a313736333536313735333b7d733a33323a224c616d696e61735f56616c696461746f725f437372665f73616c745f63737266223b613a313a7b733a363a22455850495245223b693a313736333536333533393b7d733a35393a224c616d696e61735f56616c696461746f725f437372665f73616c745f6d6f64756c655f4561737941646d696e5f636f6e6669677572655f63737266223b613a313a7b733a363a22455850495245223b693a313736333536313737323b7d733a34343a224c616d696e61735f56616c696461746f725f437372665f73616c745f636f6e6669726d666f726d5f63737266223b613a313a7b733a363a22455850495245223b693a313736333536333532383b7d7d72656469726563745f75726c7c733a32383a22687474703a2f2f6f6d656b612e6c6f63616c2f61646d696e2f6c6f67223b4c616d696e61735f56616c696461746f725f437372665f73616c745f6c6f67696e666f726d5f637372667c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a323a7b733a393a22746f6b656e4c697374223b613a313a7b733a33323a223139343738393336353032346239323331643238346338633331393764373833223b733a33323a226166633365393432393135343834316165626532623366346163306633666432223b7d733a343a2268617368223b733a36353a2261666333653934323931353438343161656265326233663461633066336664322d3139343738393336353032346239323331643238346338633331393764373833223b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4c616d696e61735f417574687c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a313a7b733a373a2273746f72616765223b693a313b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4f6d656b614d657373656e6765727c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a303a7b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4c616d696e61735f56616c696461746f725f437372665f73616c745f637372667c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a323a7b733a393a22746f6b656e4c697374223b613a3135373a7b733a33323a226137356639393731363765623837333064613066373761333132326435393036223b733a33323a223363383539353665336466616231303430343837373031343630343435363239223b733a33323a223030633163373332643033343863643935343762376336633730393439303839223b733a33323a223934356338323039346364343464383936343362643962646662343035393362223b733a33323a223531373630356432626232313239616632616565393030613738393363363962223b733a33323a226334636262623665333463316463353066323061663364343165643933376664223b733a33323a223734373737366336623064666131613035333161316334306339383036313164223b733a33323a223262613638646339353965613639306261373234336265323730623262613634223b733a33323a223864333264376234303866653962623562373165376134313334383838616439223b733a33323a226334363563363630383139613663643331356366373538353433613465316462223b733a33323a223037376363313263663232653465633561613139633839353963366462613537223b733a33323a223366306534656662303937663531346137313232393733353639643032333935223b733a33323a226364323834623537383533623164633733383436323436346634386463306538223b733a33323a223831653966636133663532376164316431356332386661663364633537373461223b733a33323a226531336566623464656531646235326436343962316564313831623264663137223b733a33323a223437633861626432636231313033373763373065626666623136613632643937223b733a33323a223437373762343664316633633134613764633365316337313030386261366339223b733a33323a226232626636323630343232306133616638373530633235383663616538663962223b733a33323a226435336237386537623766343462336435313537626437373463353666363562223b733a33323a223739656466643932376262393135333835306231613932373633333838326139223b733a33323a226539636437653931663038663132343062663137626133333738356234643266223b733a33323a223730343637383935373332663331303362393438313337353833353365386631223b733a33323a223162666235613765346534613832333563366231336431386666336466366365223b733a33323a223135653637346232643933363534383332383133666363333839383162396164223b733a33323a223163316462313064346365393064383230373263366362343761613334326265223b733a33323a223834326130373833356464356661313532643563626232663639386534333137223b733a33323a223138633938366230623261643936633563333562633133363237303431616464223b733a33323a226236363436326339303239393038343537336363383963633761643130366431223b733a33323a226336373532373361623262636664643466336365326339386337623862396638223b733a33323a223033623933643639346438626464386132386531643937326361376261613966223b733a33323a226161316339663335333866323361326466643261386430616166633933313838223b733a33323a226362663266336336333237343430646439363562633735326461656365626366223b733a33323a226235353733336533623833393732656361646237303836383266336231613031223b733a33323a226362353334333938366664656535393336616365363764373231623665623334223b733a33323a226538623863666432666438363036336566303038666336336364363234326566223b733a33323a226331346132616634346235653635383138363666383831363233366363663133223b733a33323a226362616335323563346537373037623731643632633666353762336233336331223b733a33323a223330383434336262343265346166336534323562373364303533306133396239223b733a33323a223966626333393037333836386331653632343430323736613035343238623364223b733a33323a226138643663656339643635666538343565323565316539396136383665356166223b733a33323a223631303962323039313461376537316162303561323133333864313663373833223b733a33323a226335336137373232336565353862633738333936336635313139353566386364223b733a33323a223764356661633635326339343133643039616634613161356531386232353537223b733a33323a223163316635306236313639383764633639616136316261633863396665366465223b733a33323a226465383461663038333131396536323937353736613731663635613130383566223b733a33323a226635376162373930363137343538396631633131316335343061666265646261223b733a33323a226563613737393830363732383630653462376466333233333663636431343734223b733a33323a223131316531353232366237643630333932353731356433303566353266646633223b733a33323a223364303338393061333161373736353036363963656263356166646530396365223b733a33323a223833356435323835633362636661376662383137376462393730643830316665223b733a33323a223839623032646639316464333766383265643366626163663162613939663961223b733a33323a223766633233343866396165666333666365666338616638656332663339653030223b733a33323a223831663265333232353236386134653666653932343062366633306261653132223b733a33323a223939313138353132643131626530666262393437653961663430336165363235223b733a33323a223866666631613634373264326365613161346435613236643331366364343938223b733a33323a223665666335663263333461623037373537363731366665646231303433353165223b733a33323a223934656439303262646333356332386630353334653633373066363564316664223b733a33323a226135353763373463313562613335333532303137646637346436633133393364223b733a33323a223936653334313461663466373362353132663965303665353361303337383333223b733a33323a223234376430376237373563633966656637656463323536623931366365313337223b733a33323a223737353539663434393238363932623564613332373939363833626232356366223b733a33323a226235383435366133313364386331336165386166613438363933626131653837223b733a33323a223637633034373330636162663330323738343235386264353338323262643961223b733a33323a223166346236646336663466666435393865393732353637623732653132356464223b733a33323a223761336537346332336233663636643330376236383161373932313261613763223b733a33323a226432366663643132336363386566663239303239636132373538336333623165223b733a33323a226466303363376333306661623238373239313166366131626333643362396532223b733a33323a223366323430313333313636346530386338623836373764613138393361346638223b733a33323a223332643334643763666162643963393038373264303934366561613966363139223b733a33323a223665653461653237316464353934353134386665363365646363626433616364223b733a33323a223231316431633764646431663336643536386432636364326439643739336161223b733a33323a226364646531303939633934333165666539633734623033643063626532636530223b733a33323a226337616666396334303637326533376334383933353336616236306638393137223b733a33323a223233333732663763316232373765316264313332383136653638353036306636223b733a33323a223630373231663833303234666130363531313965643230333366643462626236223b733a33323a226262313536663639383632653564623737356366313165373531663665653039223b733a33323a223566363664666330663166373836663864323433623462366266333338613930223b733a33323a223935393033333936636338393964303537323563323735363230323535393265223b733a33323a223362646438666463376130623965633931366437616238373535393330643065223b733a33323a223937343139363531633339346337626435613039623236626434333731346564223b733a33323a223530373839323762323732333462626263366439376430643438353666326632223b733a33323a226564623239306636376539356636386433653833663063363763663634353761223b733a33323a223333616531323366656239353561653333613336616166643536353432386262223b733a33323a223636636234663963626665613264646164343737616335323534616536663930223b733a33323a223832646561643561373435663939356239363333326136326563353564376465223b733a33323a223630626238363533366237633236343637643036616262343838663635386530223b733a33323a223066623237383265333032623261346662616632666333326463383534393731223b733a33323a223339333937346236633435656661653830643934313037663932623063323534223b733a33323a223738623437386633326231663963383931613536646166353330653933376333223b733a33323a223162623164373365366430303434613934303237373665633634366331376634223b733a33323a223332313165653839343634633635363064376133346264613536353437663931223b733a33323a223630356435653935313731306262316139613933653033636530386536613934223b733a33323a223734636262316436326462376561653139373336646332323530323864626631223b733a33323a223361316563343165613333643033393135663637303161366330646562393731223b733a33323a223939353332663762333665306561643264343466333934666666396566353862223b733a33323a223533393364623066643537316239666565633838356165633162616431663939223b733a33323a223537356162663031316439623634373433326631356636356239633262393961223b733a33323a226265323733653265656437666333303732306461663566376461393835306533223b733a33323a223933396433356235306637643962336132353862306531353433663938303834223b733a33323a226137336463633636623962343564333863613631343363663330326436356238223b733a33323a226662363534393035316536373766663430316365376231343737336163663865223b733a33323a223762316137663334373231646338663466623638343563643666393663306361223b733a33323a226434623935346664356565396637303531343939343139653332646339616133223b733a33323a223139366138653536643333383735373561373531343662353832613763373338223b733a33323a226466386166363365623634613437643163346236663631313039373965306266223b733a33323a223134653864313832336164623239333464363361346365383864633435646137223b733a33323a226362323761306338616433646634656130343832643033363334313239363634223b733a33323a223132653861626564343733663361633136643366303232366338343432376335223b733a33323a223664306435343365616361663130656462343266616261366363623136613936223b733a33323a226463333735633639653663376130366133343233373935303839653363383838223b733a33323a223131663339336431396564343363643330346232356264383636343365343433223b733a33323a226232666339323665643066343735653165623334316230346235376563396363223b733a33323a226138613863663539326164383838336635353533643432663637653938393863223b733a33323a223238373036313030383434623837363736393139356339396133393532623033223b733a33323a223263663835646230363437633961656235343962396163363837376131346166223b733a33323a223037326632353461336334636131666332626161306330663538393738396466223b733a33323a223130393537386537363463653133656165356233643064356139653264353633223b733a33323a226235636631663335336134343765303731396531383665396666353230343062223b733a33323a226466313332633766323764323532373634313936613538366135646131656232223b733a33323a223366333261656134643765666164343865336531646464346130653039643831223b733a33323a223865333562363936363564386632313661343661646364306463656331636636223b733a33323a223536353438353962333662323533383161356434616363643533333735313365223b733a33323a226635653830663739613230613135306363386130303965656533313761386261223b733a33323a223563323637363864633636633662346530303761336564636165363866663332223b733a33323a226234653732653838333533636236643836316366373562623331316332326561223b733a33323a226434363534303136383966633063306466663464326331313637363832313537223b733a33323a226464333261363239646265343564363235666163373132626132613761303430223b733a33323a223638653161643562623261633064646534316538616532396634366166313433223b733a33323a223937366239396434636433636430653338643333386638393636393836323662223b733a33323a223062666266613733303234396439326139653735336466336564346665616633223b733a33323a223063656162346331306130633534653862376433626464366133346632653563223b733a33323a223266636337306539636333393666386564653131326466313338633439666231223b733a33323a223335626333383765346633616532386266376161623764383730326134663436223b733a33323a223838323436656234663864633163633639353033623435343138663232383564223b733a33323a223862313562616333656464353132313334363265373239363263343838323035223b733a33323a223737663336396465306431656634643831646230613534623432316335303239223b733a33323a223561376632343137646139393834643735316231393836623032356462386561223b733a33323a223364353731306639396334376130363961666161626561613738363864653831223b733a33323a223838643731386466376236336462316537336338333833373133653365336231223b733a33323a226532636264643638633261333531623038323766623236303264616166386537223b733a33323a223531666632346639626461663964646164316464666163366237643463386166223b733a33323a226234613234346362336431386230636436636261663131393033656434323830223b733a33323a226336613238633033363064616563353564636437373161373435616632363264223b733a33323a223138343331646338343365616431376561393437643761303338393164366435223b733a33323a223939353663366363343933343462663335363433316438393363396434333265223b733a33323a226432396664366265363433313333613133373066333366336439356631363361223b733a33323a223038383336623263333362303333326164396166353636313966366263663436223b733a33323a226166356539396266323934633166633839663565393038393065626434383934223b733a33323a223634393766396334363765393563366166636632333134633331343064373039223b733a33323a223139646439363664643861623938316263643366333135666533633064326538223b733a33323a226430626238316537303365636535653132343265326439653633623530363361223b733a33323a223265346231393334623862303432646664336134326363316436613030323534223b733a33323a223738353036663862393239303264643464646564366564323465346436346331223b733a33323a223535303466643733613336393862393033376433656234346566353731356162223b733a33323a226266663839323430373336633734323830303134383066373365663766343232223b733a33323a226537656230376535333562346535336331326135373835663533323762396139223b733a33323a223466653434393239326333303835383339623135633232336332376537326564223b733a33323a223031343561373231303532643062386165333633326432353566346138373461223b733a33323a223734636537313332353564643437343130303262646337633266393962353864223b733a33323a223161613531346339363730646564656239623162373338326364373734383332223b733a33323a226330313439393537653966336564633363396164663732353965393164303233223b733a33323a223661383939633731346431383831316661623661356235386566663038653038223b733a33323a226330666164366336663462666432346665376439393538373831636261353965223b733a33323a223238353235653537663936323838633761373666656131326333386532333732223b733a33323a226639353066373536393137313436643734383864653838663564333032373739223b733a33323a223762616561396234383137386262383362656638383964306665316363326231223b733a33323a223132353936643066656539366161656364323134383263356133616133303739223b733a33323a223365333866376532323331323964303761663764303563343065326364376435223b733a33323a223730386632313132343438353334313332343633303064313639633838663565223b733a33323a223362373133323962613763343063663637303135376562646539633565333135223b733a33323a223834373733323663633436633330396439383930393737323538323565303266223b733a33323a223031323864353562636164303433363635386230393766643935333366353739223b733a33323a223831383265383665656137373064633564633564333030633734376338646565223b733a33323a223132356538643235383334386136366634393134653332663232323435636361223b733a33323a223938343233393131306437353034613332323934326662366264316135343461223b733a33323a226536623132393639633365663463663462333763633962383737623762383661223b733a33323a223633393763356437356134313466316231646539626466653334316231396339223b733a33323a226537613734616264356161346534323765393266356564313633666436666637223b733a33323a223137353036393261313862303539653530616230313732663231313433396631223b733a33323a223965356433376435636265373834643037323632336436333462623933363937223b733a33323a226233656165383766363561383263613466336265343435373066633562366364223b733a33323a226134666533353661356364336265663637373139316264313630363961313837223b733a33323a226564306534393964613438666564636166663635663061363332653130363862223b733a33323a226132353861386239366165646334643131303266633565373864353537363830223b733a33323a226162393462633466376466333934376138663363643635666364643138633865223b733a33323a226136303732386162333934303764646137306661333064643230616463353234223b733a33323a226538383830363666623637343439363234316165303138366635346235323136223b733a33323a226235666431333662303931336664326165383166376630646536386537346136223b733a33323a226330623239636365393334363863346436343138643732616162353037356239223b733a33323a223765613532333932316332326630636663646334373561333838323638303035223b733a33323a226663613935356662656262303933613831393363323866383264623437393963223b733a33323a223463653632653563613237653235653439366362633130333435373733656466223b733a33323a223634646530313934376532386237653665623334346238353538663961346538223b733a33323a223035666231393739366266336665643138376335613833653664383563306431223b733a33323a223937653631643362626463326365326363656464613930333835373131353730223b733a33323a226139646536353566643834353061313536643237363839373033663866643039223b733a33323a223565386332623465653466643732636364386231636265636536383130383336223b733a33323a226133653061663135316537373738323035353931646332353431656336616566223b733a33323a223963656235336362313435616335386363643631663237663938383963313334223b733a33323a226236666565616164383962643061303166373334316162646463353539336637223b733a33323a223336323866323038666437613036666432313434633437323133373966653739223b733a33323a226366356366303934626137373662663764336635633337663033623038343438223b733a33323a223263396364643834313937653864653563626563326661386536633564633333223b733a33323a223739383362356632306637633538613563623266616463636334396266643162223b733a33323a226465306130393863333730363437353230323366656632396161373837373737223b733a33323a223037366664326439646131623361343766396135666534393830656465653034223b733a33323a223536633063653839396536323961323965386433313633323838336562356639223b733a33323a226630623262636532303833396466616264323664393464323962366331313535223b733a33323a223761333230656134396139383265333133343962383966663837346166613637223b733a33323a223839313064396631613737653166343834306263393465653664316265303366223b733a33323a226465313934383635623535303666323164636166333565393735336363356464223b733a33323a226436643762356664393761633262613034653332353163363666663362396366223b733a33323a226538373530633339343732653431393631363736396632393562306335396538223b733a33323a223331363934663335323335323934363162656436353265323039666633656364223b733a33323a223362646437343933636163653931373965393330653463323136363636366565223b733a33323a226137633264326532336639396662396434373233643937353534353137376239223b733a33323a226333643866313738663239353561396564316537353261643362383763313664223b733a33323a226635316237623963336365343362346534383230646465373761663633323332223b733a33323a226630303333386431636130363530366464646531333539393665626132653263223b733a33323a223436383161626562316465343761636462633138643664303033333461373966223b733a33323a223964663634356432623130333061643231393938346437646336636434353764223b733a33323a223239376533303062353439336533646266346161646335383439623461343836223b733a33323a223539633138323531333432356138343263303662353337633334353534626565223b733a33323a226231323133303563363939626433653566636539616534623437346639333239223b733a33323a223865363538376334363464633932396461633034383661313934656139643232223b733a33323a223436656533666661323661643331353232373530386661613734333936656462223b733a33323a226638396238363437326164303033313738663039343862633664663866353634223b733a33323a226465623030386638306165366437633730366130636164393732646336626238223b733a33323a223537613663333739386339666538336165633230613265346236313261633963223b733a33323a226637623361343531636339613331373138613765356465613233393637343632223b733a33323a226134643635373462303965343032653836633762353337623938366664336138223b733a33323a223531613661666430666430316131376435313737633431663836326232663835223b733a33323a226331616637393364306661323965386532373563653538633733346630383933223b733a33323a226335343063656637346565366139613363663638336639383664316137383463223b733a33323a226334366134356332333364613132376539373463396262623432303739383132223b733a33323a226564353530363163633937633336306138643039336163306139643239663033223b733a33323a223239306438303232393865636163636266633561356539373762623138386531223b733a33323a223730616239396333653866316532656166393032616637633964383136633235223b733a33323a226166393733643337393764366131333363656665646233333339623162336537223b733a33323a223063396135656435323334643066303933616666303962623665666465663335223b733a33323a223664666163373863356538326535386639323766386231346339316661373361223b733a33323a223262636436313537363638376135366234663664353437663839376361636561223b733a33323a223961306535346238616661336630616635616133363265343234383233313133223b733a33323a223036666261666364313731323539363332373865633332316565356238336437223b733a33323a223866363834636463623361383562636630636230633966373539326461313135223b733a33323a223738646130363636336665346562333438643866333666663230363865306534223b733a33323a223634663036646335653431656465396337353736613064663436626435366330223b733a33323a223163353964643130383737396134613865303961616231323439643331313736223b733a33323a226334393133663464646239623436383233623934653731386637633538373066223b733a33323a223439646431626335646137393865636130326635363536303434653331643630223b733a33323a223132306334646637636632313439636363386265616164353465616139613630223b733a33323a223062323536326434313461363162666263343234386133633233363930323733223b733a33323a223661326230633532323461383536613962613439313366383134333831666535223b733a33323a223132313539646162383539613634373762633937623738363961303861643135223b733a33323a223962656339323736633330333561666364303533383162303433326665663838223b733a33323a223537386666656533633461646231306131656439306630363230396130663132223b733a33323a223965633166643832636166356136393261353439393936623265343265396332223b733a33323a226362616232386166306337313664333266376264333662313966613236656664223b733a33323a226138333861336162346264623331353232646163343030353036353963373533223b733a33323a223036636366306230616663303931363637376265623263653937396130383939223b733a33323a223966326131383761376262393666633932373966616161396332653434356532223b733a33323a223839316366336166636535626163356135316439333764383164616263363933223b733a33323a223335316135613431346261383662376131343735393538343035396465356361223b733a33323a223762383264373962623564396466636532366537616164633363316462343662223b733a33323a223230306139326437373862313730663864353064346533353632613231323931223b733a33323a223735633061333165653565393963363937663264363738366562613536356633223b733a33323a223430616263383061326663386431656533356165383935316162343434303434223b733a33323a223761306366663637356330376634663230313261653263373131323539366366223b733a33323a223835346238643939633964343462653864393865643131383364353561656466223b733a33323a223430396434336536646230613037336664366536393966653934346165323562223b733a33323a223765363237663835386531316563376663396538386434663837646464663338223b733a33323a226262306162376365646261393937366433646234396563623336376636313730223b733a33323a223661613561363361373730373564613765393831623034306234646236613266223b733a33323a223761346465316239343235366531333733656462363539373865616264373735223b733a33323a223432303931653064613162303034383363623862376638663538306461663162223b733a33323a226330663535626132373038646565343133343463346162386130336434363735223b733a33323a226433636138353335643535623131353036313762363066393330306136373134223b733a33323a226666366664376565336263356263643135373931316135623965663735633864223b733a33323a226137336461313762623264633731366433626261386263366138613664613833223b733a33323a223035393532383964663935623764353266633661356162363432393366303763223b733a33323a226132663539346330353166623366373037303432336338356332393764633565223b733a33323a223566336134383236643331353264653233626630363135306538656561393461223b733a33323a223236333761626434336135363065633136636466343862333730303938336364223b733a33323a223432663735333062306264646435343364376537396366383836356561333635223b733a33323a226166613937643337653366373636316261663263366565623939383466396438223b733a33323a223234626130666131303164363061346331393639366536353933326264653137223b733a33323a226439356265353733356364333138613533346531323434396638653661643234223b733a33323a226461323037363465346432613330653032353166326435663934346236336330223b733a33323a223033666132386535333762353737346533343830633064636538343734656664223b733a33323a226532363732393739623732623662663539643761643134626537616637623530223b733a33323a223833616263636230346637323663386637306134343235626438666535636538223b733a33323a226634353937613039303762663562313337383866353033373230303139663039223b733a33323a226361363134653462306532633465623661663664663731646231613135323864223b733a33323a226436303439383634333531353336643038643031383961643164643237393363223b733a33323a226266353939663339633835353237626639353137313761303536363833306334223b733a33323a223165343330633231316165343235396461303039663230393764363862663462223b733a33323a226363363430373132303664346433333264653965666130643765363932323161223b733a33323a223034646363363532333066336163393031376231626364653864613066366138223b733a33323a223635393435663535363837333364643238633565313561383737653462316533223b733a33323a223033653638396235343862323765653762393031663531353236656539663130223b733a33323a223037373366343965393134393661343130663564363535613262373735656539223b733a33323a226638363864363864376566326330316432343838306163613633346236373330223b733a33323a226434323866303061373866323165313264373538356165653932306335316138223b733a33323a226636336232383639623166336637323539643733353437633731303466363035223b733a33323a223966396531386561326465313734623533306465363937323762373564363032223b733a33323a223162363465396230343761653964306236633938373230373135376632663232223b733a33323a223932323135626435616462346336313430613366656436303362326533356333223b733a33323a223032356439613365373764366361393132663537303931353333326236356265223b733a33323a226635336265383231356238643066376465626262313062323137333832653463223b733a33323a223338303233626433373864333165323664313834336533333238386232333433223b733a33323a223332663135663235643536663332326461633636396363616163313535613061223b733a33323a223763323464616135646133316435646263366262386431633365623639386363223b733a33323a223430663231313164643666316430323063366430663638396335316435666561223b733a33323a223238653037643039623264613335643933313664303462383265303937376133223b7d733a343a2268617368223b733a36353a2232386530376430396232646133356439333136643034623832653039373761332d3430663231313164643666316430323063366430663638396335316435666561223b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4c616d696e61735f56616c696461746f725f437372665f73616c745f6d6f64756c655f4561737941646d696e5f636f6e6669677572655f637372667c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a323a7b733a393a22746f6b656e4c697374223b613a313a7b733a33323a223933326661623831393334333831316132626532616133663763643164656332223b733a33323a223637346533646138376136663832626537613661303831353565353165343265223b7d733a343a2268617368223b733a36353a2236373465336461383761366638326265376136613038313535653531653432652d3933326661623831393334333831316132626532616133663763643164656332223b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4561737941646d696e7c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a323a7b733a31343a226c61737442726f77736550616765223b613a313a7b733a353a2261646d696e223b613a313a7b733a353a226974656d73223b733a31313a222f61646d696e2f6974656d223b7d7d733a393a226c6173745175657279223b613a313a7b733a353a2261646d696e223b613a313a7b733a353a226974656d73223b613a333a7b733a373a22736f72745f6279223b733a373a2263726561746564223b733a31303a22736f72745f6f72646572223b733a343a2264657363223b733a343a2270616765223b693a313b7d7d7d7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4c616d696e61735f56616c696461746f725f437372665f73616c745f636f6e6669726d666f726d5f637372667c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a323a7b733a393a22746f6b656e4c697374223b613a323a7b733a33323a226330363062666664303839353535306335633232303937393538643366326534223b733a33323a223332356133393162613932636362313537626466363931616638363762383532223b733a33323a223165373931366636653736633264353434636534386334363762386339303133223b733a33323a226539386664313936306665313831376239666530646336366462373632393335223b7d733a343a2268617368223b733a36353a2265393866643139363066653138313762396665306463363664623736323933352d3165373931366636653736633264353434636534386334363762386339303133223b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d, 1763559939);
+('528a243a9d8e00205b3f265ed05e37e3', 0x5f5f4c616d696e61737c613a353a7b733a32303a225f524551554553545f4143434553535f54494d45223b643a313737313530393233362e3834333036323b733a363a225f56414c4944223b613a313a7b733a32383a224c616d696e61735c53657373696f6e5c56616c696461746f725c4964223b733a33323a226333346333356431396332306331646436313062313032316565343535366533223b7d733a34323a224c616d696e61735f56616c696461746f725f437372665f73616c745f6c6f67696e666f726d5f63737266223b613a313a7b733a363a22455850495245223b693a313737313535323238383b7d733a33323a224c616d696e61735f56616c696461746f725f437372665f73616c745f63737266223b613a313a7b733a363a22455850495245223b693a313737313535323330333b7d733a33373a224c616d696e61735f56616c696461746f725f437372665f73616c745f666f726d5f63737266223b613a313a7b733a363a22455850495245223b693a313737313535323431313b7d7d72656469726563745f75726c7c733a32343a22687474703a2f2f6f6d656b612e6c6f63616c2f61646d696e223b4c616d696e61735f56616c696461746f725f437372665f73616c745f6c6f67696e666f726d5f637372667c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a323a7b733a393a22746f6b656e4c697374223b613a313a7b733a33323a223533643935633734663334646137613961636466353965366639623235313561223b733a33323a223239656530346535623963316633646639643566646566626537616263616163223b7d733a343a2268617368223b733a36353a2232396565303465356239633166336466396435666465666265376162636161632d3533643935633734663334646137613961636466353965366639623235313561223b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4c616d696e61735f417574687c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a313a7b733a373a2273746f72616765223b693a313b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4f6d656b614d657373656e6765727c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a303a7b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4c616d696e61735f56616c696461746f725f437372665f73616c745f637372667c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a323a7b733a393a22746f6b656e4c697374223b613a36323a7b733a33323a226137386333613237323530343236333738363739663633393434623464303537223b733a33323a226136366130633333623736653337616231353964623832313266663031393539223b733a33323a226365353163373331396231363962626339336662633638313264646262636666223b733a33323a223136626362366437363262373863323436623935646438643964333134626638223b733a33323a223064373865303132303965373833356534366131313932663833636535313735223b733a33323a226664313661393439366337333565613161663437383661353336366138643333223b733a33323a226164623936323961656630336638356465373937626234313438633565376531223b733a33323a223464343366363461646438313930613430623966356138353830643339306361223b733a33323a223638633262346431656231333033333536663232626261363532656138336230223b733a33323a226464656565396533336236366263633866383533626534323361396133623432223b733a33323a223439616632343132396662306232633663383565636330643730643938626634223b733a33323a223161363565313233666365323533373564653736643864303061303339393231223b733a33323a223030386334346161656164653865663864363062633166653935343661313736223b733a33323a223261363139373832373135663934616438343336633839616438386634626536223b733a33323a226432373030666337623962326134313963303631373335303665633234316464223b733a33323a223166313664363733623161306235323433333934636237336161633130353738223b733a33323a226530353162623964393165376534646630336135326663366130646237316630223b733a33323a223333353834636465393532623439333563343063613161653532323663373736223b733a33323a223834333465363132323634643933366434336338656633396461383931383431223b733a33323a226133626462376265643032326234316665313731366234363339666639383866223b733a33323a223261366466643433323733623063643931623334343439383462326438316433223b733a33323a223563336639336632373035393233613264336536383463663038323564343632223b733a33323a223265376662343364376662383138616532633334343431386361666161616633223b733a33323a226539653166376434666565313162333136623633313031633330643237623938223b733a33323a226631323030376134356362656437376638666462666365313734373261353862223b733a33323a223738346163323938363463303261616665386366306533663031366335646564223b733a33323a226532613463303836373633643136363332323538393431373965363565643534223b733a33323a226638366338653761303536666538643563396536393139626134383665343863223b733a33323a226135356631643366363764646434636634623665643663313664376438306432223b733a33323a223864383764656636333936353131373637326566393966316562346131373234223b733a33323a223363343639653539663430376466623236333838396164386664613939313134223b733a33323a223562653136393135326339366232643664336333373131373639663862316531223b733a33323a223532383836393731306632653331363765353833613037663339326264633761223b733a33323a223066646136393933666533616533303336636137643261613333663665383264223b733a33323a223765396432623266656635623035636139303031363134326561333736656563223b733a33323a226662313139396364626636313832323438343638643039336133633863663835223b733a33323a226336373562303438363437666636373332333063363539636534326330633939223b733a33323a223936336536336564373438386661613735633431653761353530353938376165223b733a33323a226362316564643038346464353863343834393330326237626537366434653031223b733a33323a223232333831643563356562666231393334616531353863356266663035666338223b733a33323a223137333130656233313133393331636130613262623133373366323336633961223b733a33323a226635316466646266633534376262353862663562643362313532393136323535223b733a33323a226333343239386137646130393435616261393261333336623662633337343932223b733a33323a223939353332656564356536626134326432656330326634636436653533343235223b733a33323a226664613433363962366563636138653036653266346663323031346433653263223b733a33323a226439356234643435393939653061336230376431376566656439373234373534223b733a33323a226233656437383238326634353164333036306364353664313634383261383663223b733a33323a226238333430353238303066373661316362653161666635373033323231323937223b733a33323a223030303639653731343566626331623738653936613362346230633366653037223b733a33323a223363313030383965326265316133396135653933356538373637393038303634223b733a33323a226233393732316339653535306430623732626463656333366339626432393232223b733a33323a223237396635393362353436376433343636313734353837393633663962626262223b733a33323a223561653161666537313663656238323630643166333462613832306563373266223b733a33323a223038363833396434643364353033353135316262323765656132626431333931223b733a33323a223638613230656432613836643933366438633132353165373038383565363238223b733a33323a223862393131393134663235303435363236306335376365356261336431376339223b733a33323a223362313237343339663063383434393837373763623236366366316530303135223b733a33323a223339663162386537616534376134353162336436383133633636303438323036223b733a33323a223166653137326337316264313932343562343662343038376436636336643866223b733a33323a223131373637313434303066333738646539343235626664353635626335346139223b733a33323a223530613936326263396139313766316133323164653531393636353166623236223b733a33323a223131386230636163393937376330333963623463353939323463386236343734223b733a33323a223537613932616263373037653766663163653864343733386237613064643939223b733a33323a226135313662376132316161373833653339346338656231313035366666653565223b733a33323a223430663039306165343731353337366534366263373561656436313963333633223b733a33323a223334626136313137663066366239376434353434323337653532303365653039223b733a33323a226238323966643635306132643234383433333666663165646138373062366636223b733a33323a226337373731346131373632396162643066306436313166373136326230376139223b733a33323a223438646461616166376339323162333332323734343061613839653531663661223b733a33323a223130323264373931346331613033376565306561653634623633366130373734223b733a33323a223062653731356463633166333764663463356535396463326466623936376137223b733a33323a226530353631616338373461363963613938323436643330356339373731386634223b733a33323a226334616639333738626238316265333538336330303832313966656538383235223b733a33323a223064396461636437393566313937616331306138353431626439313331643730223b733a33323a223363653134643366616566383135313139636366643735316333616439396565223b733a33323a226636663062356665313661326562663434663036386332383063643865326338223b733a33323a223863383638313164373736613731396434613866303137313865643830303433223b733a33323a223436316663393832633431323433306263626638636262646538366636633435223b733a33323a226633303038666131323536613962346635633335346133646331323136353335223b733a33323a223463623564323030396239326364363863343730353433623131353032353364223b733a33323a223663393332333937373161626466613863326537353630323039636364366561223b733a33323a223465386461653164643334383564383166343865316631316364613235623666223b733a33323a223531346530303031613733373136633036333535353063333662616163313062223b733a33323a223063623037663938313738623532366434616436313839666437356161636361223b733a33323a223233613233346261633635653631643831636137653761396234383437663431223b733a33323a223138313165323562636165316630333361396264366634303834613764613731223b733a33323a223837616361323863356439623639636663393537653738303462373335656132223b733a33323a223130343365643363316432633834343262383139643138386536333237383431223b733a33323a226237373361613830623765643536326430623738323235376362323931333562223b733a33323a223836653239316135353461346261646631323266343362373965663864656366223b733a33323a226266313034383635333565323239636564396638336539616333613930303837223b733a33323a223161336465393837373131633035663866643163663936386663323862373338223b733a33323a226532623733343731666631613738376664643932333932366337363534333432223b733a33323a223466373434373034316237656635333561343461633830613261643731666138223b733a33323a223766343138323766343334393332666266326137383633623161663133313136223b733a33323a226635623730303638333038393562326236303533636539363632653130336462223b733a33323a223131376334656139613161636332396332646234616137326636346430613565223b733a33323a223138656237393239613933303030366132653763323733663165623232613132223b733a33323a223165306435333931303638666262353231343464363437393633356532633537223b733a33323a223133373734653735373931663138313939303364373033396464616134333362223b733a33323a223034656163636331313066616133376561333663623635623232313966613035223b733a33323a223561653839633164663162343363666237336233353462303261313861366238223b733a33323a223839613439326439393338326633303564353431646338643931376563316465223b733a33323a223865656538373231313361383538613938646461316566646362656531306337223b733a33323a223439393663633461666163343231343431316465386563336535376233613138223b733a33323a223161653636343462333936656566386138366364353034396263383939326262223b733a33323a226563613235323763613236623736366330396263323034313030393862623735223b733a33323a223830306131613230663362656534613364366531396336643232623632373436223b733a33323a226462653235656466656438383737656366633161376439356134663561666435223b733a33323a223563303632333561346536373337656536643636386631396638336661646261223b733a33323a223262333962643866396639656663333566646533376537656362366630373037223b733a33323a226534656336363663313565356166646532373831396563343632316533383464223b733a33323a226631663734343036333631616636313965363163623564383337326133646537223b733a33323a223533616161663037386364343765393439383233613032653864616562373239223b733a33323a223539323965383432623462333635333637326538666564396433353839336633223b733a33323a223331333430613037626432326333356437613736663461353433663233396264223b733a33323a223264633062373833626134646435666631323737353763356534663630306166223b733a33323a223835373939363862636361336263353933613033366366386566393332373466223b733a33323a223133333231313738303837386536643365396438343661316136326136383666223b733a33323a223363373932616663663461363735316234646135343435383761666565396462223b733a33323a223938376264663662623233616230613633663330313437616632623330343962223b733a33323a226131653661383730646537653731373466613664343935353633613461336334223b733a33323a226438623738373736613166353039303838613530643863356638656339653765223b733a33323a223966333761336437663161373664653063323330666534316263303931326231223b7d733a343a2268617368223b733a36353a2239663337613364376631613736646530633233306665343162633039313262312d6438623738373736613166353039303838613530643863356638656339653765223b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d4c616d696e61735f56616c696461746f725f437372665f73616c745f666f726d5f637372667c4f3a32363a224c616d696e61735c5374646c69625c41727261794f626a656374223a343a7b733a373a2273746f72616765223b613a323a7b733a393a22746f6b656e4c697374223b613a313a7b733a33323a226630306663306231643564653731306438633737393738643664646335393435223b733a33323a223761313331383666623638393934306639396635666331396530623732363832223b7d733a343a2268617368223b733a36353a2237613133313836666236383939343066393966356663313965306237323638322d6630306663306231643564653731306438633737393738643664646335393435223b7d733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b733a31333a2241727261794974657261746f72223b733a31393a2270726f74656374656450726f70657274696573223b613a343a7b693a303b733a373a2273746f72616765223b693a313b733a343a22666c6167223b693a323b733a31333a226974657261746f72436c617373223b693a333b733a31393a2270726f74656374656450726f70657274696573223b7d7d, 1771509236);
 
 -- --------------------------------------------------------
 
@@ -4419,10 +4471,10 @@ INSERT INTO `setting` (`id`, `value`) VALUES
 ('advancedsearch_all_configs', '{\"1\":\"find\"}'),
 ('advancedsearch_api_config', '\"\"'),
 ('advancedsearch_batch_size', '\"100\"'),
-('advancedsearch_configs', '[\"1\"]'),
 ('advancedsearch_fulltextsearch_alto', '\"0\"'),
-('advancedsearch_index_batch_edit', '\"sync\"'),
 ('advancedsearch_main_config', '\"1\"'),
+('advancedsearch_metadata_improved', 'true'),
+('advancedsearch_search_fields', '[\"common\\/advanced-search\\/sort\",\"common\\/advanced-search\\/fulltext\",\"common\\/advanced-search\\/properties\",\"common\\/advanced-search\\/filters\",\"common\\/advanced-search\\/resource-class\",\"common\\/advanced-search\\/resource-template\",\"common\\/advanced-search\\/item-sets\",\"common\\/advanced-search\\/item-sets-improved\",\"common\\/advanced-search\\/site\",\"common\\/advanced-search\\/has-media-radio\",\"common\\/advanced-search\\/media-types\",\"common\\/advanced-search\\/media-type\",\"common\\/advanced-search\\/owner\",\"common\\/advanced-search\\/visibility-radio\",\"common\\/advanced-search\\/ids\",\"common\\/advanced-search\\/date-time\",\"common\\/advanced-search\\/has-original\",\"common\\/advanced-search\\/has-thumbnails\",\"common\\/advanced-search\\/has-asset\",\"common\\/advanced-search\\/asset\",\"common\\/advanced-search\\/data-type-geography\",\"common\\/advanced-search\\/item-set-is-dynamic\",\"common\\/numeric-data-types-advanced-search\",\"common\\/advanced-search\\/harvests\"]'),
 ('archiverepertory_item_convert', '\"full\"'),
 ('archiverepertory_item_folder', '\"id\"'),
 ('archiverepertory_item_prefix', '\"\"'),
@@ -4437,12 +4489,14 @@ INSERT INTO `setting` (`id`, `value`) VALUES
 ('ark_note', '\"\"'),
 ('ark_policy_main', '\"Our institution assigns identifiers within the ARK domain under the NAAN 99999 and according to the following principles:\\r\\n\\r\\n* No ARK shall be re-assigned; that is, once an ARK-to-object association has been made public, that association shall be considered unique into the indefinite future.\\r\\n* To help them age and travel well, the Name part of our institution-assigned ARKs shall contain no widely recognizable semantic information (to the extent possible).\\r\\n* Our institution-assigned ARKs shall be generated with a terminal check character that guarantees them against single character errors and transposition errors.\"'),
 ('ark_policy_statement', '\"erc-support:\\r\\nwho: Our Institution\\r\\nwhat: Permanent: Stable Content:\\r\\nwhen: 20160101\\r\\nwhere: http:\\/\\/example.com\\/ark:\\/99999\\/\"'),
+('ark_property', '\"dcterms:identifier\"'),
 ('ark_qualifier', '\"internal\"'),
 ('ark_qualifier_position_format', '\"\"'),
 ('ark_qualifier_static', '\"0\"'),
 ('ark_subnaa', '\"sub\"'),
 ('blockplus_html_config_page', '\"default\"'),
 ('blockplus_html_mode_page', '\"inline\"'),
+('blockplus_page_models', '[]'),
 ('blockplus_property_itemset', '\"\"'),
 ('blocksdisposition_modules', '[]'),
 ('bulkedit_deduplicate_on_save', '\"1\"'),
@@ -4474,8 +4528,8 @@ INSERT INTO `setting` (`id`, `value`) VALUES
 ('easyadmin_addon_notify_version_inactive', 'true'),
 ('easyadmin_administrator_name', '\"\"'),
 ('easyadmin_allow_empty_files', 'false'),
-('easyadmin_cron_last', '1763558172'),
-('easyadmin_cron_tasks', '[\"session_8\"]'),
+('easyadmin_cron_last', '1771509086'),
+('easyadmin_cron_tasks', '[\"session_8d\"]'),
 ('easyadmin_display_exception', 'false'),
 ('easyadmin_interface', '[\"resource_public_view\"]'),
 ('easyadmin_local_path', '\"\\/var\\/www\\/html\\/files\\/import\"'),
@@ -4509,15 +4563,13 @@ INSERT INTO `setting` (`id`, `value`) VALUES
 ('iiifserver_manifest_attribution_property', '\"\"'),
 ('iiifserver_manifest_behavior_default', '[\"none\"]'),
 ('iiifserver_manifest_behavior_property', '\"\"'),
-('iiifserver_manifest_cache', '\"1\"'),
-('iiifserver_manifest_cache_derivativemedia', '\"0\"'),
+('iiifserver_manifest_cache', '\"0\"'),
 ('iiifserver_manifest_canvas_label', '\"template\"'),
 ('iiifserver_manifest_canvas_label_property', '\"\"'),
 ('iiifserver_manifest_collection_properties', '[]'),
 ('iiifserver_manifest_default_version', '\"2\"'),
-('iiifserver_manifest_description_property', '\"dcterms:bibliographicCitation\"'),
 ('iiifserver_manifest_external_property', '\"dcterms:hasFormat\"'),
-('iiifserver_manifest_homepage', '\"resource\"'),
+('iiifserver_manifest_homepage', '[\"resource\"]'),
 ('iiifserver_manifest_homepage_property', '\"\"'),
 ('iiifserver_manifest_html_descriptive', '\"1\"'),
 ('iiifserver_manifest_item_properties', '[]'),
@@ -4543,7 +4595,7 @@ INSERT INTO `setting` (`id`, `value`) VALUES
 ('iiifserver_manifest_start_property', '\"\"'),
 ('iiifserver_manifest_structures_property', '\"\"'),
 ('iiifserver_manifest_structures_skip_flat', '\"0\"'),
-('iiifserver_manifest_summary_property', '\"template\"'),
+('iiifserver_manifest_summary_property', '\"dcterms:bibliographicCitation\"'),
 ('iiifserver_manifest_viewing_direction_default', '\"left-to-right\"'),
 ('iiifserver_manifest_viewing_direction_property', '\"\"'),
 ('iiifserver_media_api_default_supported_version', '{\"service\":\"2\",\"level\":\"2\"}'),
@@ -4573,9 +4625,20 @@ INSERT INTO `setting` (`id`, `value`) VALUES
 ('imageserver_info_rights_uri', '\"https:\\/\\/rightsstatements.org\\/vocab\\/CNE\\/1.0\\/\"'),
 ('imageserver_info_rights_url', '\"\"'),
 ('imageserver_tile_fallback', '\"tile_large\"'),
-('imageserver_tile_manual', '\"1\"'),
+('imageserver_tile_mode', '\"manual\"'),
 ('installation_title', '\"OmekaS Docker\"'),
 ('locale', '\"\"'),
+('log_archive_compress', '\"1\"'),
+('log_archive_days', '\"90\"'),
+('log_archive_delete', '\"1\"'),
+('log_archive_format', '\"tsv\"'),
+('log_archive_include_id', '\"0\"'),
+('log_archive_references', '[]'),
+('log_archive_severity_max', '\"\"'),
+('log_archive_store', '\"0\"'),
+('log_archive_translate', '\"1\"'),
+('log_cron_days', '\"7\"'),
+('log_cron_last', '1771509086'),
 ('media_alt_text_property', '\"\"'),
 ('media_type_whitelist', '[\"application\\/msword\",\"application\\/ogg\",\"application\\/pdf\",\"application\\/rtf\",\"application\\/vnd.ms-access\",\"application\\/vnd.ms-excel\",\"application\\/vnd.ms-powerpoint\",\"application\\/vnd.ms-project\",\"application\\/vnd.ms-write\",\"application\\/vnd.oasis.opendocument.chart\",\"application\\/vnd.oasis.opendocument.database\",\"application\\/vnd.oasis.opendocument.formula\",\"application\\/vnd.oasis.opendocument.graphics\",\"application\\/vnd.oasis.opendocument.presentation\",\"application\\/vnd.oasis.opendocument.spreadsheet\",\"application\\/vnd.oasis.opendocument.text\",\"application\\/vnd.openxmlformats-officedocument.wordprocessingml.document\",\"application\\/vnd.openxmlformats-officedocument.presentationml.presentation\",\"application\\/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",\"application\\/x-gzip\",\"application\\/x-ms-wmp\",\"application\\/x-msdownload\",\"application\\/x-shockwave-flash\",\"application\\/x-tar\",\"application\\/zip\",\"audio\\/midi\",\"audio\\/mp4\",\"audio\\/mpeg\",\"audio\\/ogg\",\"audio\\/x-aac\",\"audio\\/x-aiff\",\"audio\\/x-ms-wma\",\"audio\\/x-ms-wax\",\"audio\\/x-realaudio\",\"audio\\/x-wav\",\"image\\/bmp\",\"image\\/gif\",\"image\\/jp2\",\"image\\/jpeg\",\"image\\/pjpeg\",\"image\\/png\",\"image\\/tiff\",\"image\\/x-icon\",\"text\\/css\",\"text\\/plain\",\"text\\/richtext\",\"video\\/divx\",\"video\\/mp4\",\"video\\/mpeg\",\"video\\/ogg\",\"video\\/quicktime\",\"video\\/webm\",\"video\\/x-ms-asf\",\"video\\/x-msvideo\",\"video\\/x-ms-wmv\",\"application\\/octet-stream\",\"application\\/vnd.threejs+json\",\"model\\/gltf-binary\",\"model\\/gltf+json\",\"model\\/obj\",\"model\\/vnd.collada+xml\",\"model\\/vnd.filmbox\",\"image\\/ktx2\",\"model\\/mtl\",\"model\\/vnd.threejs+json\",\"application\\/alto+xml\"]'),
 ('mirador_annotation_endpoint', '\"\"'),
@@ -4590,8 +4653,11 @@ INSERT INTO `setting` (`id`, `value`) VALUES
 ('recaptcha_secret_key', '\"\"'),
 ('recaptcha_site_key', '\"\"'),
 ('searchsolr_server_id', '\"1ik8m4\"'),
+('searchsolr_solarium_adapter', '\"auto\"'),
+('searchsolr_solarium_timeout', '5'),
 ('statistics_default_user_status_admin', '\"hits\"'),
 ('statistics_default_user_status_public', '\"anonymous\"'),
+('statistics_disable_dashboard', 'true'),
 ('statistics_include_bots', '\"0\"'),
 ('statistics_per_page_admin', '\"100\"'),
 ('statistics_per_page_public', '\"10\"'),
@@ -4604,7 +4670,7 @@ INSERT INTO `setting` (`id`, `value`) VALUES
 ('universalviewer_version', '\"4\"'),
 ('use_htmlpurifier', '\"0\"'),
 ('value_languages', '[]'),
-('version', '\"4.0.4\"'),
+('version', '\"4.1.1\"'),
 ('version_notifications', '\"1\"');
 
 -- --------------------------------------------------------
@@ -4635,7 +4701,7 @@ CREATE TABLE `site` (
 --
 
 INSERT INTO `site` (`id`, `thumbnail_id`, `homepage_id`, `owner_id`, `slug`, `theme`, `title`, `summary`, `navigation`, `item_pool`, `created`, `modified`, `is_public`, `assign_new_items`) VALUES
-(1, NULL, 1, 1, 'index', 'default', 'default site', 'Default site created at Docker bootstrap phase', '[{\"type\":\"browse\",\"data\":{\"label\":\"Browse\",\"query\":\"\"},\"links\":[]},{\"type\":\"search-page\",\"data\":{\"label\":\"Search\",\"advancedsearch_config_id\":\"1\"},\"links\":[]}]', '[]', '2023-02-15 16:04:55', '2025-07-10 14:59:57', 1, 1);
+(1, NULL, 1, 1, 'index', 'default', 'Default site', 'Default site created at Docker bootstrap phase', '[{\"type\":\"browse\",\"data\":{\"label\":\"Browse\",\"query\":\"\"},\"links\":[]},{\"type\":\"searchingPage\",\"data\":{\"label\":\"Search\",\"advancedsearch_config_id\":\"1\"},\"links\":[]}]', '[]', '2023-02-15 16:04:55', '2025-07-10 14:56:31', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -4678,15 +4744,17 @@ CREATE TABLE `site_page` (
   `title` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `is_public` tinyint(1) NOT NULL,
   `created` datetime NOT NULL,
-  `modified` datetime DEFAULT NULL
+  `modified` datetime DEFAULT NULL,
+  `layout` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `layout_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:json)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `site_page`
 --
 
-INSERT INTO `site_page` (`id`, `site_id`, `slug`, `title`, `is_public`, `created`, `modified`) VALUES
-(1, 1, 'welcome', 'Welcome', 1, '2023-02-15 16:04:55', '2023-02-15 16:04:55');
+INSERT INTO `site_page` (`id`, `site_id`, `slug`, `title`, `is_public`, `created`, `modified`, `layout`, `layout_data`) VALUES
+(1, 1, 'welcome', 'Welcome', 1, '2023-02-15 16:04:55', '2023-02-15 16:04:55', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -4699,15 +4767,16 @@ CREATE TABLE `site_page_block` (
   `page_id` int NOT NULL,
   `layout` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json_array)',
-  `position` int NOT NULL
+  `position` int NOT NULL,
+  `layout_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:json)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `site_page_block`
 --
 
-INSERT INTO `site_page_block` (`id`, `page_id`, `layout`, `data`, `position`) VALUES
-(1, 1, 'html', '{\"html\":\"Welcome to your new site. This is an example page.\"}', 1);
+INSERT INTO `site_page_block` (`id`, `page_id`, `layout`, `data`, `position`, `layout_data`) VALUES
+(1, 1, 'html', '{\"html\":\"Welcome to your new site. This is an example page.\"}', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -4747,9 +4816,21 @@ CREATE TABLE `site_setting` (
 
 INSERT INTO `site_setting` (`id`, `site_id`, `value`) VALUES
 ('advancedsearch_configs', 1, '[\"1\"]'),
+('advancedsearch_item_sets_config', 1, '\"1\"'),
+('advancedsearch_item_sets_redirect_page_url', 1, '[]'),
+('advancedsearch_item_sets_redirect_search_first', 1, '[\"all\"]'),
+('advancedsearch_item_sets_redirects', 1, '{\"default\":\"first\"}'),
+('advancedsearch_item_sets_scope', 1, '\"0\"'),
+('advancedsearch_item_sets_template_form', 1, '\"\"'),
+('advancedsearch_items_config', 1, '\"1\"'),
+('advancedsearch_items_template_form', 1, '\"\"'),
 ('advancedsearch_main_config', 1, '\"1\"'),
-('advancedsearch_redirect_itemset', 1, '\"1\"'),
-('advancedsearch_search_fields', 1, '\"\"'),
+('advancedsearch_media_config', 1, '\"1\"'),
+('advancedsearch_media_template_form', 1, '\"\"'),
+('advancedsearch_metadata_improved', 1, 'true'),
+('advancedsearch_redirect_itemset', 1, '\"first\"'),
+('advancedsearch_redirect_itemsets', 1, '{\"default\":\"first\"}'),
+('advancedsearch_search_fields', 1, '[\"common\\/advanced-search\\/sort\",\"common\\/advanced-search\\/fulltext\",\"common\\/advanced-search\\/properties\",\"common\\/advanced-search\\/filters\",\"common\\/advanced-search\\/resource-class\",\"common\\/advanced-search\\/item-sets\",\"common\\/advanced-search\\/has-media-radio\",\"common\\/advanced-search\\/media-types\",\"common\\/advanced-search\\/media-type\",\"common\\/advanced-search\\/ids\",\"common\\/advanced-search\\/data-type-geography\",\"common\\/numeric-data-types-advanced-search\"]'),
 ('attachment_link_type', 1, '\"item\"'),
 ('blockplus_breadcrumbs_collections_url', 1, '\"\"'),
 ('blockplus_breadcrumbs_crumbs', 1, '[\"home\",\"collections\",\"itemset\",\"itemsetstree\",\"current\"]'),
@@ -4757,6 +4838,9 @@ INSERT INTO `site_setting` (`id`, `site_id`, `value`) VALUES
 ('blockplus_breadcrumbs_prepend', 1, '[]'),
 ('blockplus_breadcrumbs_separator', 1, '\"\"'),
 ('blockplus_items_order_for_itemsets', 1, '[]'),
+('blockplus_page_model_rights', 1, '\"0\"'),
+('blockplus_page_model_skip_blockplus', 1, '\"0\"'),
+('blockplus_page_models', 1, '[]'),
 ('blockplus_page_types', 1, '{\"home\":\"Home\",\"exhibit\":\"Exhibit\",\"exhibit_page\":\"Exhibit page\",\"simple\":\"Simple page\"}'),
 ('blockplus_prevnext_item_sets_query', 1, '\"\"'),
 ('blockplus_prevnext_items_query', 1, '\"\"'),
@@ -4772,13 +4856,15 @@ INSERT INTO `site_setting` (`id`, `site_id`, `value`) VALUES
 ('bulkexport_formatters', 1, '[\"csv\",\"json-ld\",\"ods\",\"tsv\",\"txt\"]'),
 ('bulkexport_language', 1, '\"\"'),
 ('bulkexport_limit', 1, '\"1000\"'),
-('bulkexport_metadata', 1, '[\"url\",\"o:resource_class\",\"properties_small\"]'),
-('bulkexport_metadata_exclude', 1, '[\"properties_large\",\"extracttext:extracted_text\"]'),
+('bulkexport_metadata', 1, '[\"url\",\"o:resource_class\"]'),
+('bulkexport_metadata_exclude', 1, '[\"extracttext:extracted_text\"]'),
 ('bulkexport_template', 1, '\"\"'),
+('bulkexport_views', 1, '[\"item_browse\"]'),
 ('disable_jsonld_embed', 1, '\"0\"'),
 ('eucookiebar_message', 1, '\"<p>Warning: this site uses cookies or other means to steal your personal data and to allow Google or Facebook to fetch them. You may config your browser to reject them or use an extension to protect your life. See terms and conditions. By visiting this site, you accept them.<\\/p>\\r\\n\"'),
 ('eucookiebar_options', 1, '\"{\\r\\n    \\\"acceptButton\\\": true,\\r\\n    \\\"acceptText\\\": \\\"OK\\\",\\r\\n    \\\"declineButton\\\": false,\\r\\n    \\\"declineText\\\": \\\"Disable Cookies\\\",\\r\\n    \\\"policyButton\\\": false,\\r\\n    \\\"policyText\\\": \\\"Privacy Policy\\\",\\r\\n    \\\"policyURL\\\": \\\"\\/\\\",\\r\\n    \\\"bottom\\\": true,\\r\\n    \\\"fixed\\\": true,\\r\\n    \\\"zindex\\\": \\\"99999\\\"\\r\\n}\"'),
 ('exclude_resources_not_in_site', 1, '\"0\"'),
+('favicon', 1, '\"\"'),
 ('filter_locale_values', 1, '\"0\"'),
 ('imageserver_default_thumbnail_type', 1, '\"large\"'),
 ('imageserver_tile_fallback', 1, '\"tile_large\"'),
@@ -4794,6 +4880,7 @@ INSERT INTO `site_setting` (`id`, `site_id`, `value`) VALUES
 ('mirador_preselected_items', 1, '\"0\"'),
 ('mirador_skip_default_css', 1, '\"0\"'),
 ('mirador_version', 1, '\"3\"'),
+('pdfviewer', 1, '{\"pdfviewer_template\":\"common\\/pdf-viewer\"}'),
 ('pdfviewer_template', 1, '\"common\\/pdf-viewer\"'),
 ('property_label_information', 1, '\"none\"'),
 ('search_resource_names', 1, '[\"site_pages\",\"items\"]'),
@@ -4803,10 +4890,11 @@ INSERT INTO `site_setting` (`id`, `site_id`, `value`) VALUES
 ('show_locale_label', 1, '\"1\"'),
 ('show_page_pagination', 1, '\"1\"'),
 ('show_user_bar', 1, '\"0\"'),
-('show_value_annotations', 1, '\"0\"'),
+('show_value_annotations', 1, '\"\"'),
 ('sitemaps_enableindex', 1, '\"0\"'),
 ('sitemaps_enablesitemap', 1, '\"1\"'),
 ('sitemaps_maxentries', 1, '\"500\"'),
+('subnav_display', 1, '\"\"'),
 ('theme_settings_omekas-theme-um', 1, '{\"siteMainColor\":\"#920b0b\",\"UMLogoLink\":\"home\",\"logoRight\":\"\",\"logoFooter\":\"\",\"mainText\":\"Main text here.\",\"footer\":\"Powered by Omeka S\",\"footerBar\":\"Text for footerbar\",\"searchController\":\"find\",\"CustomFieldList\":\"modsrdf:name, modsrdf:subject, schema:dateIssued, schema:contributor, modsrdf:namePrincipal\",\"IiifViewer\":\"mirador\",\"cover_vh\":\"30\",\"highlight_Image_1\":\"\",\"highlight_Link_1\":\"\",\"highlight_Link_Text_1\":\"\",\"highlight_Image_2\":\"\",\"highlight_Link_2\":\"\",\"highlight_Link_Text_2\":\"\",\"highlight_Image_3\":\"\",\"highlight_Link_3\":\"\",\"highlight_Link_Text_3\":\"\",\"highlight_Image_4\":\"\",\"highlight_Link_4\":\"\",\"highlight_Link_Text_4\":\"\"}'),
 ('universalviewer_config', 1, '\"{}\"'),
 ('universalviewer_config_theme', 1, '\"0\"'),
@@ -4844,6 +4932,7 @@ CREATE TABLE `solr_map` (
   `resource_name` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `field_name` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `source` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alias` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pool` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)',
   `settings` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -4852,44 +4941,46 @@ CREATE TABLE `solr_map` (
 -- Dumping data for table `solr_map`
 --
 
-INSERT INTO `solr_map` (`id`, `solr_core_id`, `resource_name`, `field_name`, `source`, `pool`, `settings`) VALUES
-(1, 1, 'generic', 'resource_name_s', 'resource_name', '[]', '{\"formatter\":\"\",\"label\":\"Resource type\"}'),
-(2, 1, 'generic', 'is_public_b', 'is_public', '[]', '{\"formatter\":\"\",\"label\":\"Public\"}'),
-(3, 1, 'generic', 'owner_id_i', 'owner/o:id', '[]', '[]'),
-(4, 1, 'generic', 'site_id_is', 'site/o:id', '[]', '[]'),
-(5, 1, 'resources', 'resource_class_s', 'resource_class/o:term', '[]', '{\"formatter\":\"\",\"label\":\"Resource class\"}'),
-(6, 1, 'resources', 'resource_template_s', 'resource_template/o:label', '[]', '{\"formatter\":\"\",\"label\":\"Resource template\"}'),
-(7, 1, 'resources', 'title_s', 'o:title', '[]', '{\"formatter\":\"\",\"label\":\"Title\"}'),
-(8, 1, 'resources', 'dcterms_title_txt', 'dcterms:title', '[]', '{\"formatter\":\"\",\"label\":\"Title\"}'),
-(9, 1, 'resources', 'dcterms_creator_txt', 'dcterms:creator', '[]', '{\"formatter\":\"\",\"label\":\"Creator\"}'),
-(10, 1, 'resources', 'dcterms_subject_txt', 'dcterms:subject', '[]', '{\"formatter\":\"\",\"label\":\"Subject\"}'),
-(11, 1, 'resources', 'dcterms_description_txt', 'dcterms:description', '[]', '{\"formatter\":\"\",\"label\":\"Description\"}'),
-(12, 1, 'resources', 'dcterms_publisher_txt', 'dcterms:publisher', '[]', '{\"formatter\":\"\",\"label\":\"Publisher\"}'),
-(13, 1, 'items', 'dcterms_contributor_txt', 'dcterms:contributor', '[]', '{\"formatter\":\"\",\"label\":\"Contributor\"}'),
-(14, 1, 'resources', 'dcterms_date_txt', 'dcterms:date', '[]', '{\"formatter\":\"\",\"label\":\"Date\"}'),
-(15, 1, 'resources', 'dcterms_type_txt', 'dcterms:type', '[]', '{\"formatter\":\"\",\"label\":\"Type\"}'),
-(16, 1, 'resources', 'dcterms_format_txt', 'dcterms:format', '[]', '{\"formatter\":\"\",\"label\":\"Format\"}'),
-(17, 1, 'resources', 'dcterms_identifier_txt', 'dcterms:identifier', '[]', '{\"formatter\":\"\",\"label\":\"Identifier\"}'),
-(18, 1, 'resources', 'dcterms_source_txt', 'dcterms:source', '[]', '{\"formatter\":\"\",\"label\":\"Source\"}'),
-(19, 1, 'resources', 'dcterms_language_txt', 'dcterms:language', '[]', '{\"formatter\":\"\",\"label\":\"Language\"}'),
-(20, 1, 'resources', 'dcterms_relation_txt', 'dcterms:relation', '[]', '{\"formatter\":\"\",\"label\":\"Relation\"}'),
-(21, 1, 'resources', 'dcterms_coverage_txt', 'dcterms:coverage', '[]', '{\"formatter\":\"\",\"label\":\"Coverage\"}'),
-(22, 1, 'resources', 'dcterms_rights_txt', 'dcterms:rights', '[]', '{\"formatter\":\"\",\"label\":\"Rights\"}'),
-(23, 1, 'resources', 'dcterms_spatial_txt', 'dcterms:spatial', '[]', '{\"formatter\":\"\",\"label\":\"Spatial coverage\"}'),
-(24, 1, 'resources', 'dcterms_temporal_txt', 'dcterms:temporal', '[]', '{\"formatter\":\"\",\"label\":\"Temporal coverage\"}'),
-(25, 1, 'resources', 'dcterms_spatial_ss', 'dcterms:spatial', '[]', '{\"formatter\":\"\",\"label\":\"Spatial coverage\"}'),
-(26, 1, 'resources', 'dcterms_temporal_dr', 'dcterms:temporal', '[]', '{\"formatter\":\"date_range\",\"label\":\"Temporal coverage\"}'),
-(27, 1, 'resources', 'dcterms_type_ss', 'dcterms:type', '[]', '{\"formatter\":\"\",\"label\":\"Type\"}'),
-(28, 1, 'resources', 'dcterms_subject_ss', 'dcterms:subject', '[]', '{\"formatter\":\"\",\"label\":\"Subject\"}'),
-(29, 1, 'resources', 'dcterms_creator_ss', 'dcterms:creator', '[]', '{\"formatter\":\"\",\"label\":\"Creator\"}'),
-(30, 1, 'resources', 'dcterms_publisher_ss', 'dcterms:publisher', '[]', '{\"formatter\":\"\",\"label\":\"Publisher\"}'),
-(31, 1, 'resources', 'dcterms_language_ss', 'dcterms:language', '[]', '{\"formatter\":\"\",\"label\":\"Language\"}'),
-(32, 1, 'resources', 'dcterms_rights_ss', 'dcterms:rights', '[]', '{\"formatter\":\"\",\"label\":\"Rights\"}'),
-(33, 1, 'resources', 'item_set_dcterms_title_ss', 'item_set/dcterms:title', '[]', '{\"formatter\":\"\",\"label\":\"Item Set\"}'),
-(34, 1, 'resources', 'dcterms_title_s', 'dcterms:title', '[]', '{\"formatter\":\"\",\"label\":\"Title\"}'),
-(35, 1, 'resources', 'dcterms_date_s', 'dcterms:date', '[]', '{\"formatter\":\"\",\"label\":\"Date\"}'),
-(36, 1, 'resources', 'dcterms_creator_s', 'dcterms:creator', '[]', '{\"formatter\":\"\",\"label\":\"Creator\"}'),
-(37, 1, 'items', 'item_set_id_is', 'item_set/o:id', '[]', '{\"formatter\":\"\",\"label\":\"Item set id\"}');
+INSERT INTO `solr_map` (`id`, `solr_core_id`, `resource_name`, `field_name`, `source`, `alias`, `pool`, `settings`) VALUES
+(1, 1, 'generic', 'resource_name_s', 'resource_name', 'resource_name', '[]', '{\"formatter\":\"text\",\"label\":\"Resource type\",\"parts\":{\"1\":\"main\"}}'),
+(2, 1, 'generic', 'is_public_b', 'is_public', 'is_public', '[]', '{\"formatter\":\"text\",\"label\":\"Public\",\"parts\":{\"1\":\"main\"}}'),
+(3, 1, 'generic', 'owner_id_i', 'owner/o:id', 'owner_id', '[]', '{\"formatter\":\"text\",\"parts\":{\"1\":\"main\"}}'),
+(4, 1, 'generic', 'site_id_is', 'site/o:id', 'site_id', '[]', '{\"formatter\":\"text\",\"parts\":{\"1\":\"main\"}}'),
+(5, 1, 'resources', 'resource_class_s', 'resource_class/o:term', 'resource_class_term', '[]', '{\"formatter\":\"text\",\"label\":\"Resource class\",\"parts\":{\"1\":\"main\"}}'),
+(6, 1, 'resources', 'resource_template_s', 'resource_template/o:label', 'resource_template_label', '[]', '{\"formatter\":\"text\",\"label\":\"Resource template\",\"parts\":{\"1\":\"main\"}}'),
+(7, 1, 'resources', 'title_s', 'o:title', 'title', '[]', '{\"formatter\":\"text\",\"label\":\"Title\",\"parts\":{\"1\":\"main\"}}'),
+(8, 1, 'resources', 'dcterms_title_txt', 'dcterms:title', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Title\",\"parts\":{\"1\":\"main\"}}'),
+(9, 1, 'resources', 'dcterms_creator_txt', 'dcterms:creator', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Creator\",\"parts\":{\"1\":\"main\"}}'),
+(10, 1, 'resources', 'dcterms_subject_txt', 'dcterms:subject', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Subject\",\"parts\":{\"1\":\"main\"}}'),
+(11, 1, 'resources', 'dcterms_description_txt', 'dcterms:description', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Description\",\"parts\":{\"1\":\"main\"}}'),
+(12, 1, 'resources', 'dcterms_publisher_txt', 'dcterms:publisher', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Publisher\",\"parts\":{\"1\":\"main\"}}'),
+(13, 1, 'items', 'dcterms_contributor_txt', 'dcterms:contributor', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Contributor\",\"parts\":{\"1\":\"main\"}}'),
+(14, 1, 'resources', 'dcterms_date_txt', 'dcterms:date', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Date\",\"parts\":{\"1\":\"main\"}}'),
+(15, 1, 'resources', 'dcterms_type_txt', 'dcterms:type', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Type\",\"parts\":{\"1\":\"main\"}}'),
+(16, 1, 'resources', 'dcterms_format_txt', 'dcterms:format', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Format\",\"parts\":{\"1\":\"main\"}}'),
+(17, 1, 'resources', 'dcterms_identifier_txt', 'dcterms:identifier', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Identifier\",\"parts\":{\"1\":\"main\"}}'),
+(18, 1, 'resources', 'dcterms_source_txt', 'dcterms:source', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Source\",\"parts\":{\"1\":\"main\"}}'),
+(19, 1, 'resources', 'dcterms_language_txt', 'dcterms:language', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Language\",\"parts\":{\"1\":\"main\"}}'),
+(20, 1, 'resources', 'dcterms_relation_txt', 'dcterms:relation', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Relation\",\"parts\":{\"1\":\"main\"}}'),
+(21, 1, 'resources', 'dcterms_coverage_txt', 'dcterms:coverage', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Coverage\",\"parts\":{\"1\":\"main\"}}'),
+(22, 1, 'resources', 'dcterms_rights_txt', 'dcterms:rights', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Rights\",\"parts\":{\"1\":\"main\"}}'),
+(23, 1, 'resources', 'dcterms_spatial_txt', 'dcterms:spatial', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Spatial coverage\",\"parts\":{\"1\":\"main\"}}'),
+(24, 1, 'resources', 'dcterms_temporal_txt', 'dcterms:temporal', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Temporal coverage\",\"parts\":{\"1\":\"main\"}}'),
+(25, 1, 'resources', 'dcterms_spatial_ss', 'dcterms:spatial', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Spatial coverage\",\"parts\":{\"1\":\"main\"}}'),
+(26, 1, 'resources', 'dcterms_temporal_dr', 'dcterms:temporal', NULL, '[]', '{\"formatter\":\"date_range\",\"label\":\"Temporal coverage\",\"normalization\":[],\"parts\":[\"main\"]}'),
+(27, 1, 'resources', 'dcterms_type_ss', 'dcterms:type', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Type\",\"parts\":{\"1\":\"main\"}}'),
+(28, 1, 'resources', 'dcterms_subject_ss', 'dcterms:subject', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Subject\",\"parts\":{\"1\":\"main\"}}'),
+(29, 1, 'resources', 'dcterms_creator_ss', 'dcterms:creator', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Creator\",\"parts\":{\"1\":\"main\"}}'),
+(30, 1, 'resources', 'dcterms_publisher_ss', 'dcterms:publisher', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Publisher\",\"parts\":{\"1\":\"main\"}}'),
+(31, 1, 'resources', 'dcterms_language_ss', 'dcterms:language', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Language\",\"parts\":{\"1\":\"main\"}}'),
+(32, 1, 'resources', 'dcterms_rights_ss', 'dcterms:rights', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Rights\",\"parts\":{\"1\":\"main\"}}'),
+(33, 1, 'resources', 'item_set_dcterms_title_ss', 'item_set/dcterms:title', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Item Set\",\"parts\":{\"1\":\"main\"}}'),
+(34, 1, 'resources', 'dcterms_title_s', 'dcterms:title', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Title\",\"parts\":{\"1\":\"main\"}}'),
+(35, 1, 'resources', 'dcterms_date_s', 'dcterms:date', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Date\",\"parts\":{\"1\":\"main\"}}'),
+(36, 1, 'resources', 'dcterms_creator_s', 'dcterms:creator', NULL, '[]', '{\"formatter\":\"text\",\"label\":\"Creator\",\"parts\":{\"1\":\"main\"}}'),
+(37, 1, 'items', 'item_set_id_is', 'item_set/o:id', 'item_set_id', '[]', '{\"formatter\":\"text\",\"label\":\"Item set id\",\"parts\":{\"1\":\"main\"}}'),
+(38, 1, 'generic', 'id_i', 'o:id', 'id', '[]', '{\"formatter\":\"text\",\"parts\":{\"1\":\"main\"}}'),
+(39, 1, 'generic', 'name_s', 'o:title', 'name', '[]', '{\"formatter\":\"text\",\"parts\":{\"1\":\"main\"}}');
 
 -- --------------------------------------------------------
 
@@ -4915,21 +5006,23 @@ CREATE TABLE `stat` (
 --
 
 INSERT INTO `stat` (`id`, `type`, `url`, `entity_id`, `entity_name`, `hits`, `hits_anonymous`, `hits_identified`, `created`, `modified`) VALUES
-(1, 'page', '/', 0, '', 9, 6, 3, '2024-03-26 13:43:37', '2025-08-11 09:52:49'),
+(1, 'page', '/', 0, '', 10, 7, 3, '2024-03-26 13:43:37', '2026-02-19 13:51:26'),
 (2, 'page', '/s/default/item', 0, '', 3, 0, 3, '2024-04-15 12:33:56', '2024-04-15 12:34:19'),
 (3, 'page', '/s/default/item/1', 1, 'items', 1, 0, 1, '2024-04-15 12:34:18', '2024-04-15 12:34:18'),
 (4, 'resource', '/s/default/item/1', 1, 'items', 1, 0, 1, '2024-04-15 12:34:18', '2024-04-15 12:34:18'),
-(5, 'page', '/s/default', 0, '', 2, 0, 2, '2024-10-08 13:36:04', '2024-10-08 13:38:46'),
-(6, 'page', '/s/default/page/welcome', 1, 'site_pages', 2, 0, 2, '2024-10-08 13:36:04', '2024-10-08 13:38:46'),
-(7, 'resource', '/s/default/page/welcome', 1, 'site_pages', 2, 0, 2, '2024-10-08 13:36:04', '2024-10-08 13:38:46'),
+(5, 'page', '/s/default', 0, '', 3, 0, 3, '2024-10-08 13:36:04', '2025-07-10 14:52:21'),
+(6, 'page', '/s/default/page/welcome', 1, 'site_pages', 4, 0, 4, '2024-10-08 13:36:04', '2025-07-10 14:52:39'),
+(7, 'resource', '/s/default/page/welcome', 1, 'site_pages', 4, 0, 4, '2024-10-08 13:36:04', '2025-07-10 14:52:39'),
 (8, 'page', '/s/default/sitemap.xml', 0, '', 4, 0, 4, '2024-10-08 13:36:11', '2024-10-08 13:41:32'),
 (9, 'page', '/s/default/sitemapindex.xml', 0, '', 3, 0, 3, '2024-10-08 13:38:53', '2024-10-08 13:41:32'),
-(10, 'page', '/s/index', 0, '', 1, 0, 1, '2025-07-10 15:00:00', '2025-07-10 15:00:00'),
-(11, 'page', '/s/index/page/welcome', 1, 'site_pages', 1, 0, 1, '2025-07-10 15:00:00', '2025-07-10 15:00:00'),
-(12, 'resource', '/s/index/page/welcome', 1, 'site_pages', 1, 0, 1, '2025-07-10 15:00:00', '2025-07-10 15:00:00'),
-(13, 'page', '/s/index/find', 0, '', 2, 0, 2, '2025-07-10 15:00:02', '2025-07-10 15:00:09'),
-(14, 'page', '/s/index/item/1', 1, 'items', 1, 0, 1, '2025-07-10 15:00:10', '2025-07-10 15:00:10'),
-(15, 'resource', '/s/index/item/1', 1, 'items', 1, 0, 1, '2025-07-10 15:00:10', '2025-07-10 15:00:10');
+(10, 'page', '/s/default/find', 0, '', 2, 0, 2, '2025-07-10 14:52:40', '2025-07-10 14:52:48'),
+(11, 'page', '/s/index', 0, '', 2, 0, 2, '2025-07-10 14:56:35', '2025-09-29 13:38:56'),
+(12, 'page', '/s/index/page/welcome', 1, 'site_pages', 3, 0, 3, '2025-07-10 14:56:35', '2025-09-29 13:38:56'),
+(13, 'resource', '/s/index/page/welcome', 1, 'site_pages', 3, 0, 3, '2025-07-10 14:56:35', '2025-09-29 13:38:56'),
+(14, 'page', '/s/index/find', 0, '', 5, 0, 5, '2025-07-10 14:56:39', '2025-12-09 10:50:44'),
+(15, 'page', '/s/index/item/1', 1, 'items', 2, 0, 2, '2025-07-10 14:56:41', '2025-09-29 13:39:01'),
+(16, 'resource', '/s/index/item/1', 1, 'items', 2, 0, 2, '2025-07-10 14:56:41', '2025-09-29 13:39:01'),
+(17, 'page', '/s/index/item', 0, '', 2, 0, 2, '2025-09-29 13:38:59', '2025-09-29 13:39:03');
 
 -- --------------------------------------------------------
 
@@ -5149,7 +5242,8 @@ ALTER TABLE `hit`
   ADD KEY `IDX_5AD22641ED646567` (`referrer`),
   ADD KEY `IDX_5AD22641C44967C5` (`user_agent`),
   ADD KEY `IDX_5AD22641C2F0CDFC` (`accept_language`),
-  ADD KEY `IDX_5AD22641B23DB7B8` (`created`);
+  ADD KEY `IDX_5AD22641B23DB7B8` (`created`),
+  ADD KEY `IDX_5AD22641D4DB71B5` (`language`);
 
 --
 -- Indexes for table `item`
@@ -5195,7 +5289,8 @@ ALTER TABLE `log`
   ADD KEY `IDX_8F3F68C57E3C61F9` (`owner_id`),
   ADD KEY `IDX_8F3F68C5BE04EA9` (`job_id`),
   ADD KEY `IDX_8F3F68C5AEA34913` (`reference`),
-  ADD KEY `IDX_8F3F68C5F660D16B` (`severity`);
+  ADD KEY `IDX_8F3F68C5F660D16B` (`severity`),
+  ADD KEY `IDX_8F3F68C5B23DB7B8` (`created`);
 
 --
 -- Indexes for table `media`
@@ -5299,6 +5394,15 @@ ALTER TABLE `resource_class`
   ADD UNIQUE KEY `UNIQ_C6F063ADAD0E05F6623C14D5` (`vocabulary_id`,`local_name`),
   ADD KEY `IDX_C6F063AD7E3C61F9` (`owner_id`),
   ADD KEY `IDX_C6F063ADAD0E05F6` (`vocabulary_id`);
+
+--
+-- Indexes for table `resource_meta_resource_template_meta_names`
+--
+ALTER TABLE `resource_meta_resource_template_meta_names`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_E4071E6A16131EA2A6B767B` (`resource_template_id`,`resource_template_property_id`),
+  ADD KEY `IDX_E4071E6A16131EA` (`resource_template_id`),
+  ADD KEY `IDX_E4071E6A2A6B767B` (`resource_template_property_id`);
 
 --
 -- Indexes for table `resource_template`
@@ -5544,19 +5648,19 @@ ALTER TABLE `custom_vocab`
 -- AUTO_INCREMENT for table `hit`
 --
 ALTER TABLE `hit`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `numeric_data_types_duration`
@@ -5599,6 +5703,12 @@ ALTER TABLE `resource`
 --
 ALTER TABLE `resource_class`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1281;
+
+--
+-- AUTO_INCREMENT for table `resource_meta_resource_template_meta_names`
+--
+ALTER TABLE `resource_meta_resource_template_meta_names`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `resource_template`
@@ -5682,13 +5792,13 @@ ALTER TABLE `solr_core`
 -- AUTO_INCREMENT for table `solr_map`
 --
 ALTER TABLE `solr_map`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `stat`
 --
 ALTER TABLE `stat`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -5867,6 +5977,13 @@ ALTER TABLE `resource`
 ALTER TABLE `resource_class`
   ADD CONSTRAINT `FK_C6F063AD7E3C61F9` FOREIGN KEY (`owner_id`) REFERENCES `user` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `FK_C6F063ADAD0E05F6` FOREIGN KEY (`vocabulary_id`) REFERENCES `vocabulary` (`id`);
+
+--
+-- Constraints for table `resource_meta_resource_template_meta_names`
+--
+ALTER TABLE `resource_meta_resource_template_meta_names`
+  ADD CONSTRAINT `FK_E4071E6A16131EA` FOREIGN KEY (`resource_template_id`) REFERENCES `resource_template` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_E4071E6A2A6B767B` FOREIGN KEY (`resource_template_property_id`) REFERENCES `resource_template_property` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `resource_template`
