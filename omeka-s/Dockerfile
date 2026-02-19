@@ -271,9 +271,6 @@ RUN curl -L https://github.com/omeka-s-modules/NumericDataTypes/releases/downloa
     rm /tmp/NumericDataTypes.zip
 
 ARG ENV_MODULE_PdfViewer_VERSION
-#RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/releases/download/${ENV_MODULE_PdfViewer_VERSION}/PdfViewer-${ENV_MODULE_PdfViewer_VERSION}.zip --output /tmp/PdfViewer.zip && \
-#    unzip -q /tmp/PdfViewer.zip -d modules/ && \
-#    rm /tmp/PdfViewer.zip
 RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/archive/refs/tags/${ENV_MODULE_PdfViewer_VERSION}.zip --output /tmp/PdfViewer.zip && \
     unzip -q /tmp/PdfViewer.zip -d modules/ && \
     mv modules/Omeka-S-module-PdfViewer-${ENV_MODULE_PdfViewer_VERSION} modules/PdfViewer && \
@@ -282,6 +279,11 @@ RUN curl -L https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/archive/refs/t
     composer update && \
     composer install --no-dev && \
     rm /tmp/PdfViewer.zip
+
+ARG ENV_MODULE_ResourceMeta_VERSION
+RUN curl -L https://github.com/omeka-s-modules/ResourceMeta/releases/download/v${ENV_MODULE_ResourceMeta_VERSION}/ResourceMeta-${ENV_MODULE_ResourceMeta_VERSION}.zip --output /tmp/ResourceMeta.zip && \
+    unzip -q /tmp/ResourceMeta.zip -d modules/ && \
+    rm /tmp/ResourceMeta.zip
 
 ARG ENV_MODULE_Sitemaps_VERSION
 RUN curl -L https://github.com/ManOnDaMoon/omeka-s-module-Sitemaps/releases/download/v${ENV_MODULE_Sitemaps_VERSION}/Sitemaps-${ENV_MODULE_Sitemaps_VERSION}.zip --output /tmp/Sitemaps.zip && \
@@ -302,8 +304,6 @@ ARG ENV_MODULE_ValueSuggest_VERSION
 RUN curl -L https://github.com/omeka-s-modules/ValueSuggest/releases/download/v${ENV_MODULE_ValueSuggest_VERSION}/ValueSuggest-${ENV_MODULE_ValueSuggest_VERSION}.zip --output /tmp/ValueSuggest.zip && \
     unzip -q /tmp/ValueSuggest.zip -d modules/ && \
     rm /tmp/ValueSuggest.zip
-
-RUN echo "INFO: Please install the modules via the Omeka S admin panel."
 
 # Install the default theme
 # Our own themes will be volume-binded in docker-compose.yml
