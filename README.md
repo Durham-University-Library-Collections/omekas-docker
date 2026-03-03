@@ -49,6 +49,21 @@ Additionally, to build the external IIIF-tooling, use:
 docker compose -f docker-compose-iiif-external.yml build
 ```
 
+### Info on Docker build stages
+This Docker environment uses multi-stage builds. 
+
+The following build stages have been defined in `omeka-s/Dockerfile`: 
+
+| Build stage   | Upstream image             | Description                                                                                                  |
+|---------------|----------------------------|--------------------------------------------------------------------------------------------------------------|
+| php-builder   | php:{version}-fpm-bookworm | Compiles the required PHP extensions against the PHP version coming from the upstream image.                 |
+| php-debug     | php-builder                | Compiles the Xdebug extension against the PHP version coming from the upstream image.                        |
+| os-builder    | php:{version}-fpm-bookworm | Installs and configures all (runtime) packages required to run Omeka, such as Apache                         |
+| omeka-runtime | os-builder                 | Takes (copies) the PHP extensions from the 'php-builder' stage and installs Omeka S core, modules and themes |
+| omeka-debug   | omeka-runtime              | Takes (copies) the PHP extensions from the 'php-debug' stage on top of the 'omeka-runtime' stage             |
+
+In the `docker-compose.yml` file it is possible to indicate the desired build stage with the `target` option. Normally, one would only use `target: omeka-runtime` or `target: omeka-debug`.
+
 ## Run instructions
 Run the Omeka S infra with:
 ```
