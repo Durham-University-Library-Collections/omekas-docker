@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Common",
+    "version": "3.4.74",
+    "url": null,
+    "notes": "Needs to be installed first, because a lot of modules depend on it"
+  },
+  {
+    "name": "Log",
+    "version": "3.4.33",
+    "url": null,
+    "notes": "Needs to be installed second, because a lot of modules depend on it"
+  },
+  {
+    "name": "AdvancedSearch",
+    "version": "3.4.53",
+    "url": null,
+    "notes": "Avoid 3.4.54 and SearchSolr 3.5.61 because of bug https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/issues/18"
+  },
+  {
+    "name": "SearchSolr",
+    "version": "3.5.60",
+    "url": "https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/releases/download/{version}/SearchSolr-{version}.zip",
+    "notes": "Avoid 3.5.61, see AdvancedSearch notes"
+  },
+  {
+    "name": "ArchiveRepertory",
+    "version": "3.15.17",
+    "url": null
+  },
+  {
+    "name": "Ark",
+    "version": "3.5.15",
+    "url": null
+  },
+  {
+    "name": "BlockPlus",
+    "version": "3.4.42",
+    "url": null
+  },
+  {
+    "name": "BlocksDisposition",
+    "version": "3.4.5",
+    "url": null
+  },
+  {
+    "name": "BulkEdit",
+    "version": "3.4.37",
+    "url": null
+  },
+  {
+    "name": "BulkExport",
+    "version": "3.4.37",
+    "url": null
+  },
+  {
+    "name": "CreateMissingThumbnails",
+    "version": "0.3.0",
+    "url": null
+  },
+  {
+    "name": "CSVImport",
+    "version": "2.6.2",
+    "url": null
+  },
+  {
+    "name": "CustomVocab",
+    "version": "2.0.2",
+    "url": null
+  },
+  {
+    "name": "EasyAdmin",
+    "version": "3.4.37",
+    "url": null
+  },
+  {
+    "name": "EUCookieBar",
+    "version": "3.4.5",
+    "url": null
+  },
+  {
+    "name": "ExtractText",
+    "version": "2.1.0",
+    "url": null
+  },
+  {
+    "name": "FileSideload",
+    "version": "1.7.1",
+    "url": null
+  },
+  {
+    "name": "HideProperties",
+    "version": "1.3.1",
+    "url": null
+  },
+  {
+    "name": "IiifSearch",
+    "version": "3.4.8",
+    "url": "https://github.com/smachefert/Omeka-S-module-IiifSearch/archive/refs/tags/v{version}.zip",
+    "notes": "If search is not working: deselect 'Cache > Cache manifest for instant access' in IiifServer module settings"
+  },
+  {
+    "name": "IiifServer",
+    "version": "3.6.26",
+    "url": null
+  },
+  {
+    "name": "ImageServer",
+    "version": "3.6.20",
+    "url": null
+  },
+  {
+    "name": "Mirador",
+    "version": "3.4.10",
+    "url": "https://github.com/Daniel-KM/Omeka-S-module-Mirador/releases/download/{version}/Mirador-{version}.zip",
+    "notes": "3.4.9: Plugins Annotations/OCRhelper not working. 3.4.10: OCRhelper works, Annotations broken (console TypeError in browser). 3.4.11: Mirador v4 incompatible with plugins Annotations and OCR Helper. Also, not possible to select v3 and v4 plugins in the site settings. Avoid this version"
+  },
+  {
+    "name": "ModelViewer",
+    "version": "3.3.0.7-132-fork-mc2",
+    "url": "https://gitlab.com/mcoonen/Omeka-S-module-ModelViewer/-/archive/{version}/Omeka-S-module-ModelViewer-{version}.zip"
+  },
+  {
+    "name": "NdeTermennetwerk",
+    "version": "1.4.0",
+    "url": null
+  },
+  {
+    "name": "NumericDataTypes",
+    "version": "1.13.0",
+    "url": null
+  },
+  {
+    "name": "PdfViewer",
+    "version": "3.4.4",
+    "url": "https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/archive/refs/tags/{version}.zip"
+  },
+  {
+    "name": "ResourceMeta",
+    "version": "1.1.0",
+    "url": null
+  },
+  {
+    "name": "Sitemaps",
+    "version": "1.1",
+    "url": null
+  },
+  {
+    "name": "Statistics",
+    "version": "3.4.11",
+    "url": null
+  },
+  {
+    "name": "UniversalViewer",
+    "version": "3.6.11-4.2.1",
+    "url": null
+  },
+  {
+    "name": "ValueSuggest",
+    "version": "1.19.0",
+    "url": null
+  }
+]

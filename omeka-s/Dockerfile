@@ -73,6 +73,8 @@ RUN apt-get update && \
     libxpm4 \
     imagemagick \
     ghostscript \
+    # for reading the modules.json file \
+    jq \
     # for (IIIF) image processing
     libvips-tools \
     # for module ExtractText
@@ -145,100 +147,19 @@ VOLUME ${ENV_OMEKAS_BASE_PATH}/volume/
 RUN mkdir -p ${ENV_OMEKAS_BASE_PATH}/files/iiif/2 && \
     mkdir -p ${ENV_OMEKAS_BASE_PATH}/files/iiif/3
 
-# Install modules
-# TODO: Do this in a loop from reading a json or yaml file
-ARG ENV_MODULE_AdvancedSearch_VERSION
-RUN omeka-s-cli module:download AdvancedSearch:${ENV_MODULE_AdvancedSearch_VERSION}
-
-ARG ENV_MODULE_SearchSolr_VERSION
-RUN omeka-s-cli module:download https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/releases/download/${ENV_MODULE_SearchSolr_VERSION}/SearchSolr-${ENV_MODULE_SearchSolr_VERSION}.zip
-
-ARG ENV_MODULE_ArchiveRepertory_VERSION
-RUN omeka-s-cli module:download ArchiveRepertory:${ENV_MODULE_ArchiveRepertory_VERSION}
-
-ARG ENV_MODULE_Ark_VERSION
-RUN omeka-s-cli module:download Ark:${ENV_MODULE_Ark_VERSION}
-
-ARG ENV_MODULE_BlockPlus_VERSION
-RUN omeka-s-cli module:download BlockPlus:${ENV_MODULE_BlockPlus_VERSION}
-
-ARG ENV_MODULE_BlocksDisposition_VERSION
-RUN omeka-s-cli module:download BlocksDisposition:${ENV_MODULE_BlocksDisposition_VERSION}
-
-ARG ENV_MODULE_BulkEdit_VERSION
-RUN omeka-s-cli module:download BulkEdit:${ENV_MODULE_BulkEdit_VERSION}
-
-ARG ENV_MODULE_BulkExport_VERSION
-RUN omeka-s-cli module:download BulkExport:${ENV_MODULE_BulkExport_VERSION}
-
-ARG ENV_MODULE_Common_VERSION
-RUN omeka-s-cli module:download Common:${ENV_MODULE_Common_VERSION}
-
-ARG ENV_MODULE_CreateMissingThumbnails_VERSION
-RUN omeka-s-cli module:download CreateMissingThumbnails:${ENV_MODULE_CreateMissingThumbnails_VERSION}
-
-ARG ENV_MODULE_CSVImport_VERSION
-RUN omeka-s-cli module:download CSVImport:${ENV_MODULE_CSVImport_VERSION}
-
-ARG ENV_MODULE_CustomVocab_VERSION
-RUN omeka-s-cli module:download CustomVocab:${ENV_MODULE_CustomVocab_VERSION}
-
-ARG ENV_MODULE_EasyAdmin_VERSION
-RUN omeka-s-cli module:download EasyAdmin:${ENV_MODULE_EasyAdmin_VERSION}
-
-ARG ENV_MODULE_EUCookieBar_VERSION
-RUN omeka-s-cli module:download EUCookieBar:${ENV_MODULE_EUCookieBar_VERSION}
-
-ARG ENV_MODULE_ExtractText_VERSION
-RUN omeka-s-cli module:download ExtractText:${ENV_MODULE_ExtractText_VERSION}
-
-ARG ENV_MODULE_FileSideload_VERSION
-RUN omeka-s-cli module:download FileSideload:${ENV_MODULE_FileSideload_VERSION}
-
-ARG ENV_MODULE_HideProperties_VERSION
-RUN omeka-s-cli module:download HideProperties:${ENV_MODULE_HideProperties_VERSION}
-
-ARG ENV_MODULE_IiifSearch_VERSION
-RUN omeka-s-cli module:download https://github.com/smachefert/Omeka-S-module-IiifSearch/archive/refs/tags/v${ENV_MODULE_IiifSearch_VERSION}.zip
-
-ARG ENV_MODULE_IiifServer_VERSION
-RUN omeka-s-cli module:download IiifServer:${ENV_MODULE_IiifServer_VERSION}
-
-ARG ENV_MODULE_ImageServer_VERSION
-RUN omeka-s-cli module:download ImageServer:${ENV_MODULE_ImageServer_VERSION}
-
-ARG ENV_MODULE_Log_VERSION
-RUN omeka-s-cli module:download Log:${ENV_MODULE_Log_VERSION}
-
-ARG ENV_MODULE_Mirador_VERSION
-RUN omeka-s-cli module:download https://github.com/Daniel-KM/Omeka-S-module-Mirador/releases/download/${ENV_MODULE_Mirador_VERSION}/Mirador-${ENV_MODULE_Mirador_VERSION}.zip
-
-ARG ENV_MODULE_ModelViewer_VERSION
-RUN omeka-s-cli module:download https://gitlab.com/mcoonen/Omeka-S-module-ModelViewer/-/archive/${ENV_MODULE_ModelViewer_VERSION}/Omeka-S-module-ModelViewer-${ENV_MODULE_ModelViewer_VERSION}.zip
-
-ARG ENV_MODULE_NdeTermennetwerk_VERSION
-RUN omeka-s-cli module:download NdeTermennetwerk:${ENV_MODULE_NdeTermennetwerk_VERSION}
-
-ARG ENV_MODULE_NumericDataTypes_VERSION
-RUN omeka-s-cli module:download NumericDataTypes:${ENV_MODULE_NumericDataTypes_VERSION}
-
-ARG ENV_MODULE_PdfViewer_VERSION
-RUN omeka-s-cli module:download https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/archive/refs/tags/${ENV_MODULE_PdfViewer_VERSION}.zip
-
-ARG ENV_MODULE_ResourceMeta_VERSION
-RUN omeka-s-cli module:download ResourceMeta:${ENV_MODULE_ResourceMeta_VERSION}
-
-ARG ENV_MODULE_Sitemaps_VERSION
-RUN omeka-s-cli module:download Sitemaps:${ENV_MODULE_Sitemaps_VERSION}
-
-ARG ENV_MODULE_Statistics_VERSION
-RUN omeka-s-cli module:download Statistics:${ENV_MODULE_Statistics_VERSION}
-
-ARG ENV_MODULE_UniversalViewer_VERSION
-RUN omeka-s-cli module:download UniversalViewer:${ENV_MODULE_UniversalViewer_VERSION}
-
-ARG ENV_MODULE_ValueSuggest_VERSION
-RUN omeka-s-cli module:download ValueSuggest:${ENV_MODULE_ValueSuggest_VERSION}
+# Download all modules defined in modules.json
+# When url is null, the module is downloaded via the omeka-s-cli registry shorthand (Name:version).
+# When url is set, the {version} placeholder is replaced and the full URL is passed to omeka-s-cli.
+COPY modules.json /opt/modules.json
+RUN jq -r '.[] | "\(.name) \(.version) \(if .url == null then "null" else .url end)"' /opt/modules.json | \
+    while read -r name version url; do \
+        if [ "$url" = "null" ]; then \
+            omeka-s-cli module:download "${name}:${version}"; \
+        else \
+            resolved_url=$(echo "$url" | sed "s/{version}/${version}/g"); \
+            omeka-s-cli module:download "${resolved_url}"; \
+        fi; \
+    done
 
 # Install the default theme
 # Our own themes will be volume-binded in docker-compose.yml
