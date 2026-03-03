@@ -199,6 +199,9 @@ RUN omeka-s-cli module:download NumericDataTypes:${ENV_MODULE_NumericDataTypes_V
 ARG ENV_MODULE_PdfViewer_VERSION
 RUN omeka-s-cli module:download https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/archive/refs/tags/${ENV_MODULE_PdfViewer_VERSION}.zip
 
+ARG ENV_MODULE_ResourceMeta_VERSION
+RUN omeka-s-cli module:download ResourceMeta:${ENV_MODULE_ResourceMeta_VERSION}
+
 ARG ENV_MODULE_Sitemaps_VERSION
 RUN omeka-s-cli module:download Sitemaps:${ENV_MODULE_Sitemaps_VERSION}
 
