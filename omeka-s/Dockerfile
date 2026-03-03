@@ -1,31 +1,16 @@
 ARG ENV_PHP_VERSION=8.2
-FROM php:${ENV_PHP_VERSION}-fpm-bookworm
+FROM php:${ENV_PHP_VERSION}-fpm-bookworm AS php-builder
 
+# Install development headers required for installing the PHP extensions
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    # Common software
-    apache2 \
-    curl \
-    nano \
-    unzip \
-    # to test database connectivity during entrypoint script
-    default-mysql-client \
-    # iproute2 is used to retrieve the IP of the docker host machine (needed for Xdebug connections)
-    iproute2 \
-    # dependencies for PHP extensions
     libfreetype6-dev \
     zlib1g-dev \
     libpng-dev \
     libjpeg-dev \
     libtiff-dev \
     imagemagick \
-    ghostscript \
-    # for (IIIF) image processing
-    libvips-tools \
-    # for module ExtractText
-    poppler-utils \
-    # for Omeka S module NumericDataTypes
-    libicu-dev
+    ghostscript
 
 # Omeka S core and modules require additional PHP extensions
 # As the PHP Docker image is kept as small as possible (see https://hub.docker.com/_/php), we need to install these extensions.
@@ -50,6 +35,9 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
     # for module NumericDataTypes
     intl
 
+
+
+FROM php-builder AS php-debug
 # Install extension for remote debugging in IDE (e.g. PhpStorm)
 RUN install-php-extensions xdebug \
     && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
@@ -58,6 +46,39 @@ RUN install-php-extensions xdebug \
     # Uncomment this one to start debugger on every request, regardless of the cookie set by the browser extension
 #    && echo "xdebug.start_with_request = yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.client_host = dockerhost.local" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+
+
+FROM php:${ENV_PHP_VERSION}-fpm-bookworm AS os-builder
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    # Common software
+    apache2 \
+    curl \
+    nano \
+    unzip \
+    # to test database connectivity during entrypoint script
+    default-mysql-client \
+    # iproute2 is used to retrieve the IP of the docker host machine (needed for Xdebug connections)
+    iproute2 \
+    # runtime libraries (runtime equivalents) for the PHP extensions we compiled in the previous stage
+    libfreetype6 \
+    zlib1g \
+    libpng16-16 \
+    libjpeg62-turbo \
+    libtiff6 \
+    libavif15 \
+    libzip4 \
+    libxpm4 \
+    imagemagick \
+    ghostscript \
+    # for (IIIF) image processing
+    libvips-tools \
+    # for module ExtractText
+    poppler-utils \
+    # for Omeka S module NumericDataTypes
+    libicu-dev
 
 # Some modules require composer
 # In Docker it cannot be installed via apt because of unmet php dependencies
@@ -94,6 +115,14 @@ RUN a2enmod http2
 
 # Required to enable CORS for serving IIIF images to external clients.
 RUN a2enmod headers
+
+
+
+FROM os-builder AS omeka-runtime
+
+# Copy compiled extensions and ini files from the php-builder stage
+COPY --from=php-builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=php-builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
 
 # Add Omeka-S cli tool from GhentCDH
 ARG ENV_OMEKAS_CLI_VERSION
@@ -231,3 +260,11 @@ RUN chown -R www-data:www-data ${ENV_OMEKAS_BASE_PATH}/
 EXPOSE 80
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+
+
+
+FROM omeka-runtime AS omeka-debug
+# Copy compiled extensions and ini files from the php-debug stage
+COPY --from=php-debug /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=php-debug /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+

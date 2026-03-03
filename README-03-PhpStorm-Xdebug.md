@@ -1,13 +1,31 @@
 # Remote debugging using PhpStorm and Xdebug
 
-# Enable Xdebug traffic to Docker host machine
+# Build the Docker image with Xdebug support
+1. Open the `docker-compose.yml` file in a text editor
+2. Find the `omekas` service and change the target to `omeka-debug` so that the last stage will be built. Example:
+```yaml
+omekas:
+   (...)
+   build:
+      context: omeka-s/
+      target: omeka-debug
+      args:
+         (...)
+```
+3. Build the Docker image with:
+```bash
+docker compose build omekas
+```
+
+
+# Enable Xdebug traffic to Docker host machine (automatically handled by Docker entrypoint)
 This is automatically handled by the `/etc/hosts` entry that is being created by the `omeka-s/docker-entrypoint.sh` file. Example:
 ```
 echo "$(ip route|awk '/default/ { print $3 }') dockerhost.local" >> /etc/hosts
 ```
 
-# Setup Xdebug server-side
-This is all automatically handled by the code in `omeka-s/Dockerfile` and results in the following outcome:
+# Setup Xdebug server-side (automatically handled by Docker build)
+This is all automatically handled by the `omeka-debug` build stage code in `omeka-s/Dockerfile` and results in the following outcome:
 - Xdebug extension for PHP installed. Note: to reproduce this in a **non-Dockerized** environment, you could use `sudo apt-get install php8.2-xdebug`
 - Xdebug configured for remote debugging. Please note that some settings have been renamed since Xdebug version 3. The settings below are the ones for Xdebug 3. Contents of the config file `/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini`:
 ```
