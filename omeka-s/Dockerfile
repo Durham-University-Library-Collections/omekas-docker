@@ -116,16 +116,13 @@ VOLUME ${ENV_OMEKAS_BASE_PATH}/volume/
 RUN mkdir -p ${ENV_OMEKAS_BASE_PATH}/files/iiif/2 && \
     mkdir -p ${ENV_OMEKAS_BASE_PATH}/files/iiif/3
 
-# Switching to www-data to avoid running composer as root (see https://getcomposer.org/root)
-#USER www-data
-
 # Install modules
 # TODO: Do this in a loop from reading a json or yaml file
 ARG ENV_MODULE_AdvancedSearch_VERSION
 RUN omeka-s-cli module:download AdvancedSearch:${ENV_MODULE_AdvancedSearch_VERSION}
 
 ARG ENV_MODULE_SearchSolr_VERSION
-RUN omeka-s-cli module:download SearchSolr:${ENV_MODULE_SearchSolr_VERSION}
+RUN omeka-s-cli module:download https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/releases/download/${ENV_MODULE_SearchSolr_VERSION}/SearchSolr-${ENV_MODULE_SearchSolr_VERSION}.zip
 
 ARG ENV_MODULE_ArchiveRepertory_VERSION
 RUN omeka-s-cli module:download ArchiveRepertory:${ENV_MODULE_ArchiveRepertory_VERSION}
@@ -219,9 +216,6 @@ RUN omeka-s-cli module:download ValueSuggest:${ENV_MODULE_ValueSuggest_VERSION}
 ARG ENV_THEME_Default_VERSION
 RUN omeka-s-cli theme:download default:${ENV_THEME_Default_VERSION}
 RUN omeka-s-cli theme:download freedom
-
-# Switch back to root user
-USER root
 
 # Copy other files and folders into the container
 COPY config/ ${ENV_OMEKAS_BASE_PATH}/config/

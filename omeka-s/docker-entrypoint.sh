@@ -71,7 +71,7 @@ tar -xvf /tmp/init-arkandnoid-db.tar.gz -C ${OMEKAS_BASE_PATH}/files/
 
 # Install modules
 # TODO: Do this in a loop from reading a json or yaml file
-# Modules that are dependencies for oters must be installed first
+# Modules that are dependencies for others must be installed first
 $OSC module:install Common --base-path ${OMEKAS_BASE_PATH}
 $OSC module:install Log --base-path ${OMEKAS_BASE_PATH}
 # Then all other modules
@@ -99,6 +99,7 @@ $OSC module:install ModelViewer --base-path ${OMEKAS_BASE_PATH}
 $OSC module:install NdeTermennetwerk --base-path ${OMEKAS_BASE_PATH}
 $OSC module:install NumericDataTypes --base-path ${OMEKAS_BASE_PATH}
 $OSC module:install PdfViewer --base-path ${OMEKAS_BASE_PATH}
+$OSC module:install ResourceMeta --base-path ${OMEKAS_BASE_PATH}
 $OSC module:install Sitemaps --base-path ${OMEKAS_BASE_PATH}
 $OSC module:install Statistics --base-path ${OMEKAS_BASE_PATH}
 $OSC module:install UniversalViewer --base-path ${OMEKAS_BASE_PATH}
