@@ -1,77 +1,82 @@
 [
   {
     "name": "3_D_models",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Audio",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Book",
-    "version": "1.0.0",
+    "version": "1.1.1",
+    "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
+  },
+  {
+    "name": "Book_extended_OpenTopstukken",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "CC_License",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Department",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "General_Collection",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Image",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
   "name": "Journal_Article_K_M",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Journal_Collection",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Journal_Issue",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Journal_Volume",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Letters",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Manuscript",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
-    "name": "Photo (1)",
-    "version": "1.0.0",
+    "name": "Photo",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   },
   {
     "name": "Visual_Art_Works",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "url": "https://raw.githubusercontent.com/MaastrichtU-Library/omekas-resource-templates/refs/tags/{version}/{name}.json"
   }
 ]
