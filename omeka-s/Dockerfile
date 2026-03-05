@@ -131,7 +131,7 @@ ARG ENV_OMEKAS_CLI_VERSION
 RUN curl -L https://github.com/GhentCDH/Omeka-S-Cli/releases/download/v${ENV_OMEKAS_CLI_VERSION}/omeka-s-cli.phar --output /usr/local/bin/omeka-s-cli && \
     chmod +x /usr/local/bin/omeka-s-cli
 
-# Install Omeka S core
+# Download Omeka S core
 ARG ENV_OMEKAS_BASE_PATH
 ARG ENV_OMEKAS_VERSION
 RUN rm -fr ${ENV_OMEKAS_BASE_PATH}/* && \
@@ -147,10 +147,16 @@ VOLUME ${ENV_OMEKAS_BASE_PATH}/volume/
 RUN mkdir -p ${ENV_OMEKAS_BASE_PATH}/files/iiif/2 && \
     mkdir -p ${ENV_OMEKAS_BASE_PATH}/files/iiif/3
 
+# Download default themes
+# Our own themes will be volume-binded in docker-compose.yml
+ARG ENV_THEME_Default_VERSION
+RUN omeka-s-cli theme:download default:${ENV_THEME_Default_VERSION}
+RUN omeka-s-cli theme:download freedom
+
 # Download all modules defined in modules.json
 # When url is null, the module is downloaded via the omeka-s-cli registry shorthand (Name:version).
 # When url is set, the {version} placeholder is replaced and the full URL is passed to omeka-s-cli.
-COPY modules.json /opt/modules.json
+COPY install/modules.json /opt/modules.json
 RUN jq -r '.[] | "\(.name) \(.version) \(if .url == null then "null" else .url end)"' /opt/modules.json | \
     while read -r name version url; do \
         if [ "$url" = "null" ]; then \
@@ -161,20 +167,16 @@ RUN jq -r '.[] | "\(.name) \(.version) \(if .url == null then "null" else .url e
         fi; \
     done
 
-# Install the default theme
-# Our own themes will be volume-binded in docker-compose.yml
-ARG ENV_THEME_Default_VERSION
-RUN omeka-s-cli theme:download default:${ENV_THEME_Default_VERSION}
-RUN omeka-s-cli theme:download freedom
+# Set correct ownership on www folders
+RUN chown -R www-data:www-data ${ENV_OMEKAS_BASE_PATH}/
 
 # Copy other files and folders into the container
 COPY config/ ${ENV_OMEKAS_BASE_PATH}/config/
 COPY .htaccess ${ENV_OMEKAS_BASE_PATH}/.htaccess
 COPY init-arkandnoid-db.tar.gz /tmp/
+COPY install/vocabularies.json /opt/vocabularies.json
+COPY install/resource-templates.json /opt/resource-templates.json
 COPY docker-entrypoint.sh /
-
-# Set correct ownership on www folders
-RUN chown -R www-data:www-data ${ENV_OMEKAS_BASE_PATH}/
 
 # Expose ports to Docker network
 # Port 9000 remains exposed by the upstream image, but is not used here as we're connecting to PHP-FPM over an unix socket instead of TCP/IP

@@ -1,0 +1,30 @@
+[
+  {
+    "label": "Bibframe",
+    "version": "latest",
+    "url": "https://id.loc.gov/ontologies/bibframe.rdf",
+    "namespaceUri": "http://id.loc.gov/ontologies/bibframe/",
+    "prefix": "bf"
+  },
+  {
+    "label": "Creative Commons",
+    "version": "latest",
+    "url": "https://creativecommons.org/schema.rdf",
+    "namespaceUri": "http://creativecommons.org/ns#",
+    "prefix": "cc"
+  },
+  {
+    "label": "Gemeinsame Normdatei",
+    "version": "latest",
+    "url": "https://d-nb.info/standards/elementset/gnd.rdf",
+    "namespaceUri": "https://d-nb.info/standards/elementset/gnd#",
+    "prefix": "gnd"
+  },
+  {
+    "label": "Schema.org",
+    "version": "latest",
+    "url": "https://schema.org/version/latest/schemaorg-current-https.rdf",
+    "namespaceUri": "https://schema.org/",
+    "prefix": "schema"
+  }
+]

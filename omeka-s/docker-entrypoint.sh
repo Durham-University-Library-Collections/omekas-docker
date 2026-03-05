@@ -81,11 +81,29 @@ jq -r '.[].name' /opt/modules.json | \
 # Configure search page
 # TODO: configure Advanced Search page and settings via SQL import?
 
-# Load vocabularies
-# TODO: load vocabularies via CLI
+# Download and import vocabularies defined in vocabularies.json
+jq -r '.[] | [.label, .version, .url, .namespaceUri, .prefix] | @tsv' /opt/vocabularies.json | \
+  while IFS=$'\t' read -r label version url namespaceUri prefix; do
+      resolved_url=$(echo "$url" | sed "s/{version}/${version}/g")
+      $OSC vocabulary:import \
+          --url "$resolved_url" \
+          --namespace-uri "$namespaceUri" \
+          --prefix "$prefix" \
+          --label "$label - $version" \
+          --base-path "$OMEKAS_BASE_PATH"
+  done
 
-# Load resource templates
-# TODO: load resource templates via CLI
+
+# Download and import resource templates defined in resource-templates.json
+mkdir -p /tmp/resource-templates/
+jq -r '.[] | [.name, .version, .url] | @tsv' /opt/resource-templates.json | \
+    while IFS=$'\t' read -r name version url; do
+        resolved_url=$(echo "$url" | sed "s/{version}/${version}/g" | sed "s/{name}/${name}/g")
+        curl -L ${resolved_url} --output /tmp/resource-templates/${name}.json
+        $OSC resource-template:import \
+            "/tmp/resource-templates/${name}.json" \
+            --base-path ${OMEKAS_BASE_PATH}
+    done
 
 # -----------------------------------------------------
 # Apache and PHP-FPM startup
