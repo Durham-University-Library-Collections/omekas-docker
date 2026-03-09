@@ -72,6 +72,11 @@ RUN mkdir -p /var/www/html/volume/files/ && \
     ln -s /var/www/html/volume/files/ /var/www/html/files
 VOLUME /var/www/html/volume/
 
+# Install Omeka-S-CLI
+RUN curl -L https://github.com/GhentCDH/Omeka-S-Cli/releases/latest/download/omeka-s-cli.phar --output /var/www/html/omeka-s-cli.phar && \
+    chmod +x /var/www/html/omeka-s-cli.phar && \
+    chown www-data:www-data /var/www/html/omeka-s-cli.phar
+
 # Precreate the IIIF manifest cache folders
 RUN mkdir -p /var/www/html/files/iiif/2 && \
     mkdir -p /var/www/html/files/iiif/3
