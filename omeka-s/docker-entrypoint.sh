@@ -90,6 +90,7 @@ jq -r '.[] | [.label, .version, .url, .namespaceUri, .prefix] | @tsv' /opt/vocab
           --namespace-uri "$namespaceUri" \
           --prefix "$prefix" \
           --label "$label - $version" \
+          --format=rdfxml \
           --base-path "$OMEKAS_BASE_PATH"
   done
 

@@ -22,8 +22,8 @@
   },
   {
     "label": "Schema.org",
-    "version": "latest",
-    "url": "https://schema.org/version/latest/schemaorg-current-https.rdf",
+    "version": "29.3",
+    "url": "https://raw.githubusercontent.com/schemaorg/schemaorg/refs/tags/v{version}-release/data/releases/{version}/schemaorg-current-https.rdf",
     "namespaceUri": "https://schema.org/",
     "prefix": "schema"
   }
