@@ -110,6 +110,11 @@
     "url": null
   },
   {
+    "name": "Mapping",
+    "version": "2.2.0",
+    "url": null
+  },
+  {
     "name": "Mirador",
     "version": "3.4.10",
     "url": "https://github.com/Daniel-KM/Omeka-S-module-Mirador/releases/download/{version}/Mirador-{version}.zip",
@@ -127,7 +132,7 @@
   },
   {
     "name": "NumericDataTypes",
-    "version": "1.13.0",
+    "version": "1.14.2",
     "url": null
   },
   {
