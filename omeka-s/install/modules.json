@@ -121,11 +121,6 @@
     "notes": "3.4.9: Plugins Annotations/OCRhelper not working. 3.4.10: OCRhelper works, Annotations broken (console TypeError in browser). 3.4.11: Mirador v4 incompatible with plugins Annotations and OCR Helper. Also, not possible to select v3 and v4 plugins in the site settings. Avoid this version"
   },
   {
-    "name": "ModelViewer",
-    "version": "3.3.0.7-132-fork-mc2",
-    "url": "https://gitlab.com/mcoonen/Omeka-S-module-ModelViewer/-/archive/{version}/Omeka-S-module-ModelViewer-{version}.zip"
-  },
-  {
     "name": "NdeTermennetwerk",
     "version": "1.4.0",
     "url": null
@@ -153,6 +148,11 @@
   {
     "name": "Statistics",
     "version": "3.4.11",
+    "url": null
+  },
+  {
+    "name": "ThreeDViewer",
+    "version": "v1.0.5",
     "url": null
   },
   {
