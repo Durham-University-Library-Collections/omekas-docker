@@ -3,29 +3,6 @@ SetEnv APPLICATION_ENV "production"
 
 RewriteEngine On
 
-# Rules to block bot traffic and redirect them to "HTTP 410 - Gone" page
-# Block requests to non-existent item-set
-RewriteRule ^s/[^/]+/item-set/15/?$ - [G,L]
-RewriteRule ^api/item_sets/15/?$ - [G,L]
-# Block requests to non-existing Solr pages
-RewriteCond %{REQUEST_URI} ^/s/[^/]+/solr-[^/?]+ [NC]
-RewriteRule ^ - [G,L]
-
-# Rule to rewrite all URLs of old sites to the new 'index' site created in July 2025.
-# Only process this rule if the site slug is not "index" or "observant" or "topstukken".
-RewriteCond %{REQUEST_URI} !^/s/(index|observant|topstukken)(/|$)
-RewriteRule ^s/([^/]+)(?:/(.*))?$ /s/index/$2 [R=301,L]
-
-# Redirect incoming ARK URLs to the forward proxy code
-RewriteCond %{REQUEST_URI} ark:/([0-9]{5})/([a-zA-Z0-9]+)$
-RewriteRule ^ark:/([0-9]{5})/([a-zA-Z0-9]+)$ helper/10-ark-fwd-proxy.php?ark=ark:/$1/$2 [PT,L]
-
-# Do not process any further rewrite rules when request URI is one of these:
-RewriteCond %{REQUEST_URI} helper/10-ark-fwd-proxy.php [OR]
-RewriteCond %{REQUEST_URI} helper/11-local-ark-site-resolver.php [OR]
-RewriteCond %{REQUEST_URI} ^s/*/ark:/([0-9]{5})/([a-zA-Z0-9]+)$
-RewriteRule .* - [L]
-
 # The following rule allows for download statistics in the statistics module. Please alter the protocol to your needs.
 RewriteRule ^files/original/(.*)$ http://%{HTTP_HOST}/download/files/original/$1 [NC,L]
 
