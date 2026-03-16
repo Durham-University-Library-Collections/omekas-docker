@@ -1,7 +1,7 @@
 [
   {
     "name": "Common",
-    "version": "3.4.74",
+    "version": "3.4.79",
     "url": null,
     "notes": "Needs to be installed first, because a lot of modules depend on it"
   },
