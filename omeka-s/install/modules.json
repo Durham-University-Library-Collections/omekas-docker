@@ -13,7 +13,7 @@
   },
   {
     "name": "AdvancedSearch",
-    "version": "3.4.53",
+    "version": "3.4.57",
     "url": null,
     "notes": "Avoid 3.4.54 and SearchSolr 3.5.61 because of bug https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/issues/18"
   },
