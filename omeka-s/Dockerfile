@@ -80,7 +80,9 @@ RUN apt-get update && \
     # for module ExtractText
     poppler-utils \
     # for Omeka S module NumericDataTypes
-    libicu-dev
+    libicu-dev \
+    # to allow Omeka S CLI to download modules from git repositories
+    git
 
 # Some modules require composer
 # In Docker it cannot be installed via apt because of unmet php dependencies
