@@ -19,7 +19,7 @@
   },
   {
     "name": "SearchSolr",
-    "version": "97e1cf22e7095e11b1c2107282ebdca39e5bf19b",
+    "version": "e9041d8201b3b4143f0d3f1f7141a1f0041e3722",
     "url": "gh:mephillips-durham/Omeka-S-module-SearchSolr#{version}",
     "notes": "Avoid 3.5.61, see AdvancedSearch notes"
   },
