@@ -31,8 +31,10 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - omeka:/var/www/html/volume
       - ./omeka-s/sideload:/data/sftp/omeka-sideload/
+      - ./externals/omekas-durham-theme:/var/www/html/themes/omekas-durham-theme
       - ./externals/omekas-theme-um:/var/www/html/themes/omekas-theme-um
       - ./externals/omekas-helpers:/var/www/html/helper
+      - ./externals/freedom:/var/www/html/themes/freedom
       - ./projects:/var/www/html/projects
     networks:
       default:
