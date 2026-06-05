@@ -9,7 +9,7 @@ services:
       # -- to 'omeka-preinstall' to build the image without installing modules
       # -- to 'omeka-runtime' to build image with Omeka fully installed
       # -- to 'omeka-debug' to build omeka-runtime with Xdebug enabled
-      target: omeka-preinstall
+      target: ${ENV_OMEKAS_TARGET:-omeka-runtime}
       args:
         - ENV_PHP_VERSION
         - ENV_OMEKAS_BASE_PATH
