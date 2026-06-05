@@ -38,7 +38,7 @@ services:
       - ./externals/omekas-theme-um:/var/www/html/themes/omekas-theme-um
       - ./externals/omekas-helpers:/var/www/html/helper
       - ./externals/freedom:/var/www/html/themes/freedom
-      - ./projects:/var/www/html/projects
+      - ./projects:/var/www/projects
     networks:
       default:
         aliases:
