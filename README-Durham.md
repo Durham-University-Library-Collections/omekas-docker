@@ -34,11 +34,9 @@ zip up the /var/www material, transfer that to libweb01 and use install-omeka.sh
 - Remove modules we do not need
 - Change the time zone (think it's Amsterdam)
 - Remove vocabularies we do not need
-- Work out how to fetch and install the Axeheads vocabulary
 - Remove Maastricht resource templates we do not need
-- Add the Axeheads resource tenplates
+- Work out how to fetch and install the Axeheads vocabulary
+- Add the Axeheads resource templates
 - Create a script to package up the files and script to transfer to libweb01
-- Create the databases
-- Deliver the database congiguration to the libweb01 server using Puppet
 - Create a script to unpack the files and install in /var/www/collections.durham.ac.uk
 - Consider any scripting for loading the Palaeostar data.
