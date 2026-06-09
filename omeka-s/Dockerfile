@@ -125,7 +125,7 @@ RUN a2enmod headers
 
 
 
-FROM os-builder AS omeka-runtime
+FROM os-builder AS omeka-base
 
 # Copy compiled extensions and ini files from the php-builder stage
 COPY --from=php-builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
@@ -181,15 +181,19 @@ COPY .htaccess ${ENV_OMEKAS_BASE_PATH}/.htaccess
 COPY init-arkandnoid-db.tar.gz /tmp/
 COPY install/vocabularies.json /opt/vocabularies.json
 COPY install/resource-templates.json /opt/resource-templates.json
-COPY docker-entrypoint.sh /
 
 # Expose ports to Docker network
 # Port 9000 remains exposed by the upstream image, but is not used here as we're connecting to PHP-FPM over an unix socket instead of TCP/IP
 EXPOSE 80
 
+FROM omeka-base AS omeka-runtime
+COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-
+FROM omeka-base AS omeka-preinstall
+COPY docker-preinstall-entrypoint.sh /
+COPY install-omekas.sh /
+ENTRYPOINT ["/docker-preinstall-entrypoint.sh"]
 
 FROM omeka-runtime AS omeka-debug
 # Copy compiled extensions and ini files from the php-debug stage
