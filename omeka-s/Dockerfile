@@ -193,6 +193,7 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 FROM omeka-base AS omeka-preinstall
 COPY docker-preinstall-entrypoint.sh /
 COPY install-omekas.sh /
+COPY pack.sh /
 ENTRYPOINT ["/docker-preinstall-entrypoint.sh"]
 
 FROM omeka-runtime AS omeka-debug
