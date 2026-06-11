@@ -1,6 +1,12 @@
 #!/bin/bash
 
-OSC="omeka-s-cli"
+if [[ "$ENV_OMEKAS_ENV" = "prod" ]]; then
+    OSC="/home/fake/httpd/omeka-install/omeka-s-cli"
+    OPT="/home/fake/httpd/omeka-install/opt"
+else
+    OSC="omeka-s-cli"
+    OPT="/opt"
+fi
 
 # -----------------------------------------------------
 # Omeka operations that need to happen during runtime
@@ -23,7 +29,7 @@ OSC="omeka-s-cli"
     fi
 
 # Install all modules defined in modules.json
-jq -r '.[].name' /opt/modules.json | \
+jq -r '.[].name' $OPT/modules.json | \
     while read -r name; do
         $OSC module:install "${name}" --base-path ${OMEKAS_BASE_PATH}
     done
@@ -36,7 +42,7 @@ jq -r '.[].name' /opt/modules.json | \
 
 # Download and import vocabularies defined in vocabularies.json
 # This will not work on libweb server: will need to download first.
-jq -r '.[] | [.label, .version, .url, .namespaceUri, .prefix] | @tsv' /opt/vocabularies.json | \
+jq -r '.[] | [.label, .version, .url, .namespaceUri, .prefix] | @tsv' $OPT/vocabularies.json | \
   while IFS=$'\t' read -r label version url namespaceUri prefix; do
       resolved_url=$(echo "$url" | sed "s/{version}/${version}/g")
       $OSC vocabulary:import \
@@ -54,7 +60,7 @@ jq -r '.[] | [.label, .version, .url, .namespaceUri, .prefix] | @tsv' /opt/vocab
 # Download and import resource templates defined in resource-templates.json
 # This will not work on libweb server: will need to download first.
 mkdir -p /tmp/resource-templates/
-jq -r '.[] | [.name, .version, .url] | @tsv' /opt/resource-templates.json | \
+jq -r '.[] | [.name, .version, .url] | @tsv' $OPT/resource-templates.json | \
     while IFS=$'\t' read -r name version url; do
         resolved_url=$(echo "$url" | sed "s/{version}/${version}/g" | sed "s/{name}/${name}/g")
         curl -L ${resolved_url} --output /tmp/resource-templates/${name}.json
