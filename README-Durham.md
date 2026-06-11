@@ -4,7 +4,11 @@ build this via Docker:
 ```
 git clone -b durham-base-config git@github.com:Durham-University-Library-Collections/omekas-docker.git
 cd omekas-docker
-docker compose -p preinstall up -d
+docker compose up -d
+```
+Optionally you can add the `-p` flag and a project name if you need to maintain several sets of images:
+```
+docker compose -p project_name up -d
 ```
 
 At Durham, the basic server set-up with Apache, PHP, etc. will be provisioned by Puppet. As the web servers have very restricted access to external
@@ -28,15 +32,13 @@ cd /
 
 The idea is that the `install-omekas.sh` script will be transferred to libweb01 by Jenkins, along with the assembled software, and then executed to
 effect the installation, or upgrade an existing installation after we have gone live. In the meantime, we can build the Docker target omeka-preinstall,
-zip up the /var/www material, transfer that to libweb01 and use install-omeka.sh there to perform the installation.
+zip up the /var/www material, transfer that to libweb01 and use install-omekas.sh there to perform the installation.
 
 ## Tasks still to do:
 - Remove modules we do not need
 - Change the time zone (think it's Amsterdam)
-- Remove vocabularies we do not need
-- Remove Maastricht resource templates we do not need
 - Work out how to fetch and install the Axeheads vocabulary
 - Add the Axeheads resource templates
-- Create a script to package up the files and script to transfer to libweb01
+- Create a script to package up the files and script to transfer to libweb01 (in progress)
 - Create a script to unpack the files and install in /var/www/collections.durham.ac.uk
 - Consider any scripting for loading the Palaeostar data.
