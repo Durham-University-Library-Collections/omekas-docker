@@ -6,7 +6,7 @@ TARFILE=/var/www/omeka.tar
 
 # Add the Omeka application and any project files
 cd /var/www
-tar --exclude=html/volume --exclude=html/helper --exclude=html/logs --exclude=html/files --exclude html/config --exclude projects/omeka.tar -cvf $TARFILE html projects
+tar --exclude=html/volume --exclude=html/helper --exclude=html/logs --exclude=html/files --exclude=html/config --exclude=projects/omeka.tar --exclude=.git -cvf $TARFILE html projects
 tar -rvf $TARFILE html/config/local.config.php
 
 # Add the Omeka S CLI
