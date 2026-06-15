@@ -31,14 +31,28 @@ cd /
 ```
 
 The idea is that the `install-omekas.sh` script will be transferred to libweb01 by Jenkins, along with the assembled software, and then executed to
-effect the installation, or upgrade an existing installation after we have gone live. In the meantime, we can build the Docker target omeka-preinstall,
-zip up the /var/www material, transfer that to libweb01 and use install-omekas.sh there to perform the installation.
+effect the installation, or upgrade an existing installation after we have gone live.
+
+In the meantime, we can build the Docker target omeka-preinstall, and use the pack.sh script to create a tar file of all the material to transfer that to libweb01, to use install-omekas.sh there to perform the installation. For example:
+```
+git clone -b durham-base-config git@github.com:Durham-University-Library-Collections/omekas-docker.git
+cd omekas-docker
+ENV_OMEKAS_TARGET=omeka-preinstall docker compose -p preinstall up -d
+docker exec -it omekas bash
+cd /
+./pack.sh
+exit
+cd projects
+scp omeka.tar yourusername@libweb01-test.int.dur.ac.uk:/tmp/omeka.tar
+ssh yourusername@libweb01-test.int.dur.ac.uk
+sudo -iu httpd
+omeka-install/unpack.sh
+```
+The above depends on /var/www/test.collections.durham.ac.uk/config/database.ini being present and correct, and an empty database (with no tables) having been created.
 
 ## Tasks still to do:
+Not sure all need doing in this code, though, particularly the Palaeostar items.
 - Remove modules we do not need
-- Change the time zone (think it's Amsterdam)
 - Work out how to fetch and install the Axeheads vocabulary
 - Add the Axeheads resource templates
-- Create a script to package up the files and script to transfer to libweb01 (in progress)
-- Create a script to unpack the files and install in /var/www/collections.durham.ac.uk
 - Consider any scripting for loading the Palaeostar data.
