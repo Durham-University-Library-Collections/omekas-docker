@@ -35,8 +35,13 @@ effect the installation, or upgrade an existing installation after we have gone 
 
 In the meantime, we can build the Docker target omeka-preinstall, and use the pack.sh script to create a tar file of all the material to transfer that to libweb01, to use install-omekas.sh there to perform the installation. For example:
 ```
+# Clone docker setup
 git clone -b durham-base-config git@github.com:Durham-University-Library-Collections/omekas-docker.git
-cd omekas-docker
+# Install theme
+cd omekas-docker/externals
+git clone -b change-to-palaeostar git@github.com:Durham-University-Library-Collections/omekas-durham-theme.git
+cd ..
+# build docker containers
 ENV_OMEKAS_TARGET=omeka-preinstall docker compose -p preinstall up -d
 docker exec -it omekas bash
 cd /
