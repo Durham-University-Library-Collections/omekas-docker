@@ -69,6 +69,11 @@
     "url": null
   },
   {
+    "name": "DataTypeRdf",
+    "version": "3.4.16",
+    "url": null
+  },
+  {
     "name": "EasyAdmin",
     "version": "3.4.37",
     "url": null
