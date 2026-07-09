@@ -49,6 +49,11 @@
     "url": null
   },
   {
+    "name": "BotChallenge",
+    "version": "3.4.1",
+    "url": null
+  },
+  {
     "name": "BulkExport",
     "version": "3.4.37",
     "url": null
