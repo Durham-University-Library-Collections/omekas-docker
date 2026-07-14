@@ -1,13 +1,13 @@
 [
   {
     "name": "Common",
-    "version": "3.4.81",
+    "version": "3.4.87",
     "url": null,
     "notes": "Needs to be installed first, because a lot of modules depend on it"
   },
   {
     "name": "Log",
-    "version": "3.4.33",
+    "version": "3.4.38",
     "url": null,
     "notes": "Needs to be installed second, because a lot of modules depend on it"
   },
@@ -39,23 +39,13 @@
     "url": null
   },
   {
-    "name": "BlocksDisposition",
-    "version": "3.4.5",
-    "url": null
-  },
-  {
-    "name": "BulkEdit",
-    "version": "3.4.37",
-    "url": null
-  },
-  {
     "name": "BotChallenge",
     "version": "3.4.1",
     "url": null
   },
   {
     "name": "BulkExport",
-    "version": "3.4.37",
+    "version": "3.4.40",
     "url": null
   },
   {
@@ -69,28 +59,13 @@
     "url": null
   },
   {
-    "name": "CustomVocab",
-    "version": "2.0.2",
-    "url": null
-  },
-  {
     "name": "DataTypeRdf",
     "version": "3.4.16",
     "url": null
   },
   {
-    "name": "EasyAdmin",
-    "version": "3.4.37",
-    "url": null
-  },
-  {
     "name": "EUCookieBar",
     "version": "3.4.5",
-    "url": null
-  },
-  {
-    "name": "ExtractText",
-    "version": "2.1.0",
     "url": null
   },
   {
@@ -122,11 +97,6 @@
     "name": "NumericDataTypes",
     "version": "1.14.2",
     "url": null
-  },
-  {
-    "name": "PdfViewer",
-    "version": "3.4.4",
-    "url": "https://github.com/Daniel-KM/Omeka-S-module-PdfViewer/archive/refs/tags/{version}.zip"
   },
   {
     "name": "ResourceMeta",
