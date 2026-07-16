@@ -114,6 +114,12 @@
     "url": null
   },
   {
+    "name": "Transcript",
+    "version": "fd7202cdcd56678398bf6025883921033915057c",
+    "url": "gh:arepr/omeka-s-module-transcript#{version}",
+    "notes": "Requires PHP 8.2+"
+  },
+  {
     "name": "ValueSuggest",
     "version": "1.19.0",
     "url": null
