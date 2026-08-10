@@ -1,7 +1,7 @@
 [
   {
     "name": "Common",
-    "version": "3.4.87",
+    "version": "3.4.88",
     "url": null,
     "notes": "Needs to be installed first, because a lot of modules depend on it"
   },
@@ -19,9 +19,19 @@
   },
   {
     "name": "SearchSolr",
-    "version": "e9041d8201b3b4143f0d3f1f7141a1f0041e3722",
+    "version": "a6543f89dcad29290b337563f95178b74b8a7805",
     "url": "gh:mephillips-durham/Omeka-S-module-SearchSolr#{version}",
     "notes": "Avoid 3.5.61, see AdvancedSearch notes"
+  },
+  {
+    "name": "Access",
+    "version": "3.4.46",
+    "url": null
+  },
+  {
+    "name": "Analytics",
+    "version": "3.4.15",
+    "url": null
   },
   {
     "name": "ArchiveRepertory",
@@ -84,13 +94,13 @@
     "url": null
   },
   {
-    "name": "MetadataBrowse",
-    "version": "1.6.1",
+    "name": "Mapping",
+    "version": "2.2.0",
     "url": null
   },
   {
-    "name": "Mapping",
-    "version": "2.2.0",
+    "name": "MetadataBrowse",
+    "version": "1.6.1",
     "url": null
   },
   {
@@ -112,12 +122,6 @@
     "name": "ThreeDViewer",
     "version": "v1.0.5",
     "url": null
-  },
-  {
-    "name": "Transcript",
-    "version": "fd7202cdcd56678398bf6025883921033915057c",
-    "url": "gh:arepr/omeka-s-module-transcript#{version}",
-    "notes": "Requires PHP 8.2+"
   },
   {
     "name": "ValueSuggest",
