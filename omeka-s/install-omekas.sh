@@ -31,6 +31,7 @@ fi
 # Install all modules defined in modules.json
 jq -r '.[].name' $OPT/modules.json | \
     while read -r name; do
+        $OSC module:upgrade "${name}" --base-path ${OMEKAS_BASE_PATH}
         $OSC module:install "${name}" --base-path ${OMEKAS_BASE_PATH}
     done
 
