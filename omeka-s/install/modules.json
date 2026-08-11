@@ -7,13 +7,13 @@
   },
   {
     "name": "Log",
-    "version": "3.4.38",
+    "version": "3.4.39",
     "url": null,
     "notes": "Needs to be installed second, because a lot of modules depend on it"
   },
   {
     "name": "AdvancedSearch",
-    "version": "3.4.58",
+    "version": "3.4.62",
     "url": null,
     "notes": "Avoid 3.4.54 and SearchSolr 3.5.61 because of bug https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/issues/18"
   },
@@ -45,12 +45,7 @@
   },
   {
     "name": "BlockPlus",
-    "version": "3.4.42",
-    "url": null
-  },
-  {
-    "name": "BotChallenge",
-    "version": "3.4.1",
+    "version": "3.4.45",
     "url": null
   },
   {
@@ -70,7 +65,7 @@
   },
   {
     "name": "DataTypeRdf",
-    "version": "3.4.16",
+    "version": "3.4.17",
     "url": null
   },
   {
@@ -105,7 +100,7 @@
   },
   {
     "name": "NumericDataTypes",
-    "version": "1.14.2",
+    "version": "1.14.3",
     "url": null
   },
   {
