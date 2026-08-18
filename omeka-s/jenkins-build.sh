@@ -50,6 +50,6 @@ jq -r '.[] | "\(.name) \(.version) \(if .url == null then "null" else .url end)"
 
 # Install our own themes and modules from source control
 # May need authentication token
-./omeka-s-cli module:download "gh:Durham-University-Library-Collections/omeka-s-HandAxeBlocks"
+../omeka-s-cli module:download "gh:Durham-University-Library-Collections/omeka-s-HandAxeBlocks"
 
-./omeka-s-cli theme:download "gh:Durham-University-Library-Collections/omekas-durham-theme"
+../omeka-s-cli theme:download "gh:Durham-University-Library-Collections/omekas-durham-theme"
