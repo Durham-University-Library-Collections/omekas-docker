@@ -40,10 +40,13 @@ cd $ENV_OMEKAS_BASE_PATH
 # When url is set, the {version} placeholder is replaced and the full URL is passed to omeka-s-cli.
 jq -r '.[] | "\(.name) \(.version) \(if .url == null then "null" else .url end)"' ../install/modules.json | \
     while read -r name version url; do \
+	    echo "Module: ${name}"; \
+	    echo "Version: ${version}"; \
         if [ "$url" = "null" ]; then \
             ../omeka-s-cli module:download "${name}:${version}"; \
         else \
             resolved_url=$(echo "$url" | sed "s/{version}/${version}/g"); \
+			echo "URL: ${resolved_url}"; \
             ../omeka-s-cli module:download "${resolved_url}"; \
         fi; \
     done
