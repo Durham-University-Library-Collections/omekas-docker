@@ -57,7 +57,7 @@ for filename in * ; do
     if [[ ! -d "$SOURCE/build/modules/$filename" ]]; then
 	cp -r "$DEST/modules/$filename" "$BACKUP/modules/"
 	checkStatus $? "Failed to back up module $filename"
-        echo "$OSC module:disable $filename --base-path=$DEST"
+        $OSC module:disable $filename --base-path="$DEST"
 	checkStatus $? "Failed to disable module $filename"
     fi
 done
@@ -68,14 +68,14 @@ jq -r '.[].name' $OPT/modules.json | \
 	if [[ -d "$DEST/modules/$name" ]]; then
 	    cp -r "$DEST/modules/$name" "$BACKUP/modules/"
 	    checkStatus $? "Failed to back up module $name"
-	    echo "cp -r $SOURCE/build/modules/$name $DEST/modules/"
+	    cp -r "$SOURCE/build/modules/$name" "$DEST/modules/"
 	    checkStatus $? "Failed to merge module $name"
-	    echo "$OSC module:upgrade \"${name}\" --base-path $DEST"
+	    $OSC module:upgrade "${name}" --base-path="$DEST"
 	    checkStatus $? "Failed to upgrade module $name"
 	else
 	    cp -r "$SOURCE/build/modules/$name" "$DEST/modules/"
 	    checkStatus $? "Failed to deploy module $name"
-	    echo "$OSC module:install \"${name}\" --base-path $DEST"
+	    $OSC module:install "${name}" --base-path="$DEST"
 	    checkStatus $? "Failed to install module $name"
 	fi
     done
@@ -85,10 +85,10 @@ cd $SOURCE/build/
 for filename in * .[^.]* ; do
     if [[ ! "$filename" =~ ^(config|files|logs|modules)$ ]]; then
 	if [[ -e "$DEST/$filename" ]]; then
-            echo "mv $DEST/$filename $BACKUP/$filename"
+            mv "$DEST/$filename" "$BACKUP/$filename"
 	    checkStatus $? "Failed to back up $filename"
 	fi
-        echo "mv $SOURCE/build/$filename $DEST/$filename"
+        mv "$SOURCE/build/$filename" "$DEST/$filename"
 	checkStatus $? "Failed to deploy $filename"
     fi
 done
