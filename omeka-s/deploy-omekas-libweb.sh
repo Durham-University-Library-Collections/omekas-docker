@@ -55,7 +55,7 @@ for filename in * ; do
         continue
     fi
     if [[ ! -d "$SOURCE/build/modules/$filename" ]]; then
-	echo "cp -r $DEST/modules/$filename $BACKUP/modules/"
+	cp -r "$DEST/modules/$filename" "$BACKUP/modules/"
 	checkStatus $? "Failed to back up module $filename"
         echo "$OSC module:disable $filename --base-path=$DEST"
 	checkStatus $? "Failed to disable module $filename"
@@ -66,14 +66,14 @@ done
 jq -r '.[].name' $OPT/modules.json | \
     while read -r name; do
 	if [[ -d "$DEST/modules/$name" ]]; then
-	    echo "cp -r $DEST/modules/$name $BACKUP/modules/"
+	    cp -r "$DEST/modules/$name" "$BACKUP/modules/"
 	    checkStatus $? "Failed to back up module $name"
 	    echo "cp -r $SOURCE/build/modules/$name $DEST/modules/"
 	    checkStatus $? "Failed to merge module $name"
 	    echo "$OSC module:upgrade \"${name}\" --base-path $DEST"
 	    checkStatus $? "Failed to upgrade module $name"
 	else
-	    echo "cp -r $SOURCE/build/modules/$name $DEST/modules/"
+	    cp -r "$SOURCE/build/modules/$name" "$DEST/modules/"
 	    checkStatus $? "Failed to deploy module $name"
 	    echo "$OSC module:install \"${name}\" --base-path $DEST"
 	    checkStatus $? "Failed to install module $name"
