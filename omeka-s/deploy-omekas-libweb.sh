@@ -68,21 +68,27 @@ jq -r '.[].name' $OPT/modules.json | \
 	if [[ -d "$DEST/modules/$name" ]]; then
 	    cp -r "$DEST/modules/$name" "$BACKUP/modules/"
 	    checkStatus $? "Failed to back up module $name"
-	    cp -r "$SOURCE/build/modules/$name" "$DEST/modules/"
+	    cp -rf "$SOURCE/build/modules/$name" "$DEST/modules/"
 	    checkStatus $? "Failed to merge module $name"
 	    $OSC module:upgrade "${name}" --base-path="$DEST"
 	    checkStatus $? "Failed to upgrade module $name"
 	else
-	    cp -r "$SOURCE/build/modules/$name" "$DEST/modules/"
+	    cp -rf "$SOURCE/build/modules/$name" "$DEST/modules/"
 	    checkStatus $? "Failed to deploy module $name"
 	    $OSC module:install "${name}" --base-path="$DEST"
 	    checkStatus $? "Failed to install module $name"
 	fi
     done
 
+# Set globbing behaviour
+is_nullglob=$( shopt -s | egrep -i '.*nullglob' )
+is_dotglob=$( shopt -s | egrep -i '.*dotglob' )
+shopt -s nullglob
+shopt -s dotglob
+
 # Work through the rest of the build, backing up and installing
 cd $SOURCE/build/
-for filename in * .[^.]* ; do
+for filename in *; do
     if [[ ! "$filename" =~ ^(config|files|logs|modules)$ ]]; then
 	if [[ -e "$DEST/$filename" ]]; then
             mv "$DEST/$filename" "$BACKUP/$filename"
@@ -92,5 +98,9 @@ for filename in * .[^.]* ; do
 	checkStatus $? "Failed to deploy $filename"
     fi
 done
+
+# Restore previous settings
+[[ $is_nullglob ]] || shopt -u nullglob
+[[ $is_dotglob ]] || shopt -u dotglob
 
 echo "Deployment script completed."
