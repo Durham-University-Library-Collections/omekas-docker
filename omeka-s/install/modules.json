@@ -69,6 +69,11 @@
     "url": null
   },
   {
+    "name": "DomainManager",
+    "version": "b3bf52f46ecc74366d177fd156220cb9d3df1a80",
+    "url": "gh:Daniel-KM/Omeka-S-module-DomainManager#{version}"
+  },
+  {
     "name": "EUCookieBar",
     "version": "3.4.5",
     "url": null
