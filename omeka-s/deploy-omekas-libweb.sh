@@ -46,6 +46,7 @@ OPT="$SOURCE/install"
 # -----------------------------------------------------
 
 mkdir -p "$BACKUP/modules"
+mkdir -p "$DEST/modules"
 
 # Work through the current modules and disable any which have been removed
 cd $DEST/modules/
