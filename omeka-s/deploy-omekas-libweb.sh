@@ -45,8 +45,60 @@ OPT="$SOURCE/install"
 # Omeka operations that need to happen during runtime
 # -----------------------------------------------------
 
+# -----------------------------------------------------
+# Copy files into location
+# -----------------------------------------------------
+
+# Set globbing behaviour
+is_nullglob=$( shopt -s | egrep -i '.*nullglob' )
+is_dotglob=$( shopt -s | egrep -i '.*dotglob' )
+shopt -s nullglob
+shopt -s dotglob
+
+# Work through the rest of the build, backing up and installing
+cd $SOURCE/build/
+for filename in *; do
+    if [[ ! "$filename" =~ ^(config|files|logs|modules)$ ]]; then
+	if [[ -e "$DEST/$filename" ]]; then
+            mv "$DEST/$filename" "$BACKUP/$filename"
+	    checkStatus $? "Failed to back up $filename"
+	fi
+        mv "$SOURCE/build/$filename" "$DEST/$filename"
+	checkStatus $? "Failed to deploy $filename"
+    fi
+done
+
+# Restore previous settings
+[[ $is_nullglob ]] || shopt -u nullglob
+[[ $is_dotglob ]] || shopt -u dotglob
+
+# -----------------------------------------------------
+# Install Omeka S core if not already installed
+# -----------------------------------------------------
+
+if $OSC core:status --base-path ${DEST} | grep -q "^installed"; then
+    echo "Omeka S core is already installed. Skipping installation."
+else
+    # install core
+    echo "Installing Omeka S core ..."
+    source /var/www/settings/omeka
+    $OSC core:install \
+	 --admin-name "${OMEKAS_ADMIN_NAME:-admin}" \
+         --admin-email "${OMEKAS_ADMIN_EMAIL:-admin@example.com}" \
+         --admin-password "${OMEKAS_ADMIN_PASSWORD:-admin}" \
+         --title "${OMEKAS_TITLE:-Omeka S}" \
+         --time-zone "${OMEKAS_TIME_ZONE:-UTC}" \
+         --locale "${OMEKAS_LOCALE:-en_US}" \
+         --base-path ${DEST}
+    checkStatus $? "Failed to install Omeka S core"
+fi
+
 mkdir -p "$BACKUP/modules"
-mkdir -p "$DEST/modules"
+mkdir -p "$DEST/modules/"
+
+# -----------------------------------------------------
+# Install, upgrade or disable modules
+# -----------------------------------------------------
 
 # Work through the current modules and disable any which have been removed
 cd $DEST/modules/
@@ -81,27 +133,8 @@ jq -r '.[].name' $OPT/modules.json | \
 	fi
     done
 
-# Set globbing behaviour
-is_nullglob=$( shopt -s | egrep -i '.*nullglob' )
-is_dotglob=$( shopt -s | egrep -i '.*dotglob' )
-shopt -s nullglob
-shopt -s dotglob
-
-# Work through the rest of the build, backing up and installing
-cd $SOURCE/build/
-for filename in *; do
-    if [[ ! "$filename" =~ ^(config|files|logs|modules)$ ]]; then
-	if [[ -e "$DEST/$filename" ]]; then
-            mv "$DEST/$filename" "$BACKUP/$filename"
-	    checkStatus $? "Failed to back up $filename"
-	fi
-        mv "$SOURCE/build/$filename" "$DEST/$filename"
-	checkStatus $? "Failed to deploy $filename"
-    fi
-done
-
-# Restore previous settings
-[[ $is_nullglob ]] || shopt -u nullglob
-[[ $is_dotglob ]] || shopt -u dotglob
+# -----------------------------------------------------
+# Finished
+# -----------------------------------------------------
 
 echo "Deployment script completed."
