@@ -7,6 +7,18 @@ function checkStatus {
     fi
 }
 
+function dbConfig {
+    if [[ ! -f "${DEST}/config/database.ini" ]]; then
+	echo "Could not find database.ini in ${DEST}/config"
+	exit 1
+    fi
+
+    match=$(grep "^$1" $DEST/config/database.ini)
+    if [[ "$match" =~ \"(.*)\" ]]; then
+	echo "${BASH_REMATCH[1]}"
+    fi
+}
+
 # Check parameters provided                                                     
 if [ $# -ne 3 ]
 then
@@ -76,10 +88,19 @@ done
 # Install Omeka S core if not already installed
 # -----------------------------------------------------
 
+mkdir -p "$DEST/modules/"
+
 if $OSC core:status --base-path ${DEST} | grep -q "^installed"; then
     echo "Omeka S core is already installed. Skipping installation."
 else
     # install core
+    echo "Ensuring database exists..."
+    user=$(dbConfig user)
+    password=$(dbConfig password)
+    dbname=$(dbConfig dbname)
+    host=$(dbConfig host)
+    MYSQL_PWD="${password}" mysql -u ${user} -h ${host} -e "CREATE DATABASE IF NOT EXISTS ${dbname} CHARACTER SET = 'utf8mb4' COLLATE = 'utf8mb4_unicode_520_ci'"
+
     echo "Installing Omeka S core ..."
     source /var/www/settings/omeka
     $OSC core:install \
@@ -93,12 +114,11 @@ else
     checkStatus $? "Failed to install Omeka S core"
 fi
 
-mkdir -p "$BACKUP/modules"
-mkdir -p "$DEST/modules/"
-
 # -----------------------------------------------------
 # Install, upgrade or disable modules
 # -----------------------------------------------------
+
+mkdir -p "$BACKUP/modules"
 
 # Work through the current modules and disable any which have been removed
 cd $DEST/modules/
