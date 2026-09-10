@@ -80,6 +80,18 @@ for filename in *; do
     fi
 done
 
+# For config, files and logs only copy what does not already exist
+for dir in *; do
+    if [[ "$dir" =~ ^(config|files|logs)$ ]]; then
+	for filename in $dir/*; do
+	    if [[ ! -e "$DEST/$filename" ]]; then
+		mv "$SOURCE/build/$filename" "$DEST/$filename"
+		checkStatus $? "Failed to deploy $filename"
+	    fi
+	done
+    fi
+done
+
 # Restore previous settings
 [[ $is_nullglob ]] || shopt -u nullglob
 [[ $is_dotglob ]] || shopt -u dotglob
