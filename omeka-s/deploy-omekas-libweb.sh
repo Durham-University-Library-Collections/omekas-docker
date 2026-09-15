@@ -25,12 +25,12 @@ function deployModule {
 	checkStatus $? "Failed to back up module $1"
 	cp -rf "$SOURCE/build/modules/$1" "$DEST/modules/"
 	checkStatus $? "Failed to merge module $1"
-	$OSC module:upgrade "${name}" --base-path="$DEST"
+	$OSC module:upgrade "$1" --base-path="$DEST"
 	checkStatus $? "Failed to upgrade module $1"
     else
 	cp -rf "$SOURCE/build/modules/$1" "$DEST/modules/"
 	checkStatus $? "Failed to deploy module $1"
-	$OSC module:install "${name}" --base-path="$DEST"
+	$OSC module:install "$1" --base-path="$DEST"
 	checkStatus $? "Failed to install module $1"
     fi
 }
