@@ -19,6 +19,22 @@ function dbConfig {
     fi
 }
 
+function deployModule {
+    if [[ -d "$DEST/modules/$1" ]]; then
+	cp -r "$DEST/modules/$1" "$BACKUP/modules/"
+	checkStatus $? "Failed to back up module $1"
+	cp -rf "$SOURCE/build/modules/$1" "$DEST/modules/"
+	checkStatus $? "Failed to merge module $1"
+	$OSC module:upgrade "${name}" --base-path="$DEST"
+	checkStatus $? "Failed to upgrade module $1"
+    else
+	cp -rf "$SOURCE/build/modules/$1" "$DEST/modules/"
+	checkStatus $? "Failed to deploy module $1"
+	$OSC module:install "${name}" --base-path="$DEST"
+	checkStatus $? "Failed to install module $1"
+    fi
+}
+
 # Check parameters provided                                                     
 if [ $# -ne 3 ]
 then
@@ -150,20 +166,11 @@ done
 # Install or upgrade all modules defined in modules.json
 jq -r '.[].name' $OPT/modules.json | \
     while read -r name; do
-	if [[ -d "$DEST/modules/$name" ]]; then
-	    cp -r "$DEST/modules/$name" "$BACKUP/modules/"
-	    checkStatus $? "Failed to back up module $name"
-	    cp -rf "$SOURCE/build/modules/$name" "$DEST/modules/"
-	    checkStatus $? "Failed to merge module $name"
-	    $OSC module:upgrade "${name}" --base-path="$DEST"
-	    checkStatus $? "Failed to upgrade module $name"
-	else
-	    cp -rf "$SOURCE/build/modules/$name" "$DEST/modules/"
-	    checkStatus $? "Failed to deploy module $name"
-	    $OSC module:install "${name}" --base-path="$DEST"
-	    checkStatus $? "Failed to install module $name"
-	fi
+	deployModule $name
     done
+
+# Install or upgrade our own modules
+deployModule HandAxeBlocks
 
 # -----------------------------------------------------
 # Finished
