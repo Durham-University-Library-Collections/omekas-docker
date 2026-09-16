@@ -158,15 +158,50 @@ for filename in * ; do
     if [[ ! -d "$SOURCE/build/modules/$filename" ]]; then
 	cp -r "$DEST/modules/$filename" "$BACKUP/modules/"
 	checkStatus $? "Failed to back up module $filename"
-        $OSC module:disable $filename --base-path="$DEST"
-	checkStatus $? "Failed to disable module $filename"
+        result=$($OSC module:disable $filename --base-path="$DEST" 2>&1)
+	if [[ "$result" =~ 'is marked as "not_installed" and cannot be deactivated' ]]; then
+	    echo "$filename already uninstalled"
+	elif [[ "$result" =~ 'is already disabled' ]]; then
+	    echo $result
+	else
+	    echo $result
+	    exit 1
+	fi
     fi
 done
 
 # Install or upgrade all modules defined in modules.json
+
+# First tackle upgrades by backing up and copying in new files
 jq -r '.[].name' $OPT/modules.json | \
     while read -r name; do
-	deployModule $name
+	if [[ -d "$DEST/modules/$name" ]]; then
+	    cp -r "$DEST/modules/$name" "$BACKUP/modules/"
+	    checkStatus $? "Failed to back up module $name"
+	    cp -rf "$SOURCE/build/modules/$name" "$DEST/modules/"
+	    checkStatus $? "Failed to merge module $name"
+	fi
+    done
+
+# We postpone the actual upgrade until all new files are in place: needed
+# for some dependencies like AdvancedSearch and SearchSolr
+jq -r '.[].name' $OPT/modules.json | \
+    while read -r name; do
+	if [[ -d "$DEST/modules/$name" ]]; then
+	    $OSC module:upgrade "$name" --base-path="$DEST"
+	    checkStatus $? "Failed to upgrade module $name"
+	fi
+    done
+
+# Then install any new modules
+jq -r '.[].name' $OPT/modules.json | \
+    while read -r name; do
+	if [[ ! -d "$DEST/modules/$name" ]]; then
+	    cp -rf "$SOURCE/build/modules/$name" "$DEST/modules/"
+	    checkStatus $? "Failed to deploy module $name"
+	    $OSC module:install "$name" --base-path="$DEST"
+	    checkStatus $? "Failed to install module $name"
+	fi
     done
 
 # Install or upgrade our own modules
