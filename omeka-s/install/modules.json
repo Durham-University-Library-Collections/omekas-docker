@@ -46,7 +46,7 @@
   {
     "name": "BulkExport",
     "version": "9a6b78a112a5ef850dbb1059f589a62e5820c824",
-    "url": 'gh:Durham-University-Library-Collections/Omeka-S-module-BulkExport#{version}",
+    "url": "gh:Durham-University-Library-Collections/Omeka-S-module-BulkExport#{version}",
     "notes": "Fork to handle export of metadata from attached media"
   },
   {
