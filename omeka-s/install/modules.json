@@ -1,31 +1,31 @@
 [
   {
     "name": "Common",
-    "version": "3.4.88",
+    "version": "3.4.91",
     "url": null,
     "notes": "Needs to be installed first, because a lot of modules depend on it"
   },
   {
     "name": "Log",
-    "version": "3.4.39",
+    "version": "3.4.40",
     "url": null,
     "notes": "Needs to be installed second, because a lot of modules depend on it"
   },
   {
     "name": "AdvancedSearch",
-    "version": "3.4.62",
+    "version": "3.4.64",
     "url": null,
     "notes": "Avoid 3.4.54 and SearchSolr 3.5.61 because of bug https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/issues/18"
   },
   {
     "name": "SearchSolr",
-    "version": "a6543f89dcad29290b337563f95178b74b8a7805",
-    "url": "gh:mephillips-durham/Omeka-S-module-SearchSolr#{version}",
+    "version": "3.5.72",
+    "url": null,
     "notes": "Avoid 3.5.61, see AdvancedSearch notes"
   },
   {
     "name": "Access",
-    "version": "3.4.46",
+    "version": "3.4.47",
     "url": null
   },
   {
@@ -35,7 +35,7 @@
   },
   {
     "name": "ArchiveRepertory",
-    "version": "3.15.17",
+    "version": "3.15.18",
     "url": null
   },
   {
@@ -45,8 +45,9 @@
   },
   {
     "name": "BulkExport",
-    "version": "3.4.40",
-    "url": null
+    "version": "9a6b78a112a5ef850dbb1059f589a62e5820c824",
+    "url": "gh:Durham-University-Library-Collections/Omeka-S-module-BulkExport#{version}",
+    "notes": "Fork to handle export of metadata from attached media"
   },
   {
     "name": "CreateMissingThumbnails",
@@ -60,7 +61,7 @@
   },
   {
     "name": "DataTypeRdf",
-    "version": "3.4.17",
+    "version": "3.4.18",
     "url": null
   },
   {
@@ -70,7 +71,7 @@
   },
   {
     "name": "EUCookieBar",
-    "version": "3.4.5",
+    "version": "3.4.6",
     "url": null
   },
   {
