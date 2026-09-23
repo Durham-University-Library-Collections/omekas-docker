@@ -58,8 +58,9 @@ jq -r '.[] | "\(.name) \(.version) \(if .url == null then "null" else .url end)"
 
 # Copy into 'build' the htaccess file
 if [[ "${ENV_OMEKAS_ENV}" = "testing" ]]; then
-    echo "SetEnv APPLICATION_ENV \"development\"\n\n" > .htaccesstest
+    echo "SetEnv APPLICATION_ENV \"development\"" > .htaccess
 else
-    echo "SetEnv APPLICATION_ENV \"production\"\n\n" > .htaccesstest
+    echo "SetEnv APPLICATION_ENV \"production\"" > .htaccess
 fi
-cat ../server-htaccess >> .htaccesstest
+echo "" >> .htaccess
+cat ../server-htaccess >> .htaccess
