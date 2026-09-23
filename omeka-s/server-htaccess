@@ -1,4 +1,11 @@
+# The following rules are NOT automatically managed by modules: the .htaccess
+# file is protected by SELinux and is delivered via Jenkins.
+
 RewriteEngine On
+
+# Module Access: protect files.
+# This rule is automatically managed by the module.
+RewriteRule "^files/(original|large)/(.*)$" "access/files/$1/$2" [NC,L]
 
 # The following rule tells Apache that if the requested filename
 # exists, simply serve it.
