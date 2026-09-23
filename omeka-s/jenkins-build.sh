@@ -55,3 +55,12 @@ jq -r '.[] | "\(.name) \(.version) \(if .url == null then "null" else .url end)"
 ../omeka-s-cli module:download "git@omeka-s-HandAxeBlocks:Durham-University-Library-Collections/omeka-s-HandAxeBlocks.git#${ENV_OMEKAS_ENV}"
 
 ../omeka-s-cli theme:download "git@omekas-durham-theme:Durham-University-Library-Collections/omekas-durham-theme.git#${ENV_OMEKAS_ENV}"
+
+# Copy into 'build' the htaccess file
+if [[ "${ENV_OMEKAS_ENV}" = "testing" ]]; then
+    echo "SetEnv APPLICATION_ENV \"development\"" > .htaccess
+else
+    echo "SetEnv APPLICATION_ENV \"production\"" > .htaccess
+fi
+echo "" >> .htaccess
+cat ../server-htaccess >> .htaccess
