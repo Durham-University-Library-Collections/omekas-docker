@@ -3,6 +3,9 @@
 function checkStatus {
     if [ "$1" -ne 0 ]; then
         echo "$2";
+	# Try to ensure we break out of jq pipes if one stage fails: not tested
+	set -e
+	set -o pipefail
         exit "$1";
     fi
 }
@@ -210,5 +213,8 @@ deployModule HandAxeBlocks
 # -----------------------------------------------------
 # Finished
 # -----------------------------------------------------
+
+# FIXME: Should remove $SOURCE here, but need to be sure all errors up to
+# this point will have stopped the script.
 
 echo "Deployment script completed."
