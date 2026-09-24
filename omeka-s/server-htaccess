@@ -3,6 +3,13 @@
 
 RewriteEngine On
 
+# Restrict admin interface to DU addresses
+<IfModule mod_authz_core.c>
+    <If "%{REQUEST_URI} =~ m#^/admin($|/)#">
+        Require ip 10.0.0.0/8 129.234.0.0/16
+    </If>
+</IfModule>
+
 # Module Access: protect files.
 # This rule is automatically managed by the module.
 RewriteRule "^files/(original|large)/(.*)$" "access/files/$1/$2" [NC,L]
