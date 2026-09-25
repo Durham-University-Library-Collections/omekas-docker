@@ -105,6 +105,11 @@
     "url": null
   },
   {
+    "name": "ModelViewer",
+    "version": "3.4.5",
+    "url": null
+  },
+  {
     "name": "NumericDataTypes",
     "version": "1.14.3",
     "url": null
