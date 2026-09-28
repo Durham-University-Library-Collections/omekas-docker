@@ -105,6 +105,11 @@
     "url": null
   },
   {
+    "name": "ModelViewer",
+    "version": "3.4.5-p185",
+    "url": null
+  },
+  {
     "name": "NumericDataTypes",
     "version": "1.14.3",
     "url": null
@@ -121,8 +126,8 @@
   },
   {
     "name": "ThreeDViewer",
-    "version": "v1.0.5",
-    "url": null
+    "version": "b7aa1822e8daeeca9a8670518ac86140813f69f1",
+      "url": "gh:ateeducacion/omeka-s-ThreeDViewer#{version}"
   },
   {
     "name": "ValueSuggest",
