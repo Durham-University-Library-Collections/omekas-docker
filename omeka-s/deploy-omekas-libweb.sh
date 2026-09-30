@@ -174,6 +174,7 @@ for filename in * ; do
 done
 
 # Install or upgrade all modules defined in modules.json
+echo "Backing up existing modules and copying new files..."
 
 # First tackle upgrades by backing up and copying in new files
 jq -r '.[].name' $OPT/modules.json | \
@@ -188,18 +189,22 @@ jq -r '.[].name' $OPT/modules.json | \
 
 # We postpone the actual upgrade until all new files are in place: needed
 # for some dependencies like AdvancedSearch and SearchSolr
+echo "Upgrading existing modules..."
 jq -r '.[].name' $OPT/modules.json | \
     while read -r name; do
 	if [[ -d "$DEST/modules/$name" ]]; then
+	    echo "... $name"
 	    $OSC module:upgrade "$name" --base-path="$DEST"
 	    checkStatus $? "Failed to upgrade module $name"
 	fi
     done
 
 # Then install any new modules
+echo "Installing any new modules..."
 jq -r '.[].name' $OPT/modules.json | \
     while read -r name; do
 	if [[ ! -d "$DEST/modules/$name" ]]; then
+	    echo "... $name"
 	    cp -rf "$SOURCE/build/modules/$name" "$DEST/modules/"
 	    checkStatus $? "Failed to deploy module $name"
 	    $OSC module:install "$name" --base-path="$DEST"
@@ -208,6 +213,7 @@ jq -r '.[].name' $OPT/modules.json | \
     done
 
 # Install or upgrade our own modules
+echo "Deploying Durham modules..."
 deployModule HandAxeBlocks
 
 # -----------------------------------------------------
