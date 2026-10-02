@@ -121,8 +121,8 @@
   },
   {
     "name": "ThreeDViewer",
-    "version": "e9b8d663db97fadc9abf6f2cc5225c356870434a",
-    "url": 'gh:DurhamARC/omeka-s-ThreeDViewer#{version}'
+    "version": "d3c4ac6997ed21a157fc2eda214681f9c5bd74b1",
+    "url": "gh:ateeducacion/omeka-s-ThreeDViewer#{version}"
   },
   {
     "name": "ValueSuggest",
