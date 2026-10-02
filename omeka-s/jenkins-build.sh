@@ -1,7 +1,8 @@
 #!/usr/bin/bash
 
-# Abort the script at the first sign of failure.
+# Abort the script at the first sign of failure. Also within pipes.
 set -e
+set -o pipefail
 
 # Set environment variables. Some will need overriding but software versions
 # should be kept in step with docker development environment.
