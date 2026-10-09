@@ -20,7 +20,7 @@
   {
     "name": "SearchSolr",
     "version": "3.5.72",
-    "url": null,
+    "url": "gh:Daniel-KM/Omeka-S-module-SearchSolr#{version}",
     "notes": "Avoid 3.5.61, see AdvancedSearch notes"
   },
   {
