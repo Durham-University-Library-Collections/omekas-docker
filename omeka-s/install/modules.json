@@ -1,31 +1,31 @@
 [
   {
     "name": "Common",
-    "version": "3.4.91",
+    "version": "3.4.94",
     "url": null,
     "notes": "Needs to be installed first, because a lot of modules depend on it"
   },
   {
     "name": "Log",
-    "version": "3.4.40",
+    "version": "3.4.41",
     "url": null,
     "notes": "Needs to be installed second, because a lot of modules depend on it"
   },
   {
     "name": "AdvancedSearch",
-    "version": "3.4.64",
+    "version": "3.4.65",
     "url": null,
     "notes": "Avoid 3.4.54 and SearchSolr 3.5.61 because of bug https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/issues/18"
   },
   {
     "name": "SearchSolr",
-    "version": "3.5.72",
+    "version": "3.5.74",
     "url": "gh:Daniel-KM/Omeka-S-module-SearchSolr#{version}",
     "notes": "Avoid 3.5.61, see AdvancedSearch notes"
   },
   {
     "name": "Access",
-    "version": "3.4.47",
+    "version": "3.4.48",
     "url": null
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "name": "EasyAdmin",
-    "version": "3.4.49",
+    "version": "3.4.50",
     "url": null
   },
   {
@@ -86,7 +86,7 @@
   },
   {
     "name": "Guest",
-    "version": "3.4.44",
+    "version": "3.4.45",
     "url": null
   },
   {
@@ -96,7 +96,7 @@
   },
   {
     "name": "Mapping",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "url": null
   },
   {
@@ -106,7 +106,7 @@
   },
   {
     "name": "NumericDataTypes",
-    "version": "1.14.3",
+    "version": "1.15.0",
     "url": null
   },
   {
@@ -126,7 +126,7 @@
   },
   {
     "name": "ValueSuggest",
-    "version": "1.19.0",
+    "version": "1.21.0",
     "url": null
   }
 ]
