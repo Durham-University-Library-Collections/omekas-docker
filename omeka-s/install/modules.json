@@ -13,15 +13,13 @@
   },
   {
     "name": "AdvancedSearch",
-    "version": "3.4.65",
-    "url": null,
-    "notes": "Avoid 3.4.54 and SearchSolr 3.5.61 because of bug https://github.com/Daniel-KM/Omeka-S-module-SearchSolr/issues/18"
+    "version": "3.4.66",
+    "url": null  
   },
   {
     "name": "SearchSolr",
-    "version": "3.5.74",
-    "url": "gh:Daniel-KM/Omeka-S-module-SearchSolr#{version}",
-    "notes": "Avoid 3.5.61, see AdvancedSearch notes"
+    "version": "3.5.75",
+    "url": "gh:Daniel-KM/Omeka-S-module-SearchSolr#{version}"
   },
   {
     "name": "Access",
@@ -45,7 +43,7 @@
   },
   {
     "name": "BulkExport",
-    "version": "9a6b78a112a5ef850dbb1059f589a62e5820c824",
+    "version": "a34364fb17628471c74f12de5aa5e5f85f152355",
     "url": "gh:Durham-University-Library-Collections/Omeka-S-module-BulkExport#{version}",
     "notes": "Fork to handle export of metadata from attached media"
   },
