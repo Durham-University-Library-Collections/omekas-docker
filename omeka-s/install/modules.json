@@ -85,7 +85,7 @@
   {
     "name": "Guest",
     "version": "b24bcaf639583b9c92260635ae6b96bc0ac03aa7",
-    "url": "gh:Daniel-KM/Omeka-S-module-Guest#{version}"
+    "url": "gh:Daniel-KM/Omeka-S-module-Guest#{version}",
     "notes": "3.4.45 clashes with Mapping 2.3.0 so used more recent commit."
   },
   {
