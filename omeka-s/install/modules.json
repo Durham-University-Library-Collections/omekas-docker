@@ -1,29 +1,29 @@
 [
   {
     "name": "Common",
-    "version": "3.4.94",
+    "version": "3.4.95",
     "url": null,
     "notes": "Needs to be installed first, because a lot of modules depend on it"
   },
   {
     "name": "Log",
-    "version": "3.4.41",
+    "version": "3.4.43",
     "url": null,
     "notes": "Needs to be installed second, because a lot of modules depend on it"
   },
   {
     "name": "AdvancedSearch",
-    "version": "3.4.66",
+    "version": "3.4.67",
     "url": null  
   },
   {
     "name": "SearchSolr",
-    "version": "3.5.75",
-    "url": "gh:Daniel-KM/Omeka-S-module-SearchSolr#{version}"
+    "version": "3.5.76",
+    "url": null
   },
   {
     "name": "Access",
-    "version": "3.4.48",
+    "version": "3.4.50",
     "url": null
   },
   {
@@ -38,7 +38,7 @@
   },
   {
     "name": "BlockPlus",
-    "version": "3.4.45",
+    "version": "3.4.46",
     "url": null
   },
   {
@@ -69,7 +69,7 @@
   },
   {
     "name": "EasyAdmin",
-    "version": "3.4.50",
+    "version": "3.4.51",
     "url": null
   },
   {
@@ -84,8 +84,8 @@
   },
   {
     "name": "Guest",
-    "version": "b24bcaf639583b9c92260635ae6b96bc0ac03aa7",
-    "url": "gh:Daniel-KM/Omeka-S-module-Guest#{version}",
+    "version": "96ef7122069ba2b8debf4d3548de1033a396d996",
+    "url": "gh:Durham-University-Library-Collections/Omeka-S-module-Guest#{version}",
     "notes": "3.4.45 clashes with Mapping 2.3.0 so used more recent commit."
   },
   {
@@ -95,7 +95,7 @@
   },
   {
     "name": "Mapping",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "url": null
   },
   {
@@ -125,7 +125,7 @@
   },
   {
     "name": "ValueSuggest",
-    "version": "1.21.0",
+    "version": "1.22.0",
     "url": null
   }
 ]
