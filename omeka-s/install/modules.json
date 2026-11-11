@@ -120,8 +120,8 @@
   },
   {
     "name": "ThreeDViewer",
-    "version": "17e7ba069eb0081d1afd309def06f608a28fb2a1",
-    "url": "gh:ateeducacion/omeka-s-ThreeDViewer#{version}"
+    "version": "abfda774bcca15d70602988a1d5f2cc6a8560d07",
+    "url": "gh:Durham-University-Library-Collections/omeka-s-ThreeDViewer#{version}"
   },
   {
     "name": "ValueSuggest",
