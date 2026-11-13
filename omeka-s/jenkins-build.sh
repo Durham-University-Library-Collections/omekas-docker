@@ -57,6 +57,12 @@ jq -r '.[] | "\(.name) \(.version) \(if .url == null then "null" else .url end)"
 
 ../omeka-s-cli theme:download "git@omekas-durham-theme:Durham-University-Library-Collections/omekas-durham-theme.git#${ENV_OMEKAS_ENV}"
 
+# Build CSS for theme
+cd themes/Durham
+npm install
+/usr/local/bin/gulp css
+cd ../..
+
 # Copy into 'build' the htaccess file
 if [[ "${ENV_OMEKAS_ENV}" = "testing" ]]; then
     echo "SetEnv APPLICATION_ENV \"development\"" > .htaccess
