@@ -1,34 +1,34 @@
 [
   {
     "name": "Common",
-    "version": "3.4.95",
+    "version": "3.4.97",
     "url": null,
     "notes": "Needs to be installed first, because a lot of modules depend on it"
   },
   {
     "name": "Log",
-    "version": "3.4.43",
+    "version": "3.4.45",
     "url": null,
     "notes": "Needs to be installed second, because a lot of modules depend on it"
   },
   {
     "name": "AdvancedSearch",
-    "version": "3.4.67",
+    "version": "3.4.69",
     "url": null  
   },
   {
     "name": "SearchSolr",
-    "version": "3.5.76",
+    "version": "3.5.78",
     "url": null
   },
   {
     "name": "Access",
-    "version": "3.4.50",
+    "version": "3.4.51",
     "url": null
   },
   {
     "name": "Analytics",
-    "version": "3.4.15",
+    "version": "3.4.16",
     "url": null
   },
   {
@@ -38,7 +38,7 @@
   },
   {
     "name": "BlockPlus",
-    "version": "3.4.46",
+    "version": "3.4.47",
     "url": null
   },
   {
@@ -54,12 +54,12 @@
   },
   {
     "name": "CSVImport",
-    "version": "2.6.2",
+    "version": "2.6.3",
     "url": null
   },
   {
     "name": "DataTypeRdf",
-    "version": "3.4.18",
+    "version": "3.4.19",
     "url": null
   },
   {
@@ -69,7 +69,7 @@
   },
   {
     "name": "EasyAdmin",
-    "version": "3.4.51",
+    "version": "3.4.53",
     "url": null
   },
   {
