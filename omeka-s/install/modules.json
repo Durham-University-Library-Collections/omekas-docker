@@ -18,8 +18,9 @@
   },
   {
     "name": "SearchSolr",
-    "version": "3.5.78",
-    "url": null
+    "version": "37d102ae3f850853a72efcaeaf3c107ee7c4a592",
+    "url": "gh:Daniel-KM/Omeka-S-module-SearchSolr#{version}",
+    "notes": "3.5.76 - have to use commit hash as not on official module list"
   },
   {
     "name": "Access",
