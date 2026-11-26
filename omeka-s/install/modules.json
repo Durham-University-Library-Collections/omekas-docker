@@ -1,8 +1,8 @@
 [
   {
     "name": "Common",
-    "version": "fc1c699c6892cd741dcd23ec3a5b77a3967411bb",
-    "url": "gh:Daniel-KM/Omeka-S-module-Common#{version}",
+    "version": "3.4.97",
+    "url": null,
     "notes": "Needs to be installed first, because a lot of modules depend on it"
   },
   {
